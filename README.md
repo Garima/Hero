@@ -1,4 +1,4 @@
-# HeroCycle
+# HeroCycle - Carousel Node module has been edited.So it should be copied
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.2.
 
