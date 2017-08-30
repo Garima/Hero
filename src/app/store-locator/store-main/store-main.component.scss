@@ -1,0 +1,58 @@
+@import "../../../styles/_variables.scss";
+map-container{position: relative;}
+agm-map {
+  height: 300px;
+}
+
+.map-loading{visibility: hidden;}
+.form-item{
+  padding:2rem 0;
+  input{
+    padding: 1rem .5rem;
+    margin-right: 2rem;
+    max-width: 100%;
+  }
+  button{
+    @media (max-width: $sm-screen-down) {
+      margin-top: 2rem;
+    }
+  }
+  .form-btn{
+    display: inline-block;
+    @media (max-width: $sm-screen-down) {
+      display: block;
+      text-align: center;
+    }
+
+  }
+}
+.store-list{
+  height: 500px;
+  overflow: auto;
+  margin-top: 4rem;
+  padding-left: 0;
+  li{
+    display: block;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 4rem;
+    border-bottom: 1px solid $color-border;
+    cursor: pointer;
+  }
+  .number{float:left;padding-right:1rem;}
+  .store-det{}
+  .active{background-color:$color-filter-grey;}
+}
+.no-store{
+  padding: 2rem;
+  font-weight: bold;
+}
+.loader{
+  width: 100px;
+  z-index: 100;
+  position: fixed;
+  left:50%;
+  -webkit-transform:translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform:translateX(-50%);
+}

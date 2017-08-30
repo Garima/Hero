@@ -1,0 +1,94 @@
+@import "../../../styles/_variables.scss";
+
+.compare-sel{
+  position: absolute;
+  right: 0;
+  z-index: 100;
+  &.cmp-close{
+    right:-39rem ;
+  }
+  &.cmp-open{
+    right: 0;
+  }
+}
+.cmp-hd{
+  display: inline-block;
+  img{
+    width:4rem;
+  }
+}
+.cmp-prod{
+  float: left;
+  width:11rem;
+  height: 9rem;
+  margin: 2rem 1rem;
+  text-align: center;
+  color: $color-black;
+  &.choose{
+    border: 1px dashed black;
+    position: relative;
+    padding-top: 3rem;
+  }
+  .fa-close{
+    cursor: pointer;
+  }
+}
+.products{
+  background-color: #fcf3f5;
+  border-radius: 5px;
+  margin-left: 1px;
+}
+.sel-prod{
+  select{
+    opacity: 0;
+    position: absolute;
+    z-index: 10;
+    left: 2px;
+    width: 10.5rem;
+    padding: 0 0 0 2px;
+    background: #fff;
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+    option{
+      padding: 0 0 0 15px;
+      color: #808184;
+      font-size: 12px;
+    }
+
+  }
+  .select{
+    font-family: BebasNeueRegular;
+    border-bottom: 1px solid #808184;
+  }
+}
+.cmp-open{
+  padding-right: 1px;
+  background-image: -webkit-linear-gradient(top, $color-red, transparent,transparent);
+}
+.ar-button{
+  background-color: $color-red;
+  height: 40px;
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+  .fa{
+    font-size: 3rem;
+    font-weight: 700;
+    color:$color-white;
+  }
+}
+.cmp-btn{
+  position: absolute;
+  right: 20px;
+  bottom: -12px;
+}
+:required:focus {
+  box-shadow: 0  0 3px rgba(255,0,0,0.5);
+}
+
+

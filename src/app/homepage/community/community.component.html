@@ -1,0 +1,86 @@
+<div class="pad-main-side">
+<h2>Hero <span class="red">Community</span></h2>
+<div class="posts clearfix">
+    <div class="col-sm-4">
+        <ng-container *ngIf="twitterData">
+            <div class="post {{i}}"  *ngFor="let feedDet of twitterData;let i = index" [ngClass]="{'hidden': i > pagesToDisplay*2 -1}">
+                <div class="ctnr-tag">
+                    <a href="{{feedDet.entities.media[0].expanded_url}}" target="_blank" *ngIf="feedDet.entities.media && feedDet.entities.media[0].media_url" class="post-img">
+                        <img src="{{feedDet.entities.media[0].media_url}}" class="post-img" />
+                    </a>
+                    <div class="tag up">
+                        <div class="tag-icon"><i class="fa fa-twitter"></i></div>
+                    </div>
+                </div>
+                <div class="author">
+                    <a href="https://twitter.com/{{feedDet.user.screen_name}}" class="user-logo" target="_blank">
+                        <img src="{{feedDet.user.profile_image_url}}"></a>
+                    <div class="user-det">
+                        <p class="user-name"><a href="https://twitter.com/{{feedDet.user.screen_name}}" target="_blank">
+                            <strong>{{feedDet.user.name}}</strong>
+                            <span class="user-tag">@{{feedDet.user.screen_name}}</span>
+                        </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="desc">{{feedDet.text}}</div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="col-sm-4">
+        <ng-container *ngIf="fbData">
+        <div class="post {{i}}"  *ngFor="let feedDet of fbData.data;let i = index" [ngClass]="{'hidden': i >= pagesToDisplay}">
+        <div class="ctnr-tag">
+            <a href="{{feedDet.permalink_url}}" target="_blank" *ngIf="feedDet.full_picture" class="post-img">
+                <img src="{{feedDet.full_picture}}" class="post-img" />
+            </a>
+            <div class="tag up">
+                <div class="tag-icon"><i class="fa fa-facebook"></i></div>
+            </div>
+        </div>
+        <!--    <div class="author">
+                <a href="{{feedDet.author.userLink}}" class="user-logo" target="_blank"><img src="{{feedDet.author.userImg}}"></a>
+                <div class="user-det">
+                    <p class="user-name"><a href="{{feedDet.author.userLink}}" target="_blank">
+                        <strong>{{feedDet.author.name}}</strong>
+                        <span class="user-tag">{{feedDet.author.userName}}</span>
+                    </a>
+                    </p>
+                </div>
+            </div>-->
+            <div class="desc">{{feedDet.message}}</div>
+        </div>
+        </ng-container>
+    <div class="clearfix"></div>
+</div>
+
+
+    <div class="col-sm-4">
+        <ng-container *ngIf="instagramData">
+            <div class="post {{i}}"  *ngFor="let feedDet of instagramData;let i = index" [ngClass]="{'hidden': i >= pagesToDisplay}">
+                <div class="ctnr-tag">
+                    <a href="{{feedDet.link}}" target="_blank" *ngIf="feedDet.images.standard_resolution && feedDet.images.standard_resolution.url" class="post-img">
+                        <img src="{{feedDet.images.standard_resolution.url}}" class="post-img" />
+                    </a>
+                    <div class="tag up">
+                        <div class="tag-icon"><i class="fa fa-instagram"></i></div>
+                    </div>
+                </div>
+                <div class="author">
+                    <a href="{{feedDet.user.url}}" class="user-logo" target="_blank">
+                        <img src="{{feedDet.user.profile_picture}}"></a>
+                    <div class="user-det">
+                        <p class="user-name">
+                            <strong>{{feedDet.user.full_name}}</strong>
+                            <span class="user-tag">@{{feedDet.user.username}}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="desc">{{feedDet.caption.text}}</div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+</div>
+
+<div class="more-posts" [ngClass]="{'hidden': maxNumberFeed <= pagesToDisplay}"><a class="hc-btn hc-btn-primary" (click)="showMorePosts()">See More</a></div>

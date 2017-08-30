@@ -1,0 +1,119 @@
+@import "../../../styles/_variables.scss";
+
+.side-links {
+  width: 100%;
+  text-align: center;
+  background-color: #e9e7e7;
+  //padding: 1rem 2rem;
+  .img-call,.hp-tollfree,.hmc-link,.toll-num,.hp-flyout-container{
+    display: inline-block;
+  }
+  .img-call {
+    padding: 2.5rem 0;
+    vertical-align: top;
+    & > img {
+      width: 3rem;
+    }
+  }
+  .hp-tollfree{
+    padding: 2rem 0 2rem 1rem;
+  }
+  .toll-num {
+    color: $color-blue3;
+    font-weight: 500;
+    .toll-label {
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+      border-right: 1px solid $color-blue3;
+      text-align: left;
+    }
+    .num {
+      font-family: BebasNeueBold;
+      border-right: 1px solid $color-blue3;
+      font-size: 2.5rem;
+      line-height: 2.8rem;
+      padding-right: 4rem;
+      display: inline-block;
+      color: $color-blue3;
+    }
+  }
+  .hmc-link {
+    padding: 1rem 2rem 1rem 4rem;
+    vertical-align: top;
+    img {
+      width: 5.5rem;
+    }
+  }
+  .ar-button{
+    display: none;
+  }
+}
+@media (min-width: $sm-screen-up){
+  .side-links{
+    background-color: transparent;
+    padding-right: 0;
+    .hp-flyout-container{
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: auto;
+      white-space: nowrap;
+      transform: translateX(63%);
+      transition: .3s transform;
+      .hp-tollfree{
+        padding:0;
+        padding-left:1rem;
+      }
+      &.num-open{
+        transform: translateX(0);
+        .img-call{
+          border-right: 1px solid $color-blue3;
+        }
+      }
+    }
+    .toll-num {
+      background-color: $color-white;
+      padding: .5rem 1rem 0 .5rem;
+      .toll-label, .num {
+        border-right: none;
+      }
+      .num{
+        padding-right: 0;
+      }
+      .img-call{
+        padding: .5rem 1rem .5rem .5rem;
+      }
+    }
+    .ar-button{
+      background-color: $color-red;
+      text-align: center;
+      display: inline-block;
+      vertical-align: top;
+      padding: 0 .5rem;
+      //position: relative;
+      //top: 31px;
+      //left: -15px;
+      .fa{
+        font-size: 3rem;
+        font-weight: 700;
+        color:$color-white;
+      }
+    }
+
+    .hmc-link{
+      display: block;
+      padding: 0;
+      position: absolute;
+      top: calc(100% - 60px);
+      & > a {
+        background-color: $color-white;
+        display: inline-block;
+        padding: .5rem;
+      }
+    }
+  }
+}
+
+
+
+

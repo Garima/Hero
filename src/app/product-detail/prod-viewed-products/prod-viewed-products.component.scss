@@ -1,0 +1,30 @@
+@import "../../../styles/_variables.scss";
+
+.slide-item {
+  width: 49%;
+  float: left;
+  position: relative;
+  background-color: $color-background-grey2;
+  text-align: center;
+  &:first-child{
+    margin-right: 2%;
+  }
+  .item-img{
+    height:18rem;
+    padding: 0 2rem;
+    vertical-align: middle;
+    display: table-cell;
+  }
+}
+.item-desc{
+  background-color: $color-blue2;
+  font-family: BebasNeue;
+  color:  #ffffff;
+  padding: 1rem 0;
+  .item-name{
+    font-size: 2.5rem;
+  }
+  .item-price{
+    font-size: 1.7rem;
+  }
+}

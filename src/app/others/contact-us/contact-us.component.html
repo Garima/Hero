@@ -1,0 +1,76 @@
+<img src="./assets/images/banners/contact-us.png" alt="Contact Us">
+
+<section class="pad-main-text container-fluid">
+    <div class="row row-eq-height">
+    <div class="col-sm-6">
+        <div *ngIf="submitted; else formBlock" class="successMsg">{{successMsg}}</div>
+        <ng-template #formBlock>
+            <h3>We would love to hear from you</h3>
+        <form method="post" action="/contactUs" (ngSubmit)="submitForm(contactUs.valid)" #contactUs="ngForm">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 field">
+                        <input required [(ngModel)]="model.firstName" type="text"
+                                                       #firstName="ngModel" placeholder="First Name*" name="firstName" >
+
+                        <div *ngIf="firstName.invalid && (firstName.dirty || contactUs.submitted)"
+                             class="error">
+                            <div *ngIf="firstName.errors.required">
+                                Name is required.
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6 field">
+                    <input required type="text" [(ngModel)]="model.lastName" placeholder="Last Name*"
+                           name="lastName" #lastName="ngModel" >
+                    <div *ngIf="lastName.invalid && (lastName.dirty || contactUs.submitted)"
+                         class="error">
+                        <div *ngIf="lastName.errors.required">
+                            Last Name is required.
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 field">
+                        <input required type="email" [(ngModel)]="model.emailId" placeholder="Email ID*"
+                               name="emailId" #emailId="ngModel" email pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" >
+                        <div *ngIf="emailId.invalid && (emailId.dirty || contactUs.submitted)"
+                             class="error">
+                            <div *ngIf="emailId.errors.required">
+                                Email Id is required.
+                            </div>
+                            <div *ngIf="emailId.errors.email && contactUs.submitted && !emailId.errors.required">
+                               Please enter a valid email id.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 field"><input type="text" [(ngModel)]="model.phone" placeholder="Phone" name="phone"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 field">
+                        <select name="queryFor" [(ngModel)]="model.queryFor">
+                            <option>Query For</option>
+                            <option>Product/Purchase Query</option>
+                            <option>Corporate Query</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <textarea id="message" name="message" cols="60" rows="8" [(ngModel)]="model.query" class="textarea" placeholder="Query"></textarea>
+                </div>
+                <div class="field">
+                    <button class="hc-btn-primary hc-btn" type="submit" name="send">Pedal</button>
+                </div>
+            </div>
+        </form>
+            </ng-template>
+    </div>
+    <div class="col-sm-6 text ">
+        <p>For your corporate queries, you can reach our office during work hours on 011-40511700.</p>
+        <p>10:00AM to 6:00PM<br/>(IST +5:30 GMT)<br />Monday to Friday</p>
+        <p>You can always drop us an email at customer@herocycles.com and we'll get back to you shortly.</p>
+    </div>
+    </div>
+    </section>

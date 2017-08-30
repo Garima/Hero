@@ -1,0 +1,26 @@
+@import "../../../styles/_variables.scss";
+
+ .brand-main { display: block; position: relative; width: 100%; overflow: hidden; background-color: black; }
+ ul.bm-blocks { position: absolute; top: 150px; height: 100%; z-index: 3;padding: 0;
+ @media (max-width: $sm-screen-down) {
+   width:100%;
+ }}
+ ul.bm-blocks li { border-bottom: 1px solid  $color-white;display: block; text-align: right;
+   @media (max-width: $sm-screen-down) {
+     text-align: center;
+   }}
+ ul.bm-blocks li:first-child { border-top: 1px solid white;}
+ .brand-link a { font-family: BebasNeueBold;color:$color-white; font-size: 3rem;
+  text-transform: uppercase;  z-index: 2; -webkit-transition: all .1s ease; -moz-transition: all .1s ease;
+  -ms-transition: all .1s ease; -o-transition: all .1s ease; transition: all .1s ease; }
+.brand-link a.link {
+opacity: .8;
+  height: 8rem;
+  display: inline-block;
+  padding: 2rem 4rem;
+  width: 20rem;}
+.brand-link:hover a.link {  opacity: 1;text-decoration: none;font-size: 3.5rem;
+  //padding-right: 1rem;
+}
+.brand-link:hover a.link::after {  content:'>'; }
+.block-img{width:100%}

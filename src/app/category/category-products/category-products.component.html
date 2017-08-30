@@ -1,0 +1,11 @@
+<ul class="prod-catalogue clearfix">
+    <li class="prod"  *ngFor="let prod of productList">
+        <app-category-product [quickViewModal]="quickViewModal" (quickViewShow)="populateData($event)"
+                              [prodData] = "prod"></app-category-product>
+    </li>
+</ul>
+
+<div bsModal #quickViewModal="bs-modal" class="modal fade quick-view" tabindex="-1" role="dialog"
+     aria-labelledby="quickView" aria-hidden="true">
+    <app-quick-view-modal [quickViewData]="quickViewProductData" [quickViewModal]="quickViewModal"></app-quick-view-modal>
+</div>

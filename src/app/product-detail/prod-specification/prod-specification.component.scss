@@ -1,0 +1,17 @@
+@import "../../../styles/_variables.scss";
+.prod-specifications{
+  font-family: 'Asap';
+  color:  #8d8d8d;
+  font-size: 1.5rem;
+  padding-bottom: 2rem;
+
+  li{
+    display: block;
+    padding: .5rem 0;
+    .label{
+      color:  $color-black;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+  }
+}

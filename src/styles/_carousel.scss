@@ -1,0 +1,124 @@
+@import "_variables.scss";
+
+/***Carousels****/
+.hero-carousel .carousel-control{
+  display: none;
+}
+.carousel-indicators{
+  position: absolute;
+  z-index: 1;
+  bottom: 60px;
+  right: 47%;
+  font-size: 0;
+}
+
+.carousel-indicators li {
+  /*border-radius: 11px;
+ background-color: white;
+ border: 2px solid white;*/
+  border: 0;margin: 0;
+  display: inline-block; cursor: pointer; position: relative; width: 20px; height: 20px;margin-left: 12px;
+  svg { position: absolute; top: 0; left: 0; }
+
+  svg .stroke { fill: none; stroke-width: 4; stroke-miterlimit: 10; }
+  svg .stroke-color { stroke: #fff; stroke-opacity: .7; }
+ svg .stroke-color-over { stroke: #fff; }
+}
+.carousel-indicators li.active{
+ // background-color: red;
+  margin: 0;
+  margin-left: 12px;
+  width:  20px;
+  height: 20px;
+  background-color: transparent;
+}
+
+.carousel .carousel-control{
+  background: none;
+  opacity: 1;
+  text-shadow: none;
+}
+.carousel-control .icon-next:before,.carousel-control .icon-prev:before{
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color:$color-red
+}
+.carousel-control .icon-next:before{
+  content: "\f105";
+}
+.carousel-control .icon-prev:before{
+  content: "\f104";
+}
+
+.no-indicator-carousel {
+  .carousel-indicators{
+    display: none;
+  }
+  .carousel-control {
+    width:auto;
+  }
+  &:not(.full-width)  .carousel-inner{
+    padding: 0 3rem;
+  }
+}
+
+.full-width {
+  .icon-next, .icon-prev {
+    margin-right:0;
+    margin-left:0;
+  }
+}
+.prod-carousel{
+  &.full-width {
+    .icon-next, .icon-prev {
+      margin: 0 1rem;
+      &:before {
+        color: $color-black;
+        font-weight: bold;
+        font-size: 5rem;
+      }
+    }
+  }
+}
+.hp-events{
+  .no-indicator-carousel {
+    @media (max-width: $sm-screen-down) {
+      .carousel-control {
+        bottom: -45%;
+        font-size: 25px;
+        .icon-next,.icon-prev {
+          margin: 0;
+          &:before{
+            color:$color-white;
+            font-weight: bold;
+          }
+        }
+      }
+      .carousel-inner{
+        padding: 0;
+      }
+    }
+  }
+}
+.carousel-item .slide-item{
+  .product{
+    padding-top: 0;
+    margin-top: 0;
+  }
+}
+.logo-carousel .carousel{
+
+  background-color: #f2f2f2;
+  padding: 2rem;
+  .carousel-control .icon-prev{
+    margin-left: 0;
+  }
+  .carousel-control .icon-next{
+    margin-right: 0;
+  }
+}
+/***Carousel****/

@@ -1,0 +1,21 @@
+<div class="side-links">
+
+    <div class="hp-flyout-container transition" [ngClass]="numberShown ? 'num-open' : 'num-close'"  (click)="toggleNumber()" >
+
+            <div class="ar-button" >
+                <span class="fa" [ngClass]="numberShown ? 'fa-angle-left' : 'fa-angle-right'"></span>
+            </div><div class="toll-num">
+            <div class="img-call">
+                <img src="assets/images/homepage/call.png" alt="Call" />
+            </div>
+            <div class="hp-tollfree">
+                <div class="toll-label">Tollfree</div>
+                <a href="tel:1800-000-000" class="num">1800 000 000</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="hmc-link">
+        <a  (click)="gotoHMC()"><img src="assets/images/homepage/hmc-logo.png" /></a>
+    </div>
+</div>

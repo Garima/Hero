@@ -1,0 +1,101 @@
+[
+  {
+    "medium": "facebook",
+    "list": [
+      {
+        "id": 1,
+        "img": "./assets/images/Community1.png",
+        "link": "http://www.facebook.com/",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla eget gravida nulla, vel efficitur felis. Nunc varius elementum elit. Vivamus sed tortor nibh.",
+        "author": {
+          "name": "Lorem",
+          "userName": "@ipsum",
+          "userLink": "http://www.facebook.com/",
+          "userImg": "./assets/images/socialUser.png"
+        }
+      },
+      {
+        "id": 2,
+        "img": "./assets/images/Community2.png",
+        "link": "http://www.facebook.com/",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla eget gravida nulla, vel efficitur felis. Nunc varius elementum elit. Vivamus sed tortor nibh.",
+        "author": {
+          "name": "Lorem2",
+          "userName": "Ipsum",
+          "userLink": "http://www.facebook.com/",
+          "userImg": "./assets/images/socialUser.png"
+        }
+      },
+      {
+        "id": 3,
+        "img": "./assets/images/Community3.png",
+        "link": "http://www.facebook.com/",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla eget gravida nulla, vel efficitur felis. Nunc varius elementum elit. Vivamus sed tortor nibh.",
+        "author": {
+          "name": "Lorem3",
+          "userName": "Ipsum",
+          "userLink": "http://www.facebook.com/",
+          "userImg": "./assets/images/socialUser.png"
+        }
+      }
+    ]
+  },
+  {
+    "medium": "twitter",
+    "list": [
+      {
+        "id": 1,
+        "img": "./assets/images/Community2.png",
+        "link": "http://www.facebook.com/",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla eget gravida nulla, vel efficitur felis. Nunc varius elementum elit. Vivamus sed tortor nibh.",
+        "author": {
+          "name": "Lorem",
+          "userName": "@ipsum",
+          "userLink": "http://www.facebook.com/",
+          "userImg": "./assets/images/socialUser.png"
+        }
+      },
+      {
+        "id": 2,
+        "img": "./assets/images/Community3.png",
+        "link": "http://www.facebook.com/",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla eget gravida nulla, vel efficitur felis. Nunc varius elementum elit. Vivamus sed tortor nibh.",
+        "author": {
+          "name": "Lorem",
+          "userName": "Ipsum",
+          "userLink": "http://www.facebook.com/",
+          "userImg": "./assets/images/socialUser.png"
+        }
+      }
+    ]
+  },
+  {
+    "medium": "instagram",
+    "list": [
+      {
+        "id": 1,
+        "img": null,
+        "link": "http://www.facebook.com/",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla eget gravida nulla, vel efficitur felis. Nunc varius elementum elit. Vivamus sed tortor nibh.",
+        "author": {
+          "name": "Lorem",
+          "userName": "@ipsum",
+          "userLink": "http://www.facebook.com/",
+          "userImg": "./assets/images/socialUser.png"
+        }
+      },
+      {
+        "id": 2,
+        "img": "./assets/images/Community2.png",
+        "link":"http://www.facebook.com/",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla eget gravida nulla, vel efficitur felis. Nunc varius elementum elit. Vivamus sed tortor nibh.",
+        "author": {
+          "name": "Lorem",
+          "userName": "Ipsum",
+          "userLink": "http://www.facebook.com/",
+          "userImg": "./assets/images/socialUser.png"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+<span (mouseover) = 'hoverNav()' (mouseout) = 'hoverOutNav()' class="nav-menu" >
+
+<a class="menu-lvl1" [class.arrowDown]="IsDesktop && menu.sub_categories.length > 0" [routerLink]="['/', menu.link]"  (click)= 'closeNav()'>{{menu.name}}</a>
+
+<!--<a class="menu-lvl1" [class.arrowDown]="menu.subNav" *ngIf="IsMobile" (click)="toggleSubNav();">{{menu.name}}</a>-->
+<div *ngIf="IsDesktop && menu.sub_categories.length > 0" class="menu-flyout-container transition" [class.visible]="subNavVisible">
+    <div class="menu-flyout transition" [class.visible]="subNavVisible">
+    <ul class="subNavContainer">
+        <li *ngFor="let subNav of menu.sub_categories" [style.width.%]="cycleWidth">
+            <a class="menu-lvl2 transition" [routerLink]="['/', menu.link,subNav.link]"  (click)= 'closeNav()' >
+            <img src="{{subNav.img}}" alt={{subNav.name}} class="menu-img" />
+            <div class="menuLabel" [style]>{{subNav.name}}</div>
+            </a>
+        </li>
+    </ul>
+    </div>
+</div>
+</span>

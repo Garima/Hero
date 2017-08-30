@@ -1,0 +1,19 @@
+.topic{
+  font-weight: 700;
+  font-size: 2rem;
+
+  li{
+    display: list-item;
+    list-style: inherit;
+  }
+  .det{
+    padding: 1.5rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+  .disclaimer{
+    padding-top: 1.5rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+}

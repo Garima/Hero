@@ -1,0 +1,23 @@
+<div class="filter-tog"  *ngIf="IsMobile" (click)="toggleFilter()" [class.filter-shown]="filterOpen">Filters</div>
+
+<div class="filter-container" [class.visible]="filterOpen">
+    <ul class="filters">
+        <li *ngFor="let filter of filters"  (click)="showFilter(filter.name)" [ngClass]="{'filter-open': filter.name == filterSelected}">
+            <span class="filter-name icon">{{filter.name.replace('_', ' ')}}</span>
+            <ul class="filter-options transition" *ngIf="IsMobile && showFilterOptions">
+                <li *ngFor="let option of selectedOptions" class="filter-btn" (click)="toggleCriterion(option.id)"
+                    [ngClass]="{'selected': isSelected(option.id)}">
+                    {{option.display}} <span [ngClass]="{'fa fa-close': isSelected(option.id)}"></span></li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="filter-options" *ngIf="IsDesktop && showFilterOptions ">
+        <li *ngFor="let option of selectedOptions" class="filter-btn" (click)="toggleCriterion(option.id)"
+            [ngClass]="{'selected': isSelected(option.id)}">
+            {{option.display}}<span [ngClass]="{'fa fa-close': isSelected(option.id)}"></span>
+        </li>
+    </ul>
+    <div class="filter-options clr-all" *ngIf="filtersSelected && filtersSelected.length > 0"><!--put if condition if any filter selected -->
+        <div class="selected filter-btn" (click)="clearAllCriterion()">Clear All<span class="fa fa-close"></span></div>
+    </div>
+</div>

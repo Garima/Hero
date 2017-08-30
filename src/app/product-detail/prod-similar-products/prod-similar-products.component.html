@@ -1,0 +1,5 @@
+<carousel class="no-indicator-carousel full-width" [interval]=false>
+    <slide *ngFor="let product of similarProds" >
+            <div class="item-img"><img [src]="product.imgThumbnail" [alt]="product.name" /></div>
+    </slide>
+</carousel>

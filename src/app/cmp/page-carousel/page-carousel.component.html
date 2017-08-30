@@ -1,0 +1,20 @@
+<carousel class="no-indicator-carousel" [interval]=false *ngIf="IsMobile">
+    <slide *ngFor="let itemGrp of items">
+        <app-category-product class="slide-item" [quickViewModal]="quickViewModal" [prodData]="itemGrp"
+                              (quickViewShow)="populateData(item)"></app-category-product>
+    </slide>
+</carousel>
+
+<carousel class="no-indicator-carousel" [interval]=false  *ngIf="IsDesktop">
+    <slide *ngFor="let itemGrp of desktopItems">
+            <app-category-product class="slide-item"  *ngFor="let item of itemGrp" [prodData]="item"
+                      [quickViewModal]="quickViewModal" (quickViewShow)="populateData(item)"></app-category-product>
+
+    </slide>
+</carousel>
+
+<div bsModal #quickViewModal="bs-modal" class="modal fade quick-view" tabindex="-1" role="dialog"
+     aria-labelledby="quickViewModal"  aria-hidden="true">
+  <app-quick-view-modal [quickViewData]="quickViewProductData"   [quickViewModal]="quickViewModal" ></app-quick-view-modal>
+</div>
+

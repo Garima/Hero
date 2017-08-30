@@ -1,0 +1,27 @@
+@import "_variables.scss";
+.hc-btn{
+  border-radius:1.6rem;
+  font-size:1.6rem;
+  padding:5px 10px 7px;
+  font-family: BebasNeue;
+  cursor: pointer;
+  text-align: center;
+  border-style: none;
+
+}
+.hc-btn-primary{
+  background-color:$color-red;
+  border-color:$color-red;
+  color:$color-white;
+  &:hover{
+    background-color: #ad2121;
+  }
+}
+a.hc-btn-primary:active, a.hc-btn-primary:hover,
+a.hc-btn:active, a.hc-btn-primary:hover{
+  text-decoration: none;
+  color:$color-white;
+}
+.hc-btn,.hc-btn-primary,select,input[type='text']{
+  height:3.2rem;
+}

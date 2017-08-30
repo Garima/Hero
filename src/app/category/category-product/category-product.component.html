@@ -1,0 +1,8 @@
+<div class="product">
+    <a [routerLink]="['/product/',prodData.id]">
+        <div class="name">{{prodData.product_name}}</div>
+        <div class="prod-img"><img [src]="prodData.imgThumbnail" class="img-responsive" /></div>
+    </a>
+    <div class="btn-quick-view" (click)="showQuickView()"><a>Quick View</a></div>
+    <div class="price"><span class="fa fa-inr"></span>{{prodData.price}}</div>
+</div>

@@ -1,0 +1,85 @@
+@import "../../../styles/_variables.scss";
+.posts{
+  padding:$pad-lg $pad-xxl;
+}
+.post {
+  border: 1px solid rgba($color-border,15);
+  box-shadow: 0px 0px 1px 0px rgba($color-box-shadow, 0.21);
+  &:not(:first-child){
+    margin-top: 2rem;
+  }
+  .author {
+    text-align: left;
+    margin: 20px 20px 10px 20px;
+  }
+  .desc {
+    padding: 10px 20px 20px 20px;
+    font-family: 'Asap', sans-serif;
+    color: $color-text-grey;
+    font-size: 1.5rem;
+    text-align: left;
+  }
+  .tag {
+    font-size: 1.5rem;
+    position: absolute;
+    left: 50%;
+    padding-top: 1rem;
+    width: 4rem;
+    height: 35px;
+    background-color: $color-blue;
+    color: $color-white;
+    text-align: center;
+    box-shadow: 0px 1px 3px 0px rgba($color-box-shadow2, 0.75);
+
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    &.down{
+      bottom:-17px;
+    }
+    &.up{
+      top:-17px;
+    }
+    .tag-icon{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+  .user-det{
+    display: inline-block;
+  }
+  .user-logo{
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline-block;
+  }
+  .user-logo img{
+    display: inline-block;
+  }
+  .user-name a,.user-name{
+    color:$color-border;
+  }
+  .user-tag{
+    padding-left:$pad-xs;
+  }
+}
+.post-img{
+  display: block;
+  position: relative;
+}
+.posts .post-img img{
+  width: 100%;
+}
+.hidden{
+  display:none;
+}
+.more-posts{
+  text-align: center;
+  background-color: $color-black;
+  padding: 2rem;
+}
+.ctnr-tag{
+  position: relative;
+}

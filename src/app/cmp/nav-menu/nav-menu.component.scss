@@ -1,0 +1,53 @@
+@import "../../../styles/_variables.scss";
+nav{
+  font-family: BebasNeue;
+  font-size: 1.2rem;
+  //padding: $pad-md;
+  @media (min-width: $sm-screen-up) {
+    padding: $pad-sm $pad-lg;
+    float: right;
+  }
+}
+li{
+  @media (min-width: $sm-screen-up) {
+    padding-right:10px;
+    &:not(:last-child)::after {
+      font-family: BebasNeueBook;
+      font-size: 2.5rem;
+      content: '/';
+      padding: 0 2rem;
+      color: $color-b;
+    }
+  }
+}
+app-nav-menu-item{
+  @media (min-width: $sm-screen-up) {
+    display: inline-block;
+  }
+}
+.svg-menu-toggle{
+  fill: #969696;
+  pointer-events: all;
+}
+.menu-toggle{
+  float:right;
+  padding: $pad-md;
+  @media (min-width: $sm-screen-up) {
+    display: none;
+  }
+}
+.menu{
+  clear: both;
+  display: none;
+  &.visible{
+    display: block;
+  }
+  li{
+    @media (max-width: $sm-screen-down) {
+      display: block;
+    }
+  }
+  @media (min-width: $sm-screen-up) {
+    display: block;
+  }
+}

@@ -1,0 +1,35 @@
+/*considering 14px as body font size*/
+$color-black:#000;
+$color-white:#fff;
+$color-b:#fcf3f5;
+$color-red:#d01f25;
+$color-blue:#001745;
+$color-blue2:#003D71;
+$color-blue3:#001c49;
+$color-border-grey:#d9d9d9;
+$color-border:rgb(136, 136, 136);
+$color-box-shadow:rgb(232, 232, 232);
+$color-box-shadow2:rgb(213, 213, 213);
+$color-text-grey:#464646;
+$color-background-grey:rgb(242, 242, 242);
+$color-background-grey2:#fafafa;
+$color-background-grey3:rgb(204, 204, 204);
+$color-text-input:#343e5b;
+$color-filter-grey:#edeeee;
+$color-filter-selected-grey: #d6d9d9;
+
+/*Responsive Breakpoints*/
+$xs-screen-up: 576px;
+$sm-screen-up: 768px;
+$md-screen-up: 992px;
+$lg-screen-up: 1200px;
+$sm-screen-down: 767px;
+
+/*$image-path:assets/images/;*/
+
+$pad-xs:5px;
+$pad-sm:1rem;
+$pad-md:1.5rem;
+$pad-lg:2rem;
+$pad-xxl:4rem;
+$pad-60:6rem;

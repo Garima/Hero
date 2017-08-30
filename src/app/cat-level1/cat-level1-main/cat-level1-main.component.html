@@ -1,0 +1,28 @@
+<div id="main" class="clearfix">
+    <ng-template [ngIf]="menu">
+        <section class="tipos-main" [style.height]="pillarHeight + 'px'">
+            <ul class="blocks" *ngIf = "menu.brands">
+                <li *ngFor="let nav of menu.brands"  [style.width]="pillarWidth + '%'">
+                    <div class="links-box">
+                        <a [routerLink]="[nav.link]" class="block-link">
+                            <span>{{nav.name}}</span>
+                        </a><br>
+                        <a [routerLink]="[nav.link]"  class="block-cuadro-link">See the bike range</a>
+                    </div>
+                </li>
+            </ul>
+
+            <picture>
+                <source [srcset]="menu.bannerImgSm" media="(max-width: 767px)">
+                <source [srcset]="menu.bannerImgLrg" media="(min-width: 768px)">
+                <img class="block-img img-responsive" [src]="menu.bannerImgLrg">
+            </picture>
+
+                <video autoplay="" loop="" preload="auto" [poster]="menu.bannerImgLrg" #bannerVideo>
+                <source [src]="menu.videoLinkMp4" type="video/mp4">
+                <source [src]="menu.videoLinkWebM" type="video/webm">
+                <img [src]="menu.bannerImgLrg">
+            </video>
+        </section>
+   </ng-template>
+</div>

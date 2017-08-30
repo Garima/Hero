@@ -1,0 +1,51 @@
+<img src="./assets/images/banners/csr.png" alt="CSR">
+<div class="pad-main-side">
+    <h2>MAINTAINING A HUMANE WORLD</h2>
+    <p>
+        Hero Group’s compassionate approach has been manifested in all aspects of its commercial capacity. Consequently,
+        the group undertakes several projects to contribute to the National Mainstream in a socio-humanitarian manner.
+    </p>
+    <p>The Group undertakes various projects and activities of socio-humanitarian nature to contribute to the National
+        Mainstream. In this respect, Hero Cycles Limited and Hero MotoCorp have been pioneers within the Group undertaking
+        socially productive work of myriad nature.
+    </p>
+
+    <div class="tab-link">
+        <ul>
+            <li class="health" (click)="openTab(1)" [ngClass]="{'selected':tabOpen == 1}"></li>
+            <li class="edu" (click)="openTab(2)"  [ngClass]="{'selected':tabOpen == 2}"></li>
+        </ul>
+        <div class="fa fa-chevron-down tab-point transition" [ngClass]="{'tab2':tabOpen == 2}">&nbsp;</div>
+    </div>
+    <div class="tab" [ngClass]="{'selected':tabOpen == 1}">
+        <h3>HEALTHCARE</h3>
+        <p>The Group has established Raman Munjal Memorial Hospital in Gurgaon which is a 100-bed hospital with a well-equipped laboratory. The hospital has a fully functional operation theatre, an outpatient department as well as a casualty section to provide stellar healthcare service to the masses.</p>
+        <p>Additionally, a fully equipped mobile clinic provides comprehensive health care to the rural masses in Dharuhera.</p>
+        <p>Other efforts, under the auspices of Hero Cycles Limited include:</p>
+        <p><strong>Eye Camps:</strong> With over 15,000 patients examined and about 1700 cataract operations performed so far, these Eye Camps have also aided patients with free accommodation, food and medicines.</p>
+        <p><strong>Family Planning Camps:</strong> Held since 1993 at the Civil Hospital at Rewari and Bawal, these camps offer monetary incentives to the masses to adopt family planning measures thus helping to regulate the population crisis of India at the rural level.</p>
+        <p><strong>Blood Donations Camps:</strong> These camps are being organised by the group on a regular basis since 1992. 464 units have been donated to Indian Red Cross Society in the last camps.</p>
+        <p><strong>NT Check-up Camps:</strong> Conducted by specialists from AIIMS, these camps have been organized since November 1997 to promote good health practises.</p>
+        <p><strong>Heart Check-up Camps:</strong> Since July 1988, free camps are being organized in collaboration with Escorts Heart Institute and Research Centre, where specialised diagnosis methods like Echocardiography and ECG are used.</p>
+        <p><strong>Rehabilitation Camps:</strong> Conducted with the assistance of the District Rehabilitation Centre, Red Cross Society, Rewari, these camps help physically-challenged villagers to rehabilitate and re-employ themselves. Many patients have found a new lease of life on account of the physical aids given to them.</p>
+    </div>
+    <div class="tab" [ngClass]="{'selected':tabOpen == 2}">
+        <h3>EDUCATION</h3>
+    <p>The group staunchly believes that an investment in education pays the best interest. To support and extend the benefits of an education, Hero Cycles has opened several schools and colleges across the nation to make education available for all.</p>
+    <p><strong>Schools</strong></p>
+        <ol>
+            <li>B.C.M.School, Shastri Nagar</li>
+            <li>B.C.M.School, Dugri</li>
+            <li>B.C.M.School, Chandigarh Rd</li>
+            <li>B.C.M.School, Jamalpur</li>
+            <li>R.S.Model School, Shastri Nagar</li>
+        </ol>
+        <p><strong>College</strong></p>
+        <ol>
+            <li>B.C.M.School, Shastri Nagar</li>
+            <li>MEDICAL COLLEGE & HOSPITAL</li>
+            <li>Dayanand Medical College & Hospital</li>
+        </ol>
+    </div>
+
+</div>

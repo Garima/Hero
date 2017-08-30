@@ -1,0 +1,138 @@
+<table class="compare" *ngIf="productCompareData" >
+    <thead>
+    <tr class="photos">
+        <th class="col1 empty"></th>
+        <td>
+            <div id="selector1" class="selector showing">
+                <div class="img">
+                    <!--<a href="#close" class="close">x</a>-->
+                    <img [src]="productCompareData[0].imgThumbnail" [alt]="productCompareData[0].product_name">
+                </div>
+            </div>
+        </td>
+        <td>
+            <div id="selector2" class="selector showing">
+                <div class="img">
+                    <!--<a href="#close" class="close">x</a>-->
+                    <img [src]="productCompareData[1].imgThumbnail" [alt]="productCompareData[1].product_name">
+                </div>
+            </div>
+        </td>
+        <td *ngIf="numOfProd === 3">
+            <div id="selector3" class="selector">
+                <div class="img">
+                    <!--<a href="#close"class="close">x</a>-->
+                    <img [src]="productCompareData[2].imgThumbnail" [alt]="productCompareData[2].product_name">
+                </div>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="titles">
+        <th class="col1 empty"></th>
+        <th scope="col">
+            <div class="prod-name">{{productCompareData[0].product_name}}</div>
+            <span class="price"><span class="fa fa-inr"></span>{{productCompareData[0].price}}</span>
+        </th>
+        <th scope="col">
+            <div class="prod-name">{{productCompareData[1].product_name}}</div>
+            <span class="price"><span class="fa fa-inr"></span>{{productCompareData[1].price}}</span>
+        </th>
+        <th scope="col"  *ngIf="numOfProd === 3">
+            <div class="prod-name">{{productCompareData[2].product_name}}</div>
+            <span class="price"><span class="fa fa-inr"></span>{{productCompareData[2].price}}</span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="filter-info">
+        <th scope="row" class="col1">Category</th>
+        <td>Mtb						</td>
+        <td>Roadster</td>
+        <td  *ngIf="numOfProd === 3">
+        </td>
+    </tr>
+    <tr class="filter-info">
+        <th scope="row" class="col1">Categor 2- Usage</th>
+        <td>City</td>
+        <td>City</td>
+        <td *ngIf="numOfProd === 3"></td>
+    </tr>
+    <tr class="filter-info">
+        <th scope="row" class="col1">Brand</th>
+        <td>Hero</td>
+        <td>Hero</td>
+        <td *ngIf="numOfProd === 3"></td>
+    </tr>
+
+    <tr>
+        <th scope="row" class="col1 component">Frame Material</th>
+        <td>{{productCompareData[0].spec_Frame_material}}</td>
+        <td>{{productCompareData[1].spec_Frame_material}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Frame_material}}</td>
+    </tr>
+
+    <tr>
+        <th scope="row" class="col1 component">Tire Size</th>
+        <td>{{productCompareData[0].spec_Tyre_size}}</td>
+        <td>{{productCompareData[1].spec_Tyre_size}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Tyre_size}}</td>
+    </tr>
+
+    <tr>
+        <th scope="row" class="col1 component">Riders ht (feet)</th>
+        <td>{{productCompareData[0].spec_Rider_height}}</td>
+        <td>{{productCompareData[1].spec_Rider_height}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Rider_height}}</td>
+    </tr>
+
+    <tr>
+        <th scope="row" class="col1 component">Gears</th>
+        <td>{{productCompareData[0].spec_Gears}}</td>
+        <td>{{productCompareData[1].spec_Gears}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Gears}}</td>
+    </tr>
+
+    <tr>
+        <th scope="row" class="col1 component">Total Bike Weight(Kg)</th>
+        <td>{{productCompareData[0].spec_Bike_weight}}</td>
+        <td>{{productCompareData[1].spec_Bike_weight}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Bike_weight}}</td>
+    </tr>
+
+    <tr>
+        <th scope="row" class="col1 component">Front Suspension</th>
+        <td>{{productCompareData[0].spec_Front_suspension}}</td>
+        <td>{{productCompareData[1].spec_Front_suspension}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Front_suspension}}</td>
+    </tr>
+
+    <tr>
+        <th scope="row" class="col1 component">Rear Suspension</th>
+        <td>{{productCompareData[0].spec_Rear_suspension}}</td>
+        <td>{{productCompareData[1].spec_Rear_suspension}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Rear_suspension}}</td>
+    </tr>
+
+    <tr>
+        <th scope="row" class="col1 component">Rear Deraileur</th>
+        <td>{{productCompareData[0].spec_Rear_deraileur}}</td>
+        <td>{{productCompareData[1].spec_Rear_deraileur}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Rear_deraileur}}</td>
+    </tr>
+
+    <tr>
+        <th scope="row" class="col1 component">Front Brake</th>
+        <td>{{productCompareData[0].spec_Front_brake}}</td>
+        <td>{{productCompareData[1].spec_Front_brake}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Front_brake}}</td>
+    </tr>
+
+    <tr>
+        <th scope="row" class="col1 component">Rear Brake</th>
+        <td>{{productCompareData[0].spec_Rear_brake}}</td>
+        <td>{{productCompareData[1].spec_Rear_brake}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Rear_brake}}</td>
+    </tr>
+    </tbody>
+</table>

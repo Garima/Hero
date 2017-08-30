@@ -1,0 +1,152 @@
+@import "../../../styles/_variables.scss";
+
+.filter-container{
+  margin: 3rem 0;
+  display: none;
+  &.visible{
+    display: block;
+  }
+}
+
+.filters{
+  background-color: $color-filter-grey;
+  text-transform: uppercase;
+}
+.filter-name {
+  padding: 1rem;
+  font-family: BebasNeueBold;
+  color: $color-black;
+  font-size: 1.8rem;
+  display: inline-block;
+
+  &::after {
+    content: "\f078";
+    display: block;
+    text-align: center;
+    font-size: .7rem;
+  }
+}
+.filter-options{
+  font-family: BebasNeueRegular;
+  color:  $color-black;
+  font-size: 1.5rem;
+  background-color: $color-filter-selected-grey;
+  text-align: center;
+}
+.filter-btn {
+  &:hover, &.selected {
+    background-color: $color-red;
+    border-color: $color-red;
+    color: $color-white;
+  }
+  &.selected {
+    .fa {
+      padding-left: 5px;
+    }
+  }
+}
+@media (min-width: $sm-screen-up) {
+  .filters{
+    li{
+      width: 10%;
+      text-align: center;
+      border-right: 1px solid $color-white;
+      &:last-child{
+        border-right: none;
+      }
+    }
+  }
+  .filter-options{
+    padding:.5rem;
+  }
+  .filter-btn{
+    border-radius:1.6rem;
+    padding:7px 10px;
+    background-color: $color-white;
+    margin: 1rem;
+    cursor: pointer;
+    &:hover,&.selected{
+      background-color:$color-red;
+      border-color:$color-red;
+      color:$color-white;
+    }
+    &.selected{
+      .fa{
+        padding-left: 5px;
+      }
+    }
+  }
+  .filter-tog{
+    display: none;
+  }
+}
+.clr-all{
+  border-top:1px solid $color-white;
+  .filter-btn{
+    display: inline-block;
+  }
+}
+  .filter-open{
+    background-color: $color-filter-selected-grey;
+    .filter-name::after{
+      content: "\f077";
+    }
+
+  }
+
+@media (max-width: $sm-screen-down) {
+  .filters li {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #cecece;
+  }
+  .filter-name {
+    display: block;
+
+    &::after {
+      display: inline-block;
+      float: right;
+      font-size: 1.5rem;
+    }
+  }
+
+  .filter-options{
+    display: none;
+  }
+  .filter-open{
+    .filter-options{
+      display: block;
+    }
+  }
+  .filter-btn{
+    padding: 1rem;
+  }
+.filter-tog{
+  cursor: pointer;
+  background-color:  #e5e5e5;
+  padding:1rem 2rem;
+  display: inline-block;
+  &.filter-shown{
+    background-color:$color-blue3 ;
+    color: $color-white;
+  }
+}
+ /* .filter-options{
+    position: relative;
+    top: -30px;
+  }
+  .filter-btn{
+    height: 0;
+    opacity: 0;
+  }
+  .filter-open{
+    .filter-btn{
+      height: auto;
+      opacity: 1;
+    }
+    .filter-options{
+      top:0;
+    }
+  }*/
+}

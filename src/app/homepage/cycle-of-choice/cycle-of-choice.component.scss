@@ -1,0 +1,201 @@
+@import "../../../styles/_variables.scss";
+
+.choice-filters {
+  @media (min-width: $sm-screen-up) {
+    padding: 0 3rem;
+  }
+  .choice-filter {
+    font-family: BebasNeueBold;
+    color: #000000;
+    font-size: 1.6rem;
+    border-right: 1px solid $color-border-grey;
+    @media (max-width: $sm-screen-down) {
+      border-right: none;
+    }
+    text-align: center;
+  }
+  .no-border-sm {
+    border-right: none;
+  }
+  .with-img {
+    padding-top: 8rem;
+    background-position: top 5px center;
+    background-repeat: no-repeat;
+    background-size: auto 7rem;
+    @media (min-width: $sm-screen-up) {
+      background-size: auto 7rem;
+      padding-top: 8rem;
+      width: 100%;
+    }
+    @media (min-width: $md-screen-up) {
+      background-size: auto 9rem;
+      padding-top: 10rem;
+    }
+  }
+  .classic {
+    background-image: url('/assets/images/coc/classic.png');
+  }
+  .gear-filter{
+    padding: 9rem 0;
+    & > div{
+      width:49%;
+      display: inline-block;
+    }
+  }
+  .non-gear {
+    background-image: url('/assets/images/coc/non-geared.png');
+  }
+  .gear {
+    background-image: url('/assets/images/coc/geared.png');
+  }
+
+  .type {
+    width: 49%;
+    display: inline-block;
+  }
+  .leisure {
+    background-image: url('/assets/images/coc/leisure.png');
+  }
+  .performance {
+    background-image: url('/assets/images/coc/performance.png');
+  }
+  .gender {
+    display: inline-block;
+    width: 32%;
+    width: 32%;
+    @media (max-width: $sm-screen-down) {
+      margin: 2rem 0;
+    }
+  }
+  .male {
+    background-image: url('/assets/images/coc/male.png');
+    padding-right: 1rem;
+  }
+  .female {
+    background-image: url('/assets/images/coc/female.png');
+  }
+  .unisex {
+    background-image: url('/assets/images/coc/unisex.png');
+  }
+  .age,.price-filter {
+    @media (min-width: $sm-screen-up) {
+      padding-top: 10px;
+    }
+    .filter-input {
+      height: 6.4rem;
+      border-radius: 3.2rem;
+      @media (min-width: $sm-screen-up) {
+        width: 70%;
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+    }
+  .filter-label{
+    @media (min-width: $sm-screen-up) {
+      padding-top: 20px;
+    }
+    }
+  }
+
+  input[type=radio]{
+    position: absolute;
+    left: -2000px;
+  }
+
+  input[type=radio] + label:before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align:middle;
+    margin-right: 8px;
+    background-color: $color-white;
+    border-radius: 50%;
+    border:2px solid $color-black;
+    @media (max-width: $sm-screen-down) {
+    position: relative;
+    top: -3px;
+    }
+  }
+  input[type=radio]:checked + label:before {
+    content: "\2022"; /* Bullet */
+    color:$color-red;
+    font-size:20px;
+    text-align:center;
+    line-height: 10px;
+  }
+  .price-filter {
+    padding-top: 9rem;
+    @media (min-width: $sm-screen-up) {
+      padding: 8rem 0;
+    }
+  }
+  /*.price-filter input{
+    display: inline-block;
+    width: 42%;
+    @media (max-width: $sm-screen-down) {
+      width: 30%;
+    }
+  }
+  .price-filter{
+    padding: 9rem 0;
+    @media (max-width: $sm-screen-down) {
+      border-right:none;
+    }
+  }*/
+  .red-seperator{
+    padding: 0 $pad-xs;
+  }
+  .hc-btn-primary{
+    margin-top: 1rem;
+    padding-right:2.5rem ;
+    padding-left:2.5rem ;
+    display: inline-block;
+  }
+  }
+.filter-label{
+  padding-top: 1rem;
+  display: block;
+}
+.action-btn{
+   text-align: center;
+    padding-top: 2rem;
+
+}
+.category{
+  &.row{
+    @media (max-width: $sm-screen-down) {
+      width: 49%;
+      display: inline-block;
+    }
+  }
+  & > div{
+    position: relative;
+&:after{
+  content: '.';
+  height: 10rem;
+  background-color: $color-white;
+  width: 1px;
+  color: $color-white;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  padding-bottom: 1.5rem;
+}
+  }
+  @media (min-width: $sm-screen-up) {
+  & > div:not(:last-child):after {
+    background-color: $color-border-grey;
+  }
+  }
+  @media (max-width: $sm-screen-down) {
+    &:first-child > div:after {
+      background-color: $color-border-grey;
+    }
+  }
+}
+.text-error{
+  color:$color-red ;
+  margin-bottom: 0;
+}

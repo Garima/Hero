@@ -1,0 +1,80 @@
+/*considering 14px as body font size*/
+@import "../styles/_variables.scss";
+header{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 101;
+    width:100%;
+    background-color: $color-black;//rgba(0, 0, 0, 0.5);
+    moz-box-shadow: inset 0 15px 15px -15px rgba(255,255,255,.1), 0 0 8px rgba(0,0,0,.5);
+  -webkit-box-shadow: inset 0 15px 15px -15px rgba(255,255,255,.1), 0 0 8px rgba(0,0,0,.5);
+  box-shadow: inset 0 15px 15px -15px rgba(255,255,255,.1), 0 0 8px rgba(0,0,0,.5);
+}
+.body-content{
+  margin-top: 7.5rem;
+  @media (min-width: $sm-screen-up) {
+    margin-top: 5.5rem;
+  }
+}
+.hcLogo{
+  float: left;
+  width:15rem;
+  padding: $pad-lg;
+  @media (min-width: $sm-screen-up) {
+    padding: $pad-sm $pad-lg $pad-sm 3.5rem;
+  }
+}
+footer{
+ /* .social{
+    text-align: center;
+    padding: 2rem;
+    background-color: #f2f2f2;
+    font-family: BebasNeue;
+    font-size:13px;
+    color: $color-black;
+
+    ul{
+      display: inline-block;
+      padding-left: 1rem;
+      li{
+        height: 3.4rem;
+        width:3.4rem;
+        border: 1px solid black;
+        border-radius: 50%;
+        font-size: 2rem;
+        padding-top: .5rem;
+        margin-right: 1rem;
+        a,a:hover{
+          color:$color-black;
+        }
+      }
+
+    }
+  }*/
+}
+.footer-content{
+  background-color: $color-blue;
+  text-align: center;
+  padding: 2rem;
+  font-family: BebasNeueRegular;
+  color:  $color-white;
+  font-size: 1.5rem;
+
+  ul.footer-links li{
+  &:not(:first-child)::before{
+    content: '.';
+    padding: 0 1rem;
+  }
+  }
+  a,a:hover{
+    color:  $color-white;
+  }
+  .copyright{
+    border-top:1px solid rgba($color-background-grey,.4);
+    font-family: BebasNeue;
+    font-size: 1rem;
+    padding-top: 2rem;
+    margin-top: 2rem;
+  }
+}

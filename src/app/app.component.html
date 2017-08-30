@@ -1,0 +1,40 @@
+<header>
+    <div class="hcLogo">
+        <a href="/">
+            <img src="./assets/images/logo.png"  title="Hero Cycles " alt="Hero Cycles" class="img-responsive"/>
+        </a>
+    </div>
+    <app-nav-menu></app-nav-menu>
+</header>
+<div class="body-content">
+<router-outlet (deactivate)="onDeactivate()"></router-outlet>
+</div>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<app-bottom-bar></app-bottom-bar>
+<footer>
+<!--    <div class="social">Follow Us
+        <ul>
+            <li><a href="www.facebook.com/" class="fa fa-facebook"></a></li>
+            <li  class="fa fa-twitter"></li>
+            <li  class="fa fa-youtube"></li>
+        </ul>
+    </div>-->
+    <div class="footer-content">
+        <div>
+            <ul class="footer-links">
+                <li><a [routerLink]="['/overview']">About Us</a></li>
+                <li><a [routerLink]="['/milestone']">Milestones</a></li>
+                <li><a [routerLink]="['/csr']">CSR</a></li>
+                <li><a [routerLink]="['/investors']">Investors</a></li>
+                <li><a [routerLink]="['/contactUs']">Contact Us</a></li>
+                <li><a [routerLink]="['/aboutUs']">Warranty</a></li>
+                <li><a [routerLink]="['/privacy']">Privacy Policy</a></li>
+                <li><a [routerLink]="['/disclaimer']">Disclaimer</a></li>
+                <li><a [routerLink]="['/sitemap']">Sitemap</a></li>
+            </ul>
+        </div>
+        <div class="copyright">All rights reserved copyrights hero cycles ltd 2016</div>
+    </div>
+</footer>

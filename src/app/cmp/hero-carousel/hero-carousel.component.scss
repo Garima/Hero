@@ -1,0 +1,15 @@
+@import "../../../styles/_variables.scss";
+img{
+  width:100%;
+}
+
+.carousel-caption {
+  font-family: BebasNeueBold;
+  color: $color-red;
+  font-size: 6.6rem;
+  font-weight: 400;
+  text-align: center;
+  @media (min-width: $sm-screen-up) {
+    font-size: 17rem;
+  }
+}

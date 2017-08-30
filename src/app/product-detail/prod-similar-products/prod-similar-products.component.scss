@@ -1,0 +1,13 @@
+@import "../../../styles/_variables.scss";
+slide{
+  background-color:$color-background-grey3;
+  padding:3rem;
+  .item-img{
+    background-color:$color-background-grey2;
+    padding: 1rem;
+    text-align: center;
+    img{
+      width:26rem;
+    }
+  }
+}

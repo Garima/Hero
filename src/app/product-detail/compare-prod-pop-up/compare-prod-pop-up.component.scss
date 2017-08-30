@@ -1,0 +1,78 @@
+@import "../../../styles/_variables.scss";
+
+.compare{
+  font-family: Asap;
+  color: #7f7f7f;
+  font-size: 1.5rem;
+  font-weight: 500;
+  th, td {
+    width: 257px;
+    padding: 6px 16px 6px 0;
+    text-align: center;
+    border: 0;
+    border-bottom: 1px solid #d0d1d3;
+  }
+  th.empty {
+    border: 0;
+  }
+  th.col1 {
+    width: 130px;
+    padding-right: 10px;
+    font-family: Asap;
+    color:  $color-black;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: left;
+  }
+  thead tr.photos td {
+    height: 185px;
+    padding-bottom: 10px;
+    text-align: center;
+    border: 0;
+  }
+  thead tr.photos td div.selector div.img img {
+    width: 100%;
+    margin-top: -10%;
+  }
+  thead tr.photos td div.selector.showing div.img {
+    background: #fff;
+  }
+  tr.titles th {
+    height: 40px;
+    color:  $color-black;
+    border-bottom: none;
+    text-align: center;
+    padding-bottom: 3rem;
+    .prod-name{
+      font-family: Asap;
+      font-size: 2rem;
+    }
+    .price{
+      /* Inline Style */
+      font-family: BebasNeueBold;
+      font-size: 3rem;
+      text-align: center;
+    }
+  }
+  tbody td {
+    padding-left: 0 !important;
+  }
+  tbody .filter-info th, tbody .filter-info td {
+    text-transform: uppercase;
+  }
+  tbody tr.links th, tbody tr.links td {
+    padding: 20px 0 0;
+    border: 0;
+  }
+  tr.links a {
+    padding: 0 0 1px;
+    color: #808184;
+    border-bottom: 1px solid #808184;
+  }
+  tr.links a:hover {
+    border: 0;
+  }
+  .close{
+    font-size: 1.2rem;
+  }
+}

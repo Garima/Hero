@@ -1,0 +1,53 @@
+
+<div class="pad-main-side">
+<div class="form-item" id="edit-gmap-address-wrapper" >
+    <label >Please enter a location: </label>
+    <input type="text" maxlength="128" name="address" id="address" size="60" value="" class="form-text" #addressInput
+           autocomplete="off" placeholder="Enter a location"  (keyup.enter)="addressChanged()" [value]="address">
+<div class="form-btn"><button class="hc-btn hc-btn-primary" (click)="addressChanged();">Find Store</button></div>
+</div>
+    <div class="map-container">
+        <div *ngIf="mapLoading" class="loader"><img src="./assets/images/loading.gif" alt="loading"/> </div>
+
+            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="mapZoom" #storeMap [ngClass]="{'map-loading': mapLoading}">
+            <agm-marker [latitude]="lat" [longitude]="lng"
+                        iconUrl="//maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
+            <ng-container *ngIf="markers">
+                <agm-marker
+                        *ngFor="let m of markers; let i = index"
+                        (markerClick)="clickedMarker(infoWindow, i)"
+                        [latitude]="m.lat"
+                        [longitude]="m.lng" >
+
+                    <agm-info-window #infoWindow id="storeInfo_{{i}}">
+                        <ng-container *ngIf="m.info">
+                            <div>
+                                <h4>{{m.info.name}}</h4>
+                                <p>{{m.info.address}}</p>
+                                <p class="tel">Telephone: {{m.info.telephone}}</p>
+                            </div>
+                        </ng-container>
+                    </agm-info-window>
+
+                </agm-marker>
+            </ng-container>
+
+        </agm-map>
+        <div *ngIf="hasStores; else noStores">
+            <ol class="store-list" id="store-list" *ngIf="results">
+                <li *ngFor="let store of results;let i = index;" id="store_{{i}}"
+                    [ngClass]="{'active': selectedStore === i}" (click)="storeClick(i);">
+                    <span class="number">{{i+1}}</span>
+                    <div class="store-det">
+                        <strong>{{store.name}}</strong><br>
+                        <span>{{store.address}}</span>
+                        <div class="distance" *ngIf="store.distance">{{store.distance}} </div>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+            <ng-template #noStores><div class="no-store">No nearby stores were found, please try to refine your search</div></ng-template>
+
+    </div>
+</div>

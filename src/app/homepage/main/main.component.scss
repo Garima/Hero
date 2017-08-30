@@ -1,0 +1,37 @@
+@import "../../../styles/_variables.scss";
+h2{
+  margin-top:0;
+  &.hd-left{
+    @media (min-width: $sm-screen-up) {
+      text-align: left;
+    }
+  }
+}
+.marB-main{
+  margin-bottom: 3rem;
+}
+.hp-top{
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+.top-selling{
+  background-color: $color-background-grey;
+  @media (min-width: $sm-screen-up) {
+    padding-left: 5rem;
+  }
+}
+.new-launch{
+  @media (min-width: $sm-screen-up) {
+    padding-right: 5rem;
+  }
+}
+.pad-main-side{
+  padding: 0;
+  @media (min-width: $sm-screen-up) {
+    padding: 0 2rem;
+  }
+  @media (min-width: $md-screen-up) {
+    padding: 0 5rem;
+  }
+}

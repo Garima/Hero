@@ -1,0 +1,29 @@
+
+    <div class="prd-hd" *ngIf="productData">
+        <div class="hc-breadcrumb">
+            <ul>
+            <li *ngFor="let item of breadcrumb"><a [href]="item.url">{{item.label}}</a></li>
+            <li>{{productData.name}}</li>
+        </ul>
+        </div>
+        <div>
+            <span class="prod-name">{{productData.name}}</span>
+            <span class="prod-price"><span class="fa fa-inr"></span>{{productData.price}}</span>
+        </div>
+        <div class="action-btn">
+            <a class="hc-btn hc-btn-primary" href="/storeLocator">Find a dealer</a>
+            <a class="hc-btn">Buy Online</a>
+            <a class="hc-btn"  [href]="productData.warranty">Warranty</a>
+
+        </div>
+        <app-compare-product-selector></app-compare-product-selector>
+        <app-salient-features [salientFeatures]="productData.salientFeatures"></app-salient-features>
+        <div class="prd-img">
+               <picture>
+                   <source [srcset]="productData.imgSrcSm" media="(max-width: 767px)">
+                   <source [srcset]="productData.imgSrcLg" media="(min-width: 768px)">
+                   <img class="block-img img-responsive" [src]="productData.imgSrcLg">
+               </picture>
+        </div>
+
+    </div>

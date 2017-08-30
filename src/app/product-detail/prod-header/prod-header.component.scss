@@ -1,0 +1,87 @@
+@import "../../../styles/_variables.scss";
+.prd-hd{
+  position:relative;
+  color: $color-white;
+  font-family: BebasNeueBook;
+  padding-left:2rem;
+  background-repeat: no-repeat;
+  //background-size: 100%;
+  background-size: cover;
+  padding-top: 6rem;
+  min-height: 130vw;
+  @media (min-width:$sm-screen-up) {
+    min-height: 43vw;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 0;
+  }
+  .hc-btn{
+    border: 1px solid $color-white;
+    color:$color-white;
+    display: block;
+    padding-right: 5rem;
+    padding-left: 5rem;
+    margin-bottom: 2rem;
+  }
+  .hc-btn-primary{
+    border: 1px solid $color-red;
+
+  }
+}
+.hc-breadcrumb{
+  display: none;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  @media (min-width: $sm-screen-up) {
+    display: block;
+  }
+  ul{
+    border-top: 1px solid  rgba(256,256,256,.5);
+    padding-top: .5rem;
+    margin-right: 2rem;
+
+  }
+  li a{
+    color: $color-white;
+    font-family: BebasNeueBook;
+  }
+  li:not(:last-child)::after{
+    content: '|';
+    padding: 0 5px;
+  }
+  li:last-child{
+    font-family: BebasNeueBold;
+  }
+}
+.prod-name{
+  font-family: BebasNeueBold;
+  font-size: 8.9rem;
+display: inline-block;
+  @media (max-width: $sm-screen-down) {
+    font-size: 6rem;
+  }
+}
+.prod-price{
+  font-size:6.4rem;
+  padding-left: 1.5rem;
+  .fa::before{
+    font-size:3rem;
+  }
+}
+.action-btn{
+  float:left;
+}
+@media (max-width:$sm-screen-down) {
+  app-compare-product-selector{
+    display:none;
+  }
+}
+.prd-img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  overflow: hidden;
+  height: 100%;
+}

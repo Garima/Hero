@@ -1,0 +1,54 @@
+@import "../../../styles/_variables.scss";
+.sal-features{
+  font-size: 1.3rem;
+  font-family: BebasNeue;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 3rem;
+  li.col-sm-2{
+    width:  calc(16.66666667% - 5px);
+    text-align: center;
+  }
+  .seperator{
+    float:left;
+    position: relative;
+    top:1.5rem;
+    background-color: rgba(256,256,256,.5);
+    @media (max-width: $sm-screen-down) {
+      display: none;
+    }
+  }
+  .f-img{
+    width:4.5rem;
+    height: 5rem;
+    margin: 0 auto 1rem;
+    & > img{
+      position: relative;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translateY(-50%) translateX(-50%);
+      -ms-transform: translateY(-50%) translateX(-50%);
+      transform: translateY(-50%) translateX(-50%);
+    }
+  }
+  h3{
+    font-size: 2rem;
+    @media (min-width: $sm-screen-up) {
+      display: inline-block;
+    }
+
+  }
+  .feature-name{
+    font-size: 1.5rem;
+
+  }
+  .feature-desc {
+    width: 58%;
+    margin: auto;
+  }
+  .sal-desc{
+    display: inline-block;
+    text-align: center;
+  }
+}

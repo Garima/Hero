@@ -1,0 +1,22 @@
+<div id="main" class="clearfix">
+    <ng-template [ngIf]="menu">
+        <section class="brand-main">
+            <ng-template [ngIf]="menu && menu.sub_categories">
+            <ul class="bm-blocks">
+                <li *ngFor="let brandItem of menu.sub_categories" >
+                    <div class="brand-link">
+                        <a href="{{brandItem.link}}"  [routerLink]="[brandItem.link]" class="link">
+                            <span>{{brandItem.name}}</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            </ng-template>
+            <picture>
+                <source [srcset]="menu.bannerImgSm" media="(max-width: 767px)">
+                <source [srcset]="menu.bannerImgLrg" media="(min-width: 768px)">
+                <img class="block-img img-responsive" [src]="menu.bannerImgLrg">
+            </picture>
+        </section>
+    </ng-template>
+</div>

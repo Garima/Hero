@@ -1,0 +1,16 @@
+<h2>Events</h2>
+<carousel class="no-indicator-carousel">
+    <slide *ngFor='let event of events;'>
+    <a [routerLink]="['/events']">
+        <picture>
+            <source [srcset]="event.imgSrcSm" media="(max-width: 767px)">
+            <source [srcset]="event.imgSrcLg"  media="(min-width: 768px)">
+            <img [src]="event.imgSrcLg" alt="{{event.title}}" class="img-responsive">
+        </picture>
+        <div class="event_overlay">
+            <div class="year">{{event.year}}</div>
+            <div class="desc">{{event.title}}</div>
+        </div>
+    </a>
+    </slide>
+</carousel>

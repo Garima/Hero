@@ -1,0 +1,70 @@
+@import "../../../styles/_variables.scss";
+
+.tab-link{
+  ul {
+    border-bottom: 1px solid $color-border-grey;
+  }
+  li{
+    cursor: pointer;
+    margin: 2rem 0 2rem;
+    width: 7.5rem;
+    height:6rem;
+    background-repeat: no-repeat;
+    &:first-child{
+      padding-right: 2rem;
+      border-right: 1px solid $color-border-grey;
+    }
+  }
+  .tab-point{
+    position: relative;
+    left:3rem;
+    color: $color-red;
+    &.tab2{
+      left:11rem;
+    }
+  }
+}
+.edu {
+  background-image: url('/assets/images/csr/edu.png');
+  background-position: 20px 0;
+  &.selected{
+    background-image: url('/assets/images/csr/edu-sel.png');
+  }
+}
+.health {
+  background-image: url('/assets/images/csr/health.png');
+  &.selected{
+    background-image: url('/assets/images/csr/health-sel.png');
+  }
+}
+.tab{
+  display: none;
+  padding-bottom: 2rem;
+  &.selected{
+    display: block;
+  }
+}
+h2{
+  font-family: Asap;
+  color:  #000000;
+  font-size: 2rem;
+  font-weight: 700;
+  &:after,&:before{
+    content: "";
+  }
+}
+p{
+  color:  #000000;
+}
+h3{
+  color:  #000000;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-bottom: 2rem;
+}
+ol{
+    li{
+      display: list-item;
+      list-style: inherit;
+    }
+}

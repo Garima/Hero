@@ -1,0 +1,17 @@
+.logo-container{
+  li{
+    display: table-cell;
+    padding: 0 3rem;
+    vertical-align: middle;
+  }
+  li:not(:last-child){
+  border-right:1px solid rgb(169, 169, 169);
+    @media (min-width: 768px) {
+      width: 16%;
+
+    }
+  }
+  .disney,.ut{
+    padding:0 5rem;
+  }
+}

@@ -1,0 +1,20 @@
+<img src="./assets/images/banners/events.png" alt="Events">
+<div class="pad-main-side">
+    <div class="event" *ngFor='let event of events;'>
+        <div class="ev_img">
+        <picture>
+            <source [srcset]="event.imgSrcSm" media="(max-width: 767px)">
+            <source [srcset]="event.imgSrcLg"  media="(min-width: 768px)">
+            <img [src]="event.imgSrcLg" alt="{{event.title}}" class="img-responsive">
+        </picture>
+        <div class="event_overlay">
+            <div class="year">{{event.year}}</div>
+            <div class="desc">{{event.title}}</div>
+        </div>
+            </div>
+        <div class="ev-desc">
+            <h3>{{event.title}}</h3>
+            <p>{{event.description}}</p>
+        </div>
+    </div>
+</div>

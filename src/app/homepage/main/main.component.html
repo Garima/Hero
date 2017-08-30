@@ -1,0 +1,27 @@
+<div class="hp-top">
+    <app-hero-carousel></app-hero-carousel>
+    <!-- <app-num-flyout></app-num-flyout>-->
+</div>
+<section class="pad-main-side marB-main">
+   <app-cycle-of-choice></app-cycle-of-choice>
+</section>
+<section class="marB-main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 top-selling" *ngIf="topSelling">
+                <h2 class="hd-left">Top <span class="red">Selling</span></h2>
+                <app-page-carousel [items]="topSelling"></app-page-carousel>
+            </div>
+            <div class="col-md-6 new-launch" *ngIf="newLaunch">
+                <h2 class="hd-left">New <span class="red">Launch</span></h2>
+                <app-page-carousel [items]="newLaunch"></app-page-carousel>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pad-main-side marB-main hp-events">
+   <app-events></app-events>
+</section>
+<section class="mobile-hidden">
+   <app-community></app-community>
+</section>

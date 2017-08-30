@@ -1,0 +1,25 @@
+<h2 class="text-left pad-main-side">Buzz <span class="red">Specification</span></h2>
+<div class="container-fluid prod-specifications pad-main-side">
+    <div class="row">
+        <div class="col-md-6">
+            <ul>
+                <ng-template ngFor let-specification [ngForOf]="specifications" let-o="odd">
+                    <li *ngIf="o">
+                        <span class="label">{{specification.type.replace('_', ' ')}}</span>
+                        <span>{{specification.description}}</span>
+                    </li>
+                </ng-template>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <ul>
+                <ng-template ngFor let-specification [ngForOf]="specifications" let-e="even">
+                    <li *ngIf="e">
+                        <span class="label">{{specification.type.replace('_', ' ')}}</span>
+                        <span>{{specification.description}}</span>
+                    </li>
+                </ng-template>
+            </ul></div>
+    </div>
+</div>
+

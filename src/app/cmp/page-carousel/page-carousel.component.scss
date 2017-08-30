@@ -1,0 +1,18 @@
+@import "../../../styles/_variables.scss";
+.slide-item {
+  @media (min-width: $sm-screen-up) {
+    width: 49%;
+    float:left;
+    position: relative;
+
+  }
+}
+.slide-item-name{
+  font-family: BebasNeue;
+  color:  #000000;
+  font-size: 2.5rem;
+  text-align: center;
+}
+.prod-img{
+  height:18rem;
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "imgSrc":"./assets/images/Miss_india_gold_1.jpg",
+    "name": "Miss India",
+    "link":"/leisure/girls/missIndia",
+    "caption":null
+  },
+  {
+    "imgSrc":"./assets/images/IPL_kv_1.jpg",
+    "name": "IPL",
+    "link":"/leisure/road",
+    "caption":null
+  },
+  {
+    "imgSrc":"./assets/images/lectro.jpg",
+    "name": "Lectro",
+    "link":"/leisure/girls/missIndia",
+    "caption":null
+  }
+]

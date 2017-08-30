@@ -1,0 +1,52 @@
+
+<table class="compare-sel transition" [ngClass]="compareOpen ? 'cmp-open' : 'cmp-close'">
+    <tr>
+    <td class="ar-button" (click)="toggleCompare()">
+        <span class=" fa " [ngClass]="compareOpen ? 'fa-angle-left' : 'fa-angle-right'"></span>
+    </td>
+    <td></td>
+</tr>
+    <tr>
+        <td class="cmp-open" (click)="toggleCompare()"><img src="/assets/images/compare-btn.png" /></td>
+        <td class="products">
+            <div class="clearfix">
+                <div class="cmp-prod choose" [ngClass]="{'choose' : !(productCompareList && productCompareList[id])}" *ngFor="let id of [0,1,2]">
+                    <ng-container *ngIf="productCompareList && productCompareList[id]; else selectBlock">
+                        <span class="fa-close fa right"  (click)="removeFromCompare(productCompareList[id].id)"></span>
+                        <img [src]="productCompareList[id].imgThumbnail" />
+                    </ng-container>
+
+                    <ng-template #selectBlock>
+                        <div class="sel-prod">
+                            <select (change)="addToCompare($event.target.value)">
+                                <option style="display:none"></option>
+                                <option [value]="product.id" *ngFor="let product of productList">{{product.name}}</option>
+                            </select>
+                            <span class="select">Select Product</span>
+                        </div>
+                    </ng-template>
+                   <!-- <span class="fa-close fa right"  (click)="removeFromCompare()"></span><img src="/assets/images/pdp/view-cy.png" />-->
+                </div>
+            </div>
+            <div class="hc-btn hc-btn-primary cmp-btn" (click)="showComparison()">Compare</div>
+        </td>
+    </tr>
+
+</table>
+
+
+<div bsModal #compareModal="bs-modal" class="modal fade compare-popup" tabindex="-1" role="dialog" aria-labelledby="compareProducts"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" (click)="compareModal.hide()" aria-label="Close">
+                    <span class="fa fa-close"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <app-compare-prod-pop-up [productCompareData]="productCompareData"></app-compare-prod-pop-up>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+"{
+        bannerImgSm:"""",
+        bannerImgLg:"""",
+        catDesc:"""",
+        filters:[
+            {
+            filterName:""Brand"",filterOptions:[
+                {
+                    name:""ut_kids"",
+                    displayName:""UT Kids"",
+                    selected:true
+                }, {
+                    name:""grils"",
+                    displayName:""UT Kids"",
+                    selected:true
+                }
+            ]},{
+                           filterName:""Price"",filterOptions:[
+                               {
+                                   name:""1000-2000"",
+                                   displayName:""1000 - 2000"",
+                                   selected:true
+                               }, {
+                                   name:""grils"",
+                                   displayName:""UT Kids"",
+                                   selected:true
+                               }
+                           ]},
+            ],
+        products:[{
+            id:1,
+            name:""Aiyana"",
+            imgSrc:""./assets/images/aiyana.jpg"",
+            link:""./"",
+            price:""3,567"",
+            quickViewApi:""api/..""
+        },{
+            id:2,
+            name:""Hero Pearl"",
+            imgSrc:""./assets/images/Cycle2.png"",
+            link:""./"",
+            price:""3,567"",
+            quickViewApi:""api/..""
+        }]
+    }"

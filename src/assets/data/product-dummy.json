@@ -1,0 +1,109 @@
+{
+  "imgSrcSm": "./assets/images/PDPHeader_sm.png",
+  "imgSrcLg": "./assets/images/PDPHeader.png",
+  "name": "",
+  "price": "",
+  "findDealer": "/storeLocator",
+
+  "buyOnline": [
+    {
+      "name": "Flipkart",
+      "link": "www.flipkart.com"
+    },
+    {
+      "name": "Jabong",
+      "link": "www.flipkart.com"
+    },
+    {
+      "name": "Amazon",
+      "link": "www.flipkart.com"
+    }
+  ],
+  "warranty": "/warranty",
+  "salientFeatures": [
+    {
+      "imgSrc": "",
+      "featureName": "Battery",
+      "featureDesc": ""
+    },
+    {
+      "imgSrc": "",
+      "featureName": "Battery",
+      "featureDesc": ""
+    },
+    {
+      "imgSrc": "",
+      "featureName": "Battery",
+      "featureDesc": ""
+    },
+    {
+      "imgSrc": "",
+      "featureName": "Battery",
+      "featureDesc": ""
+    }
+  ],
+  "specifications": [
+    {
+      "type": "Frame",
+      "desc": ""
+    },
+    {
+      "type": "Frame",
+      "desc": ""
+    },
+    {
+      "type": "Frame",
+      "desc": ""
+    },
+    {
+      "type": "Frame",
+      "desc": ""
+    }
+  ],
+  "productImages": [
+    {
+      "imgSrcSm": "",
+      "imgSrcLg": ""
+    },
+    {
+      "imgSrcSm": "",
+      "imgSrcLg": ""
+    },
+    {
+      "imgSrcSm": "",
+      "imgSrcLg": ""
+    }
+  ],
+  "viewedProds": [
+    {
+      "id": 1,
+      "name": "Aiyana",
+      "imgSrc": "./assets/images/aiyana.jpg",
+      "link": "./",
+      "price": "3,567"
+    },
+    {
+      "id": 2,
+      "name": "Hero Pearl",
+      "imgSrc": "./assets/images/Cycle2.png",
+      "link": "./",
+      "price": "3,567"
+    }
+  ],
+  "similarProds": [
+    {
+      "id": 1,
+      "name": "Aiyana",
+      "imgSrc": "./assets/images/aiyana.jpg",
+      "link": "./",
+      "price": "3,567"
+    },
+    {
+      "id": 2,
+      "name": "Hero Pearl",
+      "imgSrc": "./assets/images/Cycle2.png",
+      "link": "./",
+      "price": "3,567"
+    }
+  ]
+}
