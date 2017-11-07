@@ -1,0 +1,22 @@
+[Mon Aug 14 06:25:01.492381 2017] [mpm_prefork:notice] [pid 4489] AH00163: Apache/2.4.18 (Ubuntu) configured -- resuming normal operations
+[Mon Aug 14 06:25:01.492395 2017] [core:notice] [pid 4489] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Aug 14 07:16:21.473866 2017] [mpm_prefork:notice] [pid 4489] AH00169: caught SIGTERM, shutting down
+[Mon Aug 14 07:30:06.848927 2017] [mpm_prefork:notice] [pid 1775] AH00163: Apache/2.4.18 (Ubuntu) configured -- resuming normal operations
+[Mon Aug 14 07:30:06.849591 2017] [core:notice] [pid 1775] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Aug 14 07:30:16.039578 2017] [core:alert] [pid 1780] [client 64.233.173.148:54005] /var/www/html/.htaccess: FilterProvider takes three arguments, filter-name provider-name match-expression
+[Mon Aug 14 07:30:32.948896 2017] [core:alert] [pid 1781] [client 182.75.32.50:49257] /var/www/html/.htaccess: FilterProvider takes three arguments, filter-name provider-name match-expression
+[Mon Aug 14 07:32:29.585114 2017] [mpm_prefork:notice] [pid 1775] AH00169: caught SIGTERM, shutting down
+[Mon Aug 14 07:32:30.619544 2017] [mpm_prefork:notice] [pid 1848] AH00163: Apache/2.4.18 (Ubuntu) configured -- resuming normal operations
+[Mon Aug 14 07:32:30.619591 2017] [core:notice] [pid 1848] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Aug 14 07:32:35.486517 2017] [core:alert] [pid 1854] [client 64.233.173.150:51510] /var/www/html/.htaccess: FilterProvider takes three arguments, filter-name provider-name match-expression
+[Mon Aug 14 07:32:36.314567 2017] [core:alert] [pid 1853] [client 182.75.32.50:49261] /var/www/html/.htaccess: FilterProvider takes three arguments, filter-name provider-name match-expression
+[Mon Aug 14 07:32:47.588415 2017] [core:alert] [pid 1855] [client 64.233.173.150:51155] /var/www/html/.htaccess: FilterProvider takes three arguments, filter-name provider-name match-expression
+[Mon Aug 14 07:32:48.252494 2017] [core:alert] [pid 1851] [client 182.75.32.50:49266] /var/www/html/.htaccess: FilterProvider takes three arguments, filter-name provider-name match-expression
+[Mon Aug 14 07:36:30.930331 2017] [core:alert] [pid 1854] [client 171.48.60.148:50696] /var/www/html/.htaccess: FilterProvider takes three arguments, filter-name provider-name match-expression
+[Mon Aug 14 07:36:46.124350 2017] [core:alert] [pid 1855] [client 171.48.60.148:50723] /var/www/html/.htaccess: FilterProvider takes three arguments, filter-name provider-name match-expression
+[Mon Aug 14 07:38:46.501029 2017] [core:alert] [pid 1880] [client 171.48.60.148:50900] /var/www/html/.htaccess: FilterProvider takes three arguments, filter-name provider-name match-expression
+[Mon Aug 14 07:45:32.246881 2017] [mpm_prefork:notice] [pid 1848] AH00169: caught SIGTERM, shutting down
+[Mon Aug 14 07:45:33.304388 2017] [mpm_prefork:notice] [pid 2161] AH00163: Apache/2.4.18 (Ubuntu) configured -- resuming normal operations
+[Mon Aug 14 07:45:33.304440 2017] [core:notice] [pid 2161] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Aug 14 07:45:39.871302 2017] [core:alert] [pid 2167] [client 171.48.60.148:51479] /var/www/html/.htaccess: FilterProvider takes three arguments, filter-name provider-name match-expression
+[Mon Aug 14 07:45:42.651538 2017] [core:alert] [pid 2166] [client 171.48.60.148:51481] /var/www/html/.htaccess: FilterProvider takes three arguments, filter-name provider-name match-expression

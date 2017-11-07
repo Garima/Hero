@@ -1,12 +1,15 @@
-<carousel class="no-indicator-carousel" [interval]=false>
+<carousel class="no-indicator-carousel viewed" [interval]=false>
     <slide  *ngFor="let productGrp of viewedProdsDisplay">
        <div class="slide-item"  *ngFor="let product of productGrp">
-              <div class="item-img"><img [src]="product.imgThumbnail" alt="name"  class="img-responsive"  /></div>
-           <!--assets/images/cycle1.png-->
+           <a [routerLink]="['/product/',product.id,product.urlBlurb]">
+              <div class="item-img"><img [src]="product.imgThumbnail  || './assets/images/pdp/image_unavailable.jpg'" [alt]="product.name"  class="img-responsive"  /></div>
            <div class="item-desc">
               <div class="item-name">{{product.name}}</div>
-           <div class="item-price"><span class="fa fa-inr"></span>{{product.price}}</div>
+           <div class="item-price"><span class="fa fa-inr"></span>
+               {{(product.price | number)== 0 ? 'Coming Soon' : (product.price | number)}}
+           </div>
        </div>
-        </div>
+        </a>
+       </div>
     </slide>
 </carousel>

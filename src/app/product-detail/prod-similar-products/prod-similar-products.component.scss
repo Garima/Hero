@@ -6,8 +6,11 @@ slide{
     background-color:$color-background-grey2;
     padding: 1rem;
     text-align: center;
+    @media (min-width: $sm-screen-up) {
+      height: 100%;//20rem;
+    }
     img{
-      width:26rem;
+      width:50%;
     }
   }
 }

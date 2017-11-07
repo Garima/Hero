@@ -1,25 +1,32 @@
-<h2 class="text-left pad-main-side">Buzz <span class="red">Specification</span></h2>
-<div class="container-fluid prod-specifications pad-main-side">
+<h2 class="text-left pad-main-side"><span class="red">Specification</span></h2>
+<div class="pad-main-side">
+<div class="container-fluid prod-specifications">
     <div class="row">
         <div class="col-md-6">
-            <ul>
+                <table>
                 <ng-template ngFor let-specification [ngForOf]="specifications" let-o="odd">
-                    <li *ngIf="o">
-                        <span class="label">{{specification.type.replace('_', ' ')}}</span>
-                        <span>{{specification.description}}</span>
-                    </li>
+                        <tr *ngIf="o">
+                            <td class="label">{{specification.type.replace('_', ' ')}}</td>
+                            <td>{{specification.description == 0 ? 'Coming Soon' : specification.description}}
+                                <ng-template ngIf="specification.description">&nbsp;</ng-template>
+                            </td>
+                        </tr>
                 </ng-template>
-            </ul>
+                </table>
         </div>
         <div class="col-md-6">
-            <ul>
+            <table>
                 <ng-template ngFor let-specification [ngForOf]="specifications" let-e="even">
-                    <li *ngIf="e">
-                        <span class="label">{{specification.type.replace('_', ' ')}}</span>
-                        <span>{{specification.description}}</span>
-                    </li>
+                    <tr *ngIf="e">
+                        <td class="label">{{specification.type.replace('_', ' ')}}</td>
+                        <td>{{specification.description == 0 ? 'Coming Soon' : specification.description}}
+                            <ng-template ngIf="specification.description">&nbsp;</ng-template>
+                        </td>
+                    </tr>
                 </ng-template>
-            </ul></div>
+            </table>
+        </div>
     </div>
+</div>
 </div>
 

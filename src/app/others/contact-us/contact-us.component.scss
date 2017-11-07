@@ -1,64 +1,38 @@
 @import "../../../styles/_variables.scss";
 
-input,select,textarea{
-  width:100%;
-  border-color:  #d1d2d4;
-  padding: .5rem 1rem;
-  font-family: Asap;
-  color:  #858585;
-  font-size: 14px;
-  line-height: 18px;
-}
-option{
-  padding: 0;
-}
-h3{
-  font-family: BebasNeueBold;
-  padding-left: 15px;
-  color:  #141f47;
-  font-size: 2.4rem;
-}
-.text{
-  font-family: Asap;
-  color:  #141f47;
-  font-size: 1.8rem;
-  border-left: 1px solid #d1d2d4;
-  @media (max-width: $sm-screen-down) {
-  border-left: none;
-    border-top: 1px solid #d1d2d4;
-  }
-  & > p{
-    padding-top: 3rem;
-    @media (min-width: $sm-screen-up) {
-      position: relative;
-      top: 50%;
-      padding-top: 0;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-    }
-  }
-}
-.field{
-  margin: 1rem 0;
-  @media (max-width: $sm-screen-down) {
-    &:first-child{
-      margin: 0;
-    }
-  }
-}
 .pad-main-text {
   @media (min-width: $md-screen-up) {
-    padding: 2rem 15rem;
+    //padding: 2rem 15rem;
   }
 }
-.hc-btn-primary{
-  padding-left: 2rem;
-  padding-right: 2rem;
+
+.newsletter{
+  border: 1px solid #d1d2d4;
+  padding: 15px;
+  padding-top: 0;
+  background-color: #f2f2f2;
+  h3{
+    padding-left: 0;
+  }
+  input[type="checkbox"]{
+    width: auto;
+    margin-right: 10px;
+  }
 }
-.error{
-  color:$color-red ;
-}
-.successMsg{
-  padding: 70px 30px;
+.emails{
+  color:$color-red;
+  font-size: 1.4rem;
+  a{
+    color:$color-red;
+    font-weight: bold;
+  }
+  .designation{
+    font-family: BebasNeueBold;
+    color:  #000000;
+    font-size: 1.5rem;
+  }
+  li{
+    padding-bottom: 10px;
+    display: block;
+  }
 }

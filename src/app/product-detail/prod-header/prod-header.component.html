@@ -7,23 +7,39 @@
         </ul>
         </div>
         <div>
-            <span class="prod-name">{{productData.name}}</span>
-            <span class="prod-price"><span class="fa fa-inr"></span>{{productData.price}}</span>
+            <h1 class="prod-name">{{productData.name}}</h1>
+            <span class="prod-price"><span class="fa fa-inr"></span>
+                {{(productData.price | number)== 0 ? 'Coming Soon' : (productData.price | number)}}/-
+            </span>
         </div>
-        <div class="action-btn">
+        <div class="action-btn" *ngIf="productData.imgThumbnail_large">
             <a class="hc-btn hc-btn-primary" href="/storeLocator">Find a dealer</a>
-            <a class="hc-btn">Buy Online</a>
+            <a class="hc-btn" (click)="openForm()">Buy Online</a>
             <a class="hc-btn"  [href]="productData.warranty">Warranty</a>
+            <!--<a class="hc-btn"  (click)="openForm()">Add To Compare</a>-->
 
         </div>
-        <app-compare-product-selector></app-compare-product-selector>
-        <app-salient-features [salientFeatures]="productData.salientFeatures"></app-salient-features>
+        <app-compare-product-selector   [productId]="productData.id"></app-compare-product-selector>
+        <app-salient-features *ngIf="productData.imgThumbnail_large" [salientFeatures]="productData.salientFeatures" [productName]="productData.name"></app-salient-features>
+        <div class="prd-img-bg">
+            <img class="block-img img-responsive" src="./assets/images/pdp/pdp_bg_{{bgImgNum}}.jpg">
+        </div>
         <div class="prd-img">
-               <picture>
-                   <source [srcset]="productData.imgSrcSm" media="(max-width: 767px)">
-                   <source [srcset]="productData.imgSrcLg" media="(min-width: 768px)">
-                   <img class="block-img img-responsive" [src]="productData.imgSrcLg">
-               </picture>
+            <img class="block-img img-responsive" [src]="productData.imgThumbnail_large  || './assets/images/pdp/image_unavailable_lg.jpg'" [alt]="productData.name"/>
         </div>
-
+        <div  *ngIf="productData" bsModal #buyOnlineModal="bs-modal" class="modal fade buy-online" tabindex="-1" role="dialog" aria-labelledby="buyProduct"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close pull-right" (click)="buyOnlineModal.hide()" aria-label="Close">
+                            <span class="fa fa-close"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <app-buy-online [(submitted)]="buyFormSubmitted" [productName]="productData.name" [modalPopUp]="buyOnlineModal"></app-buy-online>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>

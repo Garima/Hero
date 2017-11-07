@@ -1,23 +1,47 @@
 @import "../../../styles/_variables.scss";
 .sal-features{
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   font-family: BebasNeue;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width:calc(100% - 2rem);
   margin-bottom: 3rem;
-  li.col-sm-2{
-    width:  calc(16.66666667% - 5px);
+
+  @media (min-width:$sm-screen-up) {
+    width: 100%;
+  }
+  .sal-hd{
+    display: inline-block;
+    width: 20%;
     text-align: center;
+    @media (max-width: $sm-screen-down) {
+      width:100%;
+    }
+  }
+  ul{
+    display: inline-block;
+    width: 79%;
+    @media (max-width: $sm-screen-down) {
+    width:100%;
+  }
+
+  }
+  li.sal-feature{
+    width:  calc(20% - 7px);
+    text-align: center;
+    @media (max-width: $sm-screen-down) {
+      width:  calc(20% - 5px);
+
+    }
   }
   .seperator{
-    float:left;
+    //float:left;
     position: relative;
     top:1.5rem;
     background-color: rgba(256,256,256,.5);
     @media (max-width: $sm-screen-down) {
       display: none;
-    }
+  }
   }
   .f-img{
     width:4.5rem;
@@ -44,7 +68,7 @@
 
   }
   .feature-desc {
-    width: 58%;
+    padding-top: 30px;
     margin: auto;
   }
   .sal-desc{

@@ -33,7 +33,7 @@ export class HeroCarouselComponent implements OnInit {
     animateSlide(index,svgId,circleOverId) {
         this.activeSlide = index;
       //  $(circleOverId+index).attr("class", 'stroke stroke-color-over');
- let sliderTime = 10000;
+ let sliderTime = 3000;
  let animatingSvg = Snap(svgId+index);
         if(animatingSvg) {
             let loadingCircle = animatingSvg.select(circleOverId + index);

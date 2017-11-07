@@ -12,7 +12,7 @@ export class BottomBarComponent implements OnInit {
   ngOnInit() {
   }
     gotoHMC() : void {
-        window.open("http://codices.co.in/hmc/#", "_blank");
+        window.open("http://hmcworld.co.in", "_blank");
         //window.location.href='http://www.hmc.com';
     }
 }

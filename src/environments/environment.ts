@@ -5,5 +5,5 @@
 
 export const environment = {
     production: false,
-    apiHost : 'http://hero.i22.in'
+    apiHost : 'http://18.220.94.139'//'http://hero.i22.in/
 };

@@ -1,4 +1,4 @@
-<carousel class="no-indicator-carousel" [interval]=false *ngIf="IsMobile">
+<carousel class="no-indicator-carousel" [interval]=false *ngIf="IsMobile" >
     <slide *ngFor="let itemGrp of items">
         <app-category-product class="slide-item" [quickViewModal]="quickViewModal" [prodData]="itemGrp"
                               (quickViewShow)="populateData(item)"></app-category-product>
@@ -13,8 +13,8 @@
     </slide>
 </carousel>
 
-<div bsModal #quickViewModal="bs-modal" class="modal fade quick-view" tabindex="-1" role="dialog"
-     aria-labelledby="quickViewModal"  aria-hidden="true">
-  <app-quick-view-modal [quickViewData]="quickViewProductData"   [quickViewModal]="quickViewModal" ></app-quick-view-modal>
+<div (window:resize)="onResize($event)" bsModal #quickViewModal="bs-modal" class="modal fade quick-view" tabindex="-1" role="dialog" aria-labelledby="quickView"  aria-hidden="true">
+  <app-quick-view-modal [quickViewData]="quickViewProductData" [quickViewModal]="quickViewModal" ></app-quick-view-modal>
 </div>
+
 

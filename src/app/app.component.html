@@ -1,26 +1,16 @@
 <header>
     <div class="hcLogo">
-        <a href="/">
+        <a href='/'>
             <img src="./assets/images/logo.png"  title="Hero Cycles " alt="Hero Cycles" class="img-responsive"/>
         </a>
     </div>
-    <app-nav-menu></app-nav-menu>
+    <app-nav-menu [forceCloseNav]="forceCloseNav"></app-nav-menu>
 </header>
-<div class="body-content">
-<router-outlet (deactivate)="onDeactivate()"></router-outlet>
+<div class="body-content" (window:resize)="onResize($event)" >
+<router-outlet (deactivate)="onDeactivate()" (activate)="onActivate()"></router-outlet>
 </div>
-
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-<app-bottom-bar></app-bottom-bar>
+<app-bottom-bar class="desktopFooterBar"></app-bottom-bar>
 <footer>
-<!--    <div class="social">Follow Us
-        <ul>
-            <li><a href="www.facebook.com/" class="fa fa-facebook"></a></li>
-            <li  class="fa fa-twitter"></li>
-            <li  class="fa fa-youtube"></li>
-        </ul>
-    </div>-->
     <div class="footer-content">
         <div>
             <ul class="footer-links">
@@ -29,12 +19,22 @@
                 <li><a [routerLink]="['/csr']">CSR</a></li>
                 <li><a [routerLink]="['/investors']">Investors</a></li>
                 <li><a [routerLink]="['/contactUs']">Contact Us</a></li>
-                <li><a [routerLink]="['/aboutUs']">Warranty</a></li>
+                <li><a [routerLink]="['/warranty']">Warranty</a></li>
                 <li><a [routerLink]="['/privacy']">Privacy Policy</a></li>
                 <li><a [routerLink]="['/disclaimer']">Disclaimer</a></li>
                 <li><a [routerLink]="['/sitemap']">Sitemap</a></li>
             </ul>
+            <div class="social">
+                <ul>
+                    <li><a href="https://www.facebook.com/HeroCyclesOfficial" class="fa fa-facebook" target="_blank"></a></li>
+                    <li><a href="http://www.twitter.com/hero_cycles" class="fa fa-twitter" target="_blank"></a></li>
+                    <li><a href="http://www.youtube.com/channel/UCunP-Qd8LqLgQCWPdhqs1tQ" class="fa fa-youtube" target="_blank"></a></li>
+                </ul>
+            </div>
         </div>
-        <div class="copyright">All rights reserved copyrights hero cycles ltd 2016</div>
+        <div class="copyright">All rights reserved copyrights hero cycles ltd 2017</div>
     </div>
 </footer>
+
+
+

@@ -56,3 +56,16 @@ agm-map {
   -ms-transform: translateX(-50%);
   transform:translateX(-50%);
 }
+.ph-store{
+  ul {
+    display: inline-block;
+    li {
+      display: inline-block;
+      border: none;
+      padding: 5px;
+      &:not(:last-child)::after {
+        content: ',';
+      }
+    }
+  }
+}

@@ -1,23 +1,41 @@
-<div class="filter-tog"  *ngIf="IsMobile" (click)="toggleFilter()" [class.filter-shown]="filterOpen">Filters</div>
+<div class="filter-tog"  (window:resize)="onResize($event)" *ngIf="IsMobile" (click)="toggleFilter()" [class.filter-shown]="filterOpen">Filters</div>
 
 <div class="filter-container" [class.visible]="filterOpen">
     <ul class="filters">
-        <li *ngFor="let filter of filters"  (click)="showFilter(filter.name)" [ngClass]="{'filter-open': filter.name == filterSelected}">
-            <span class="filter-name icon">{{filter.name.replace('_', ' ')}}</span>
+        <ng-container  *ngFor="let filter of filters"><!---->
+        <li *ngIf="filter.name!='subcategory'" (click)="showFilter(filter.name)" [ngClass]="{'filter-open': filter.name == filterSelected}">
+            <span class="filter-name icon">{{filter.name=="subcategory"?'Category':filter.name.replace('_', ' ')}}</span>
             <ul class="filter-options transition" *ngIf="IsMobile && showFilterOptions">
-                <li *ngFor="let option of selectedOptions" class="filter-btn" (click)="toggleCriterion(option.id)"
-                    [ngClass]="{'selected': isSelected(option.id)}">
-                    {{option.display}} <span [ngClass]="{'fa fa-close': isSelected(option.id)}"></span></li>
+                <li *ngFor="let option of selectedOptions" class="filter-btn" (click)="toggleCriterion(filter.name,option.id)"
+                    [ngClass]="{'selected': option.isSelected}">
+                    {{option.display}} <span [ngClass]="{'fa fa-close': option.isSelected}"></span></li>
             </ul>
         </li>
+        </ng-container>
     </ul>
-    <ul class="filter-options" *ngIf="IsDesktop && showFilterOptions ">
-        <li *ngFor="let option of selectedOptions" class="filter-btn" (click)="toggleCriterion(option.id)"
-            [ngClass]="{'selected': isSelected(option.id)}">
-            {{option.display}}<span [ngClass]="{'fa fa-close': isSelected(option.id)}"></span>
+    <ng-container *ngIf="IsDesktop" >
+        <ng-container *ngFor="let filter of filters">
+        <ul class="filter-options transition" *ngIf="filter.name == filterSelected"
+        [@visibilityChanged]>
+        <li *ngFor="let option of filter.values" class="filter-btn"  (click)="toggleCriterion(filter.name,option.id)"
+            [ngClass]="{'selected': option.isSelected}">
+            {{option.display}}<span [ngClass]="{'fa fa-close': option.isSelected}"></span>
         </li>
     </ul>
-    <div class="filter-options clr-all" *ngIf="filtersSelected && filtersSelected.length > 0"><!--put if condition if any filter selected -->
-        <div class="selected filter-btn" (click)="clearAllCriterion()">Clear All<span class="fa fa-close"></span></div>
+        </ng-container>
+    </ng-container>
+    <div class="sel-options clr-all" *ngIf="filtersSelected && filtersSelected.length > 0">
+        <ul>
+            <ng-container *ngFor="let filter of filtersSelected">
+            <li class="sel-option" *ngIf="filter.texts">
+                <span class="selFilter">{{filter.filterName=="subcategory"?'Category':filter.filterName.replace('_', ' ')}} - </span>
+
+          <span *ngFor="let criterion of filter.texts" (click)="toggleCriterion(filter.filterName,criterion.id)" class="selFilterOption">{{criterion.text}}
+          <span class='fa fa-close'></span>
+          </span>
+            </li>
+            </ng-container>
+            <li class="selected filter-btn" (click)="clearAllCriterion()">Clear All<span class="fa fa-close"></span></li>
+        </ul>
     </div>
 </div>

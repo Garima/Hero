@@ -1,8 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule  } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
+import { NgDatepickerModule } from 'ng2-datepicker';
+import { SelectModule } from 'ng2-select';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule }     from './app-routing.module';
@@ -13,6 +18,7 @@ import { MapsService } from './service/maps.service';
 import { MatchMediaService } from './service/match-media-service.service';
 import { GetLocalTextData } from './service/get-local-text-data.service';
 import { GetLocalJsonData } from './service/get-local-JSON-data.service';
+import { SessionIdService } from './service/session-id.service';
 
 import { CarouselModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
@@ -56,6 +62,10 @@ import { EvenoddPipe } from './pipe/evenodd.pipe';
 import { SearchMainComponent } from './search/search-main/search-main.component';
 import { BottomBarComponent } from './cmp/bottom-bar/bottom-bar.component';
 import { StoreMainComponent } from './store-locator/store-main/store-main.component';
+import { SitemapComponent } from './others/sitemap/sitemap.component';
+import { WarrantyComponent } from './others/warranty/warranty.component';
+import { AccessoriesComponent } from './others/accessories/accessories.component';
+import { BuyOnlineComponent } from './product-detail/buy-online/buy-online.component';
 
 
 @NgModule({
@@ -99,10 +109,15 @@ import { StoreMainComponent } from './store-locator/store-main/store-main.compon
     EvenoddPipe,
     SearchMainComponent,
     BottomBarComponent,
-    StoreMainComponent
+    StoreMainComponent,
+    SitemapComponent,
+    WarrantyComponent,
+    AccessoriesComponent,
+    BuyOnlineComponent
   ],
   imports: [
     BrowserModule,
+      BrowserAnimationsModule,
       HttpModule,
       AppRoutingModule,
       FormsModule,
@@ -111,14 +126,18 @@ import { StoreMainComponent } from './store-locator/store-main/store-main.compon
           libraries: ["places"]
           }),
       CarouselModule.forRoot(),
-      ModalModule.forRoot()
+      ModalModule.forRoot(),
+      Ng2PageScrollModule,
+      NgDatepickerModule,
+      SelectModule
   ],
   providers: [SiteNavigationService,
                 BreadcrumbService,
                 MapsService,
                 MatchMediaService,
                 GetLocalTextData,
-                GetLocalJsonData],
+                GetLocalJsonData,
+      SessionIdService],
   bootstrap: [AppComponent]
 })
 

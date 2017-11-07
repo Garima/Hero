@@ -1,5 +1,7 @@
-<carousel class="no-indicator-carousel full-width" [interval]=false>
+<carousel class="no-indicator-carousel full-width similar-prod" [interval]=false>
     <slide *ngFor="let product of similarProds" >
-            <div class="item-img"><img [src]="product.imgThumbnail" [alt]="product.name" /></div>
+        <a [routerLink]="['/product/',product.id,product.urlBlurb]">
+            <div class="item-img"><img [src]="product.imgThumbnail || './assets/images/pdp/image_unavailable.jpg'" [alt]="product.name" /></div>
+            </a>
     </slide>
 </carousel>

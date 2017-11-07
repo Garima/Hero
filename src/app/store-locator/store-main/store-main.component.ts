@@ -51,15 +51,32 @@ export class StoreMainComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        let self = this;
+
+        this.address = "";
+        this.maps.autocomplete('address');
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                let pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                let location  = self.maps.getLatLngLocation(pos.lat,pos.lng);
+                self.gmap_set_map(location,self);
+            }, function() {
+               self.handleGeoLocationAPIError();
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            self.handleGeoLocationAPIError();
+        }
+    }
+
+    handleGeoLocationAPIError(){
         this.address = "Delhi";
         this.gmap_location_lookup('Delhi',10,'India');
         this.currentAddress ='Delhi';
-        this.maps.autocomplete('address');
-        /*let self = this;
-        this.subscription = this.maps.navChange$.subscribe(
-                item => {
-                    self.addressChanged();console.log(item);
-                });*/
     }
 
     addressChanged(){
@@ -126,46 +143,52 @@ export class StoreMainComponent implements OnInit {
         let distancecode = 1;
             let self = this;
             this.maps.getGeocoding(address,region).subscribe(function (location) {
-                self.lat = location.lat();
-                self.lng = location.lng();
-                self.mapZoom = 11;
-                self.cdRef.detectChanges();
-                self.storeMap.triggerResize();
-
-                var number = 0;
-                self.http.get(environment.apiHost+'/api/web/storefinder?latitude='+ self.lat + '&longitude=' + self.lng + '&distance=50')
-                    .subscribe((response) => {
-                        let data =  response.json();
-
-                        if(data.success > 0){
-                            self.hasStores = true;
-                            self.results = data.stores;
-                            self.maps.getDistance(self.results,location);
-                           self.results.sort((n1,n2) => {
-                                return n1.distance - n2.distance;
-                            });
-                            self.pushMarkers();
-                            self.arInfoWindow =[];
-                            self.storeMap.triggerResize();
-
-                        }else{
-                            self.hasStores = false;
-                        }
-                        self.mapLoading = false;
-
-                        self.cdRef.detectChanges();
-
-
-                    }, error => this.errorMessage = <any>error
-                );
-
+             self.gmap_set_map(location,self);
             });
-
-
-
-
     }
 
+    gmap_set_map(location,self){
+        self.lat = location.lat();
+        self.lng = location.lng();
+        self.mapZoom = 11;
+        self.cdRef.detectChanges();
+        self.storeMap.triggerResize();
+
+        var number = 0;
+        self.http.get(environment.apiHost+'/api/web/storefinder?latitude='+ self.lat + '&longitude=' + self.lng + '&distance=50')
+            .subscribe((response) => {
+                let data =  response.json();
+
+                if(data.success > 0){
+                    self.hasStores = true;
+                    self.results = data.stores;
+                    self.maps.getDistance(self.results,location);
+                    self.results.sort((n1,n2) => {
+                        return n1.distance - n2.distance;
+                    });
+                    self.pushMarkers();
+                    self.arInfoWindow =[];
+                    self.storeMap.triggerResize();
+                    for(let store of self.results){
+                        if(store.telephone)
+                        store.telephones = store.telephone.split(',');
+                        else{
+                            store.telephone =[];
+                        }
+                    }
+
+                }else{
+                    self.hasStores = false;
+                }
+                self.mapLoading = false;
+
+                self.cdRef.detectChanges();
+
+
+            }, error => self.errorMessage = <any>error
+        );
+
+    }
     doScroll(storeId) {
 
         try {

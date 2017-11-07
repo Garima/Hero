@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MatchMediaService
 {
+    IsDeviceMobile:boolean =  false;
+    IsDeviceDesktop:boolean =  true;
     constructor()
     {
 
@@ -29,6 +31,10 @@ export class MatchMediaService
 
         return window.matchMedia(mq).matches;
     };
+    onResize(e){
+        this.IsDeviceMobile = (this.IsSmall());
+        this.IsDeviceDesktop = (this.IsLarge());
+    }
 
     /**********************************************
      METHODS FOR CHECKING TYPE

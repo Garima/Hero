@@ -1,14 +1,16 @@
 <div class="fixed-bar">
-    <a class="float_left hmc"  (click)="gotoHMC()"></a>
-    <a class="float_left"  href="tel:1800-000-000">Contact Us</a>
-    <a class="float_left" href="/storeLocator">Dealer Locator</a>
-    <a class="float_right">Chat With Us</a>
-    <a class="float_right">Blog</a>
-    <div class="social float_right">
+    <a class="float_left hmc"  (click)="gotoHMC()">HMC</a>
+    <!--<a class="float_left"  href="tel:1800-000-000">Contact Us</a>-->
+    <a class="float_left"  [routerLink]="['/contactUs']">Contact Us</a>
+    <a class="float_left"[routerLink]="['/storeLocator']" >Dealer Locator</a>
+    <a class="float_left" [routerLink]="['/warranty']">Warranty</a>
+    <!--<a class="float_right liveChat">Chat With Us</a>-->
+    <a class="float_left">Blog</a>
+    <div class="social float_left">
         <ul>
-            <li><a href="https://www.facebook.com/HeroCyclesOfficial" class="fa fa-facebook"></a></li>
-            <li><a href="http://www.twitter.com/hero_cycles" class="fa fa-twitter"></a></li>
-            <li><a href="http://www.youtube.com/channel/UCunP-Qd8LqLgQCWPdhqs1tQ" class="fa fa-youtube"></a></li>
+            <li><a href="https://www.facebook.com/HeroCyclesOfficial" class="fa fa-facebook" target="_blank"></a></li>
+            <li><a href="http://www.twitter.com/hero_cycles" class="fa fa-twitter" target="_blank"></a></li>
+            <li><a href="http://www.youtube.com/channel/UCunP-Qd8LqLgQCWPdhqs1tQ" class="fa fa-youtube" target="_blank"></a></li>
         </ul>
     </div>
     <div class="clear_both"></div>

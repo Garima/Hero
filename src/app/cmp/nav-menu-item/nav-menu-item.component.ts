@@ -16,12 +16,17 @@ export class NavMenuItemComponent implements OnInit {
 
   ngOnInit() {
       this.subNavVisible = false;
+
       this.IsMobile = (this.matchMediaService.IsSmall());
       this.IsDesktop = (this.matchMediaService.IsLarge());
       if(this.menu.sub_categories && this.menu.sub_categories.length > 0){
           this.cycleWidth = 100/this.menu.sub_categories.length
       }
   }
+    onResize(e){
+        this.IsMobile = (this.matchMediaService.IsSmall());
+        this.IsDesktop = (this.matchMediaService.IsLarge());
+    }
     hoverNav(){
         if(this.IsMobile){
             return;

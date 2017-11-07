@@ -1,9 +1,12 @@
-<ng-container  *ngIf="productList">
-<app-category-header [bannerImg]="bannerImg" [catDesc]="catDesc"></app-category-header>
-<div class="pad-main-side">
+<app-category-header bannerImg="{{bannerImg}}" [catDesc]="catDesc" ></app-category-header>
+<ng-container  *ngIf="productList; else loading">
+   <div class="pad-main-side">
     <app-category-filter [filtersSelected]="productList.filters" (criterionChanged)="refreshData($event)"
                          (clearAll)="clearAll($event)" (removeFilter) = "removeParam($event)"></app-category-filter>
     <app-category-products [productList]="productList.products" ></app-category-products>
 </div>
 </ng-container>
+<ng-template #loading>
+    <div class="loading"><img src="./assets/images/loading.gif" alt="loading"/> </div>
+</ng-template>
 <div class="loading" *ngIf="isloading"><img src="./assets/images/loading.gif" alt="loading"/> </div>

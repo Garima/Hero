@@ -6,6 +6,7 @@
   text-align: center;
   padding:3rem 2rem;
   margin:1rem .5rem;
+  border: 2px solid transparent;
   .name{
     color: $color-black;
     font-family: BebasNeueBold;
@@ -26,8 +27,8 @@
     font-size: 1.8rem;
   }
   &:hover{
-    border-color: 3px solid $color-border-grey;
-    box-shadow: 0px 0px 2px 2px $color-box-shadow;
+    border: 2px solid $color-border-grey;
+    box-shadow: 0px 0px 1px 1px $color-box-shadow;
     cursor: pointer;
     .btn-quick-view a,
     .btn-quick-view a:hover{
@@ -45,8 +46,8 @@
   display: table-cell;
   img{
     @media (min-width: $sm-screen-up) {
-      width: auto;
-      height: 100%;
+    //  width: auto;
+   //   height: 100%;
     }
   }
 }

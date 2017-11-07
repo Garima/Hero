@@ -2,7 +2,7 @@
 
 .choice-filters {
   @media (min-width: $sm-screen-up) {
-    padding: 0 3rem;
+    padding: 0;
   }
   .choice-filter {
     font-family: BebasNeueBold;
@@ -13,6 +13,7 @@
       border-right: none;
     }
     text-align: center;
+    label,select{cursor: pointer;}
   }
   .no-border-sm {
     border-right: none;
@@ -36,7 +37,7 @@
     background-image: url('/assets/images/coc/classic.png');
   }
   .gear-filter{
-    padding: 9rem 0;
+   // padding: 9rem 0;
     & > div{
       width:49%;
       display: inline-block;
@@ -125,12 +126,15 @@
     line-height: 10px;
   }
   .price-filter {
-    padding-top: 9rem;
+   // padding-top: 9rem;
     @media (min-width: $sm-screen-up) {
-      padding: 8rem 0;
+    //  padding: 8rem 0;
     }
   }
-  /*.price-filter input{
+  .pad-top{
+    padding-top: 6rem;
+  }
+  /*.price-filter 6nput{
     display: inline-block;
     width: 42%;
     @media (max-width: $sm-screen-down) {
@@ -163,6 +167,14 @@
 
 }
 .category{
+  .with-img{
+    @media (min-width: $sm-screen-up) {
+     // background-size: 80% auto;
+     // background-position: center;
+
+      background-position: center bottom 30px;
+    }
+  }
   &.row{
     @media (max-width: $sm-screen-down) {
       width: 49%;
@@ -170,9 +182,10 @@
     }
   }
   & > div{
-    position: relative;
+    //border-right: 1px solid $color-border-grey;
+   position: relative;
 &:after{
-  content: '.';
+  content: '|';
   height: 10rem;
   background-color: $color-white;
   width: 1px;

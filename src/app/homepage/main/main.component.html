@@ -2,26 +2,30 @@
     <app-hero-carousel></app-hero-carousel>
     <!-- <app-num-flyout></app-num-flyout>-->
 </div>
-<section class="pad-main-side marB-main">
+<section class="pad-main-side marB-main" id="coc">
    <app-cycle-of-choice></app-cycle-of-choice>
 </section>
 <section class="marB-main">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 top-selling" *ngIf="topSelling">
-                <h2 class="hd-left">Top <span class="red">Selling</span></h2>
+            <div class="col-md-6 top-selling" id="mostViewed">
+                <div *ngIf="topSelling">
+                <h2 class="hd-left">Most <span class="red">Viewed</span></h2>
                 <app-page-carousel [items]="topSelling"></app-page-carousel>
+                </div>
             </div>
-            <div class="col-md-6 new-launch" *ngIf="newLaunch">
+            <div class="col-md-6 new-launch" id="newLaunch">
+                <div *ngIf="newLaunch">
                 <h2 class="hd-left">New <span class="red">Launch</span></h2>
                 <app-page-carousel [items]="newLaunch"></app-page-carousel>
+                </div>
             </div>
         </div>
     </div>
 </section>
-<section class="pad-main-side marB-main hp-events">
+<section class="pad-main-side marB-main hp-events" id="events">
    <app-events></app-events>
 </section>
-<section class="mobile-hidden">
+<section class="mobile-hidden" id="heroCommunity">
    <app-community></app-community>
 </section>

@@ -5,6 +5,7 @@
 @import "styles/_carousel.scss";
 @import "styles/_buttons.scss";
 @import "styles/_utilities.scss";
+@import "styles/_forms.scss";
 
 html {
   overflow-x: hidden;
@@ -120,8 +121,21 @@ img{width:100%;}
   color: $color-black;
   opacity: .5;
 }
+.modal-open{
+  padding-right: 0 !important;
+}
 
-
+.compare-sel li[role='menuitem']{
+  display: block;
+}
+.ui-select-toggle{
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+#livechat-eye-catcher{
+  display: none;
+}
 
 
 

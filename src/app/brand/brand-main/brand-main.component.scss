@@ -1,11 +1,24 @@
 @import "../../../styles/_variables.scss";
 
- .brand-main { display: block; position: relative; width: 100%; overflow: hidden; background-color: black; }
- ul.bm-blocks { position: absolute; top: 150px; height: 100%; z-index: 3;padding: 0;
+ .brand-main { display: block; position: relative; width: 100%;
+
+   background-color: $color-black;
+   @media (min-width: $sm-screen-up) {
+     //overflow: hidden;
+     background-color: $color-black;;
+   }
+   }
+ ul.bm-blocks {
+   height: 100%; z-index: 3;padding: 0;
+   @media (min-width: $sm-screen-up) {
+     position: absolute;
+     top:10px;
+   }
  @media (max-width: $sm-screen-down) {
    width:100%;
  }}
  ul.bm-blocks li { border-bottom: 1px solid  $color-white;display: block; text-align: right;
+   background-color: rgba(0,0,0,.5);
    @media (max-width: $sm-screen-down) {
      text-align: center;
    }}
@@ -23,4 +36,16 @@ opacity: .8;
   //padding-right: 1rem;
 }
 .brand-link:hover a.link::after {  content:'>'; }
-.block-img{width:100%}
+.block-img,video{width:100%;}
+@media (max-width: $sm-screen-down) {
+  video{display: none;}
+}
+.block-img{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  height: 100%;
+}
+@media (min-width: $sm-screen-up) {
+  .block-img{display:none;}
+}

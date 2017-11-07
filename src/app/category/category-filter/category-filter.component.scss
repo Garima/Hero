@@ -3,11 +3,11 @@
 .filter-container{
   margin: 3rem 0;
   display: none;
+  background-color: $color-filter-selected-grey;
   &.visible{
     display: block;
   }
 }
-
 .filters{
   background-color: $color-filter-grey;
   text-transform: uppercase;
@@ -26,12 +26,18 @@
     font-size: .7rem;
   }
 }
-.filter-options{
+.filter-options,.sel-options{
   font-family: BebasNeueRegular;
   color:  $color-black;
   font-size: 1.5rem;
   background-color: $color-filter-selected-grey;
   text-align: center;
+  position: relative;
+  &.visible{
+   display: block;
+ }&.hidden{
+    display: none;
+  }
 }
 .filter-btn {
   &:hover, &.selected {
@@ -47,16 +53,18 @@
 }
 @media (min-width: $sm-screen-up) {
   .filters{
+    display: flex;
     li{
-      width: 10%;
+      width: 12.4%;
       text-align: center;
       border-right: 1px solid $color-white;
+      cursor: pointer;
       &:last-child{
         border-right: none;
       }
     }
   }
-  .filter-options{
+  .filter-options,.sel-options{
     padding:.5rem;
   }
   .filter-btn{
@@ -100,6 +108,7 @@
     width: 100%;
     text-align: left;
     border-bottom: 1px solid #cecece;
+    cursor: pointer;
   }
   .filter-name {
     display: block;
@@ -132,6 +141,10 @@
     color: $color-white;
   }
 }
+
+  .dataChanging{
+    opacity:0 !important;
+  }
  /* .filter-options{
     position: relative;
     top: -30px;
@@ -149,4 +162,41 @@
       top:0;
     }
   }*/
+}
+.sel-options{
+  .filter-btn{
+    border-radius:1.6rem;
+    padding:7px 10px;
+    background-color: $color-white;
+    margin: 1rem;
+    cursor: pointer;
+    &:hover,&.selected{
+      background-color:$color-red;
+      border-color:$color-red;
+      color:$color-white;
+    }
+    &.selected{
+      .fa{
+        padding-left: 5px;
+      }
+    }
+  }
+}
+.sel-option{
+  border-radius:1.6rem;
+  padding:7px 10px;
+  background: $color-white;
+  border: 1px solid $color-white;
+  color: $color-red;
+  margin: 1rem;
+  .fa{
+    padding-left: 5px;
+  }
+  .selFilter{
+    font-family: BebasNeueBold;
+  }
+  .selFilterOption{
+    padding-right:.5rem;
+    cursor: pointer;
+  }
 }

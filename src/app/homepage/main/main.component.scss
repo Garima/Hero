@@ -16,9 +16,14 @@ h2{
   overflow-x: hidden;
 }
 .top-selling{
-  background-color: $color-background-grey;
-  @media (min-width: $sm-screen-up) {
-    padding-left: 5rem;
+  padding-right: 0;
+  padding-left: 0;
+  & > div{
+    background-color: $color-background-grey;
+    @media (min-width: $sm-screen-up) {
+      padding-left: 5rem;
+      padding-right: 15px;
+    }
   }
 }
 .new-launch{

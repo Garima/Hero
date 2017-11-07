@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-category-products',
@@ -9,11 +10,14 @@ export class CategoryProductsComponent implements OnInit {
     quickViewProductData=null;
     @Input() productList;
     products;
+
+@ViewChild('quickViewModal') public quickViewModal:ModalDirective;
   constructor() { }
 
   ngOnInit() {
   }
-    populateData(prodID){
-        this.quickViewProductData = prodID;
+    populateData(prodData){
+        this.quickViewModal.show();
+        this.quickViewProductData = prodData;
     }
 }

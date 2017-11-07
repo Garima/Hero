@@ -17,5 +17,7 @@ export class CompareProdPopUpComponent implements OnInit {
         if(this.productCompareData)
             this.numOfProd = this.productCompareData.length;
     }
-
+getSpecification(product,spec){
+    return product.specifications.find((specification) => specification.type === spec)
+}
 }

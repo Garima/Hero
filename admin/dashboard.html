@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Pages - Admin Dashboard UI Kit - Blank Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <link rel="apple-touch-icon" href="pages/ico/60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="pages/ico/76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="pages/ico/120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="pages/ico/152.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/bootstrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/pages-icons.css" rel="stylesheet" type="text/css">
+    <link class="main-stylesheet" href="css/pages.css" rel="stylesheet" type="text/css" />
+    <link class="main-stylesheet" href="css/custom.css" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 9]>
+  <link href="assets/plugins/codrops-dialogFx/dialog.ie.css" rel="stylesheet" type="text/css" media="screen" />
+  <![endif]-->
+
+  <style>
+  
+    .productThumb img{
+      width: 100%;
+    }
+  </style>
+
+  </head>
+  <body class="fixed-header ">
+    <!-- BEGIN SIDEBPANEL-->
+    <nav class="page-sidebar" data-pages="sidebar">
+      <!-- BEGIN SIDEBAR MENU TOP TRAY CONTENT-->
+
+      <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
+      <!-- BEGIN SIDEBAR MENU HEADER-->
+      <div class="sidebar-header">
+        <img src="img/logo_white.png" alt="logo" class="brand" data-src="img/logo_white.png" data-src-retina="img/logo_white_2x.png" width="78" height="22">
+        <!-- <div class="sidebar-header-controls">
+          <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20" data-pages-toggle="#appMenu"><i class="fa fa-angle-down fs-16"></i>
+          </button>
+          <button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
+          </button>
+        </div> -->
+      </div>
+      <!-- END SIDEBAR MENU HEADER-->
+      <!-- START SIDEBAR MENU -->
+      <div class="sidebar-menu">
+        <!-- BEGIN SIDEBAR MENU ITEMS-->
+        <ul class="menu-items">
+          <li class="m-t-30 ">
+            <a href="/admin/dashboard.html" class="detailed">
+              <span class="title">Dashboard</span>
+              <!-- <span class="details">12 New Updates</span> -->
+            </a>
+            <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
+          </li>
+          
+          <li class="">
+            <a href="javascript:;"><span class="title">Products</span>
+            <span class="arrow"></span></a>
+            <span class="icon-thumbnail">P</span>
+            <ul class="sub-menu" style="display: none;">
+              <li class="">
+                <a href="/admin/dashboard.html">View All</a>
+                <span class="icon-thumbnail">V</span>
+              </li>
+              <li class="">
+                <a href="/admin/product-add.html">Add</a>
+                <span class="icon-thumbnail">A</span>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <!-- END SIDEBAR MENU -->
+    </nav>
+    <!-- END SIDEBAR -->
+    <!-- END SIDEBPANEL-->
+    <!-- START PAGE-CONTAINER -->
+    <div class="page-container ">
+      <!-- START HEADER -->
+      <div class="header " style="padding-right: 0px;">
+        <!-- START MOBILE CONTROLS -->
+        <div class="container-fluid relative">
+          <!-- LEFT SIDE -->
+          <div class="pull-left full-height visible-sm visible-xs">
+            <!-- START ACTION BAR -->
+            <div class="header-inner">
+              <a href="#" class="btn-link toggle-sidebar visible-sm-inline-block visible-xs-inline-block padding-5" data-toggle="sidebar">
+                <span class="icon-set menu-hambuger"></span>
+              </a>
+            </div>
+            <!-- END ACTION BAR -->
+          </div>
+          <div class="pull-center hidden-md hidden-lg">
+            <div class="header-inner">
+              <div class="brand inline">
+                <img src="img/logo.png" alt="logo" data-src="img/logo.png" data-src-retina="img/logo_2x.png" width="78" height="22">
+              </div>
+            </div>
+          </div>
+          <!-- RIGHT SIDE -->
+          <div class="pull-right full-height visible-sm visible-xs">
+            <!-- START ACTION BAR -->
+            <div class="header-inner">
+              <a href="#" class="btn-link visible-sm-inline-block visible-xs-inline-block" data-toggle="quickview" data-toggle-element="#quickview">
+                <span class="icon-set menu-hambuger-plus"></span>
+              </a>
+            </div>
+            <!-- END ACTION BAR -->
+          </div>
+        </div>
+        <!-- END MOBILE CONTROLS -->
+        <div class=" sm-table hidden-xs hidden-sm" style="width: 100%;">
+          <div class="header-inner pull-left" style="width: auto">
+            <div class="brand inline">
+              <img style="margin-top: 20px;" src="img/logo.png" alt="logo" data-src="img/logo.png" data-src-retina="img/logo_2x.png" width="78" height="22">
+            </div>
+
+            <!-- <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a> </div> -->
+        </div>
+        <!-- <div class=" pull-right">
+          <div class="header-inner">
+            <a href="#" class="btn-link icon-set menu-hambuger-plus m-l-20 sm-no-margin hidden-sm hidden-xs" data-toggle="quickview" data-toggle-element="#quickview"></a>
+          </div>
+        </div> -->
+        <div class="pull-right">
+          <!-- START User Info-->
+          <div class="visible-lg visible-md m-t-10">
+            <div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
+              <span class="semi-bold userDisplayName">User</span> 
+            </div>
+            <div class="dropdown pull-right">
+              <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="thumbnail-wrapper d32 circular inline m-t-5">
+                <img src="img/profiles/avatar.jpg" alt="" data-src="img/profiles/avatar.jpg" data-src-retina="img/profiles/avatar_small2x.jpg" width="32" height="32">
+            </span>
+              </button>
+              <ul class="dropdown-menu profile-dropdown" role="menu">
+                <li><a href="#"><i class="pg-settings_small"></i> Settings</a>
+                </li>
+                <li class="bg-master-lighter">
+                  <a href="#" class="clearfix" onclick="initLogout(event);">
+                    <span class="pull-left">Logout</span>
+                    <span class="pull-right"><i class="pg-power"></i></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- END User Info-->
+        </div>
+      </div>
+      <!-- END HEADER -->
+      <!-- START PAGE CONTENT WRAPPER -->
+      <div class="page-content-wrapper ">
+        <!-- START PAGE CONTENT -->
+        <div class="content ">
+          <!-- START JUMBOTRON -->
+          <div class="jumbotron" data-pages="parallax">
+            <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+              <div class="inner">
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb" style="padding-left: 70px;">
+                  <li>
+                    <p>Dashboard</p>
+                  </li>
+                  <li><a href="#" class="active">Product List</a>
+                  </li>
+                </ul>
+                <!-- END BREADCRUMB -->
+              </div>
+            </div>
+          </div>
+          <!-- END JUMBOTRON -->
+          <!-- START CONTAINER FLUID -->
+          <div class="container-fluid container-fixed-lg">
+            <!-- BEGIN PlACE PAGE CONTENT HERE -->
+            <!-- END PLACE PAGE CONTENT HERE -->
+          </div>
+          <!-- END CONTAINER FLUID -->
+          
+        <!-- END PAGE CONTENT -->
+       
+      </div>
+
+        </div>
+      <!-- END PAGE CONTENT WRAPPER -->
+    </div>
+    <!-- END PAGE CONTAINER -->
+  
+    <!-- END OVERLAY -->
+
+          <div class="container-1440 clearfix" style="margin-top: 140px;">
+            <a href="/admin/product-add.html" class="pull-right">
+              <button class="btn btn-success btn-cons">Add Product</button>
+            </a>
+          </div>
+          
+          <div class="fw-row clearfix" style="margin-top: 30px;">
+          <div class="container-1440">
+            <table class="productsTable">
+              <tr>
+                <th>Name</th>
+                <th>Master Head</th>
+                <th>Subcategory</th>
+                <th>Brand</th>
+                <th>Usage</th>
+                <th>Age</th>
+                <th>Price</th>
+                <th style="text-align: right; padding-right: 15px;">Action</th>
+              </tr>
+              <!-- <tr>
+                <td>
+                  <div class="productImgName">
+                    <div class="productThumb"></div>
+                    <div class="productName">Product Name</div>
+                  </div>
+                </td>
+                <td>
+                  Category1.name
+                </td>
+                <td>category1.name</td>
+                <td>beand.name</td>
+                <td>category2</td>
+                <td>12</td>
+                <td> &#x20B9; 23000</td>
+                <td>
+                  <div class="btn-group" style="float: right; margin-right: 15px;">
+                    <a href="#">
+                      <button type="button" class="btn btn-success"><i class="fa fa-pencil"></i>
+                      </button>
+                    </a>
+                    <a href="#">
+                      <button type="button" class="btn btn-success"><i class="fa fa-trash-o"></i>
+                      </button>
+                    </a>
+                  </div>
+                </td>
+              </tr> -->
+            </table>
+          </div>
+            <!-- <div class="productDetail-container-head container-1440 clearfix">
+              <div> Name</div>
+              <div>Master Head</div>
+              <div>Subcategory</div>
+              <div>Brand</div>
+              <div>Usage</div>
+              <div>Age</div>
+              <div class="t-center"> Price</div>
+              <div style="text-align: right;"> Action</div>
+            </div> -->
+          </div>
+
+
+
+
+
+
+          <div class="fw-row productDetail-container clearfix">
+
+
+          </div>
+
+<template id="tableHeader">
+	<tr>
+	    <th>Name</th>
+	    <th>Master Head</th>
+	    <th>Subcategory</th>
+	    <th>Brand</th>
+	    <th>Usage</th>
+	    <th>Age</th>
+	    <th>Price</th>
+	    <th style="text-align: right; padding-right: 15px;">Action</th>
+	  </tr>
+</template>
+
+<template id="product">
+	<tr>
+        <td>
+          <div class="productImgName">
+            <!-- <div class="productThumb"><img src=""></div> -->
+            <div class="productName">Product Name</div>
+          </div>
+        </td>
+        <td class="masterhead">
+          
+        </td>
+        <td class="subcategory"> </td>
+        <td class="brand"> </td>
+        <td class="usage"> </td>
+        <td class="age"> </td>
+        <td class="productPrice"> &#x20B9; </td>
+        <td>
+          <div class="btn-group" style="float: right; margin-right: 15px;">
+            <a href="#">
+              <button type="button" class="btn btn-success"><i class="fa fa-pencil"></i>
+              </button>
+            </a>
+            <!-- <a href="#">
+              <button type="button" class="btn btn-success"><i class="fa fa-trash-o"></i>
+              </button>
+            </a> -->
+          </div>
+        </td>
+  	</tr>
+</template>
+
+  <template id="productO">
+    <div class="product clearfix">
+      <div class="productImgName">
+        <div class="productThumb"></div>
+        <div class="productName">Product Name</div>
+      </div>
+      <div class="productColorArr">
+        <div class="colorSwatch" data-color=""></div>
+      </div>
+      <div class="productPrice"> &#x20B9; 23000</div>
+      <div class="productAction">
+        <div class="btn-group">
+        <a href="#">
+          <button type="button" class="btn btn-success"><i class="fa fa-pencil"></i>
+          </button>
+        </a>
+        <a href="#">
+          <button type="button" class="btn btn-success"><i class="fa fa-trash-o"></i>
+          </button>
+        </a>
+        </div>
+      </div>
+    </div>
+  </template>
+
+    <!-- BEGIN VENDOR JS -->
+    <script src="plugins/pace/pace.min.js" type="text/javascript"></script>
+    <script src="plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="plugins/modernizr.custom.js" type="text/javascript"></script>
+    <script src="plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="plugins/bootstrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="plugins/jquery/jquery-easy.js" type="text/javascript"></script>
+    <script src="plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
+    <script src="plugins/jquery-bez/jquery.bez.min.js"></script>
+    <script src="plugins/jquery-ios-list/jquery.ioslist.min.js" type="text/javascript"></script>
+    <script src="plugins/jquery-actual/jquery.actual.min.js"></script>
+    <script src="plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="plugins/select2/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="plugins/classie/classie.js"></script>
+    <script src="plugins/switchery/js/switchery.min.js" type="text/javascript"></script>
+    <!-- END VENDOR JS -->
+    <!-- BEGIN CORE TEMPLATE JS -->
+    <script src="js/pages.min.js"></script>
+    <!-- END CORE TEMPLATE JS -->
+    <!-- BEGIN PAGE LEVEL JS -->
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <script src="js/custom.js"></script>
+    <!-- END PAGE LEVEL JS -->
+  </body>
+</html>

@@ -17,6 +17,9 @@ export class ProdViewedProductsComponent implements OnInit {
       }*/
       let count = 0;
       let tempArray = [];
+      for(let prod of this.viewedProds){
+          prod.urlBlurb = prod.name.replace(/[^a-zA-Z0-9]+/g,'-');
+      }
       for(let item of this.viewedProds){
           tempArray.push(item);
           count++;

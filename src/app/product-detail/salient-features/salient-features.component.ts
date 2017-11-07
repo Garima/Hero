@@ -8,6 +8,7 @@ import { LowerCasePipe } from '@angular/common';
 })
 export class SalientFeaturesComponent implements OnInit {
 @Input() salientFeatures = null;
+@Input() productName = '';
   constructor() { }
 
   ngOnInit() {

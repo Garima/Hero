@@ -1,19 +1,30 @@
-<ng-template [ngIf]="productData">
+<ng-container *ngIf="productData; else loading">
 <app-prod-header [productData]="productData" [breadcrumb] = "breadcrumb"></app-prod-header>
 <app-prod-specification [specifications]="productData.specifications"></app-prod-specification>
 <app-prod-carousel [prodImages]="productData.productImages"></app-prod-carousel>
-<section class="mar-b-main">
-    <div class="container-fluid pad-main-side">
+<section class="mar-b-main pad-main-side">
+    <div class="container-fluid ">
+        <div class="row mobile-hidden">
+            <div class="col-sm-6">
+            <h2 class="text-left">People also <span class="red">viewed</span></h2>
+            </div>
+            <div class="col-sm-6" *ngIf="productData.similarProds.length > 0">
+                <h2 class="text-left">Similar <span class="red">Products</span></h2>
+            </div>
+        </div>
         <div class="row row-eq-height">
-            <div class="col-md-6">
-                <h2 class="text-left">People also <span class="red">viewed</span></h2>
+            <div class="col-sm-6">
+                <h2 class="text-left desktop-hidden">People also <span class="red">viewed</span></h2>
                 <app-prod-viewed-products [viewedProds]="productData.viewedProds"></app-prod-viewed-products>
             </div>
-            <div class="col-md-6 ">
-                <h2 class="text-left">Similar <span class="red">Products</span></h2>
+            <div class="col-sm-6" *ngIf="productData.similarProds.length > 0">
+                <h2 class="text-left desktop-hidden">Similar <span class="red">Products</span></h2>
                 <app-prod-similar-products [similarProds]="productData.similarProds"></app-prod-similar-products>
             </div>
         </div>
     </div>
 </section>
+</ng-container>
+<ng-template #loading>
+<div class="loading"><img src="./assets/images/loading.gif" alt="loading"/> </div>
 </ng-template>

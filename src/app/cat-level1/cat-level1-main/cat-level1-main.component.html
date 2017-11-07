@@ -1,6 +1,6 @@
-<div id="main" class="clearfix">
-    <ng-template [ngIf]="menu">
-        <section class="tipos-main" [style.height]="pillarHeight + 'px'">
+<div id="main" class="clearfix" (window:resize)="onResize($event)" >
+    <ng-container *ngIf="menu">
+        <section class="tipos-main" [style.min-height]="pillarHeight + 'px'">
             <ul class="blocks" *ngIf = "menu.brands">
                 <li *ngFor="let nav of menu.brands"  [style.width]="pillarWidth + '%'">
                     <div class="links-box">
@@ -12,17 +12,16 @@
                 </li>
             </ul>
 
-            <picture>
-                <source [srcset]="menu.bannerImgSm" media="(max-width: 767px)">
-                <source [srcset]="menu.bannerImgLrg" media="(min-width: 768px)">
-                <img class="block-img img-responsive" [src]="menu.bannerImgLrg">
-            </picture>
-
-                <video autoplay="" loop="" preload="auto" [poster]="menu.bannerImgLrg" #bannerVideo>
-                <source [src]="menu.videoLinkMp4" type="video/mp4">
+            <video autoplay="" loop="" preload="auto" [poster]="menu.bannerImgLrg" #bannerVideo>
                 <source [src]="menu.videoLinkWebM" type="video/webm">
+                <source [src]="menu.videoLinkMp4" type="video/mp4">
                 <img [src]="menu.bannerImgLrg">
             </video>
+            <img class="block-img" [src]="menu.bannerImgSm">
         </section>
-   </ng-template>
+
+    </ng-container>
+    <ng-template *ngIf="isLoading">
+        <div class="loading"><img src="./assets/images/loading.gif" alt="loading"/> </div>
+    </ng-template>
 </div>

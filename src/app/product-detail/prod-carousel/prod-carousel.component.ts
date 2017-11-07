@@ -9,10 +9,9 @@ import { MatchMediaService } from '../../service/match-media-service.service';
 export class ProdCarouselComponent implements OnInit {
 @Input() prodImages = null;
     IsDesktop: Boolean = false;
-  constructor(private matchMediaService: MatchMediaService) { }
+  constructor(public matchMediaService: MatchMediaService) { }
 
   ngOnInit() {
-      this.IsDesktop = (this.matchMediaService.IsDesktop() || this.matchMediaService.IsTablet());
   }
 
 }

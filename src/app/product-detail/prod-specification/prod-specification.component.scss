@@ -5,13 +5,20 @@
   font-size: 1.5rem;
   padding-bottom: 2rem;
 
-  li{
-    display: block;
+  td{
     padding: .5rem 0;
-    .label{
+    vertical-align: text-bottom;
+    &.label{
       color:  $color-black;
       font-size: 1.8rem;
       font-weight: 600;
+      padding-right: 4rem;
+    }
+  }
+  @media (max-width: $sm-screen-down) {
+    .row{
+     // margin-left: 0;
+     // margin-right: 0;
     }
   }
 }

@@ -4,12 +4,27 @@ img{
 }
 
 .carousel-caption {
-  font-family: BebasNeueBold;
-  color: $color-red;
-  font-size: 6.6rem;
-  font-weight: 400;
-  text-align: center;
-  @media (min-width: $sm-screen-up) {
-    font-size: 17rem;
+  vertical-align: top;
+  margin: 4px 5px 0 5px;
+  padding: 0 16px 0;
+  height: 30px;
+  color: #fff;
+  border: 1px solid #fff;
+  font: 22px/30px 'BebasNeueBold','Arial Narrow',Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  left: auto;
+  bottom: 60px;
+  right: 10%;
+  background-color: $color-black;
+ a,a:hover{
+   color: $color-white;
+ }
+  &:hover{
+    background-color: $color-black;
+  }
+  @media (max-width: $sm-screen-down) {
+    bottom: 2rem;
+    right: 2rem;
   }
 }

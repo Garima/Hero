@@ -6,7 +6,7 @@
             <div id="selector1" class="selector showing">
                 <div class="img">
                     <!--<a href="#close" class="close">x</a>-->
-                    <img [src]="productCompareData[0].imgThumbnail" [alt]="productCompareData[0].product_name">
+                    <img [src]="productCompareData[0].imgThumbnail  || './assets/images/pdp/image_unavailable.jpg'" [alt]="productCompareData[0].name">
                 </div>
             </div>
         </td>
@@ -14,7 +14,7 @@
             <div id="selector2" class="selector showing">
                 <div class="img">
                     <!--<a href="#close" class="close">x</a>-->
-                    <img [src]="productCompareData[1].imgThumbnail" [alt]="productCompareData[1].product_name">
+                    <img [src]="productCompareData[1].imgThumbnail  || './assets/images/pdp/image_unavailable.jpg'" [alt]="productCompareData[1].name">
                 </div>
             </div>
         </td>
@@ -22,7 +22,7 @@
             <div id="selector3" class="selector">
                 <div class="img">
                     <!--<a href="#close"class="close">x</a>-->
-                    <img [src]="productCompareData[2].imgThumbnail" [alt]="productCompareData[2].product_name">
+                    <img [src]="productCompareData[2].imgThumbnail  || './assets/images/pdp/image_unavailable.jpg'" [alt]="productCompareData[2].name">
                 </div>
             </div>
         </td>
@@ -31,108 +31,112 @@
     <tr class="titles">
         <th class="col1 empty"></th>
         <th scope="col">
-            <div class="prod-name">{{productCompareData[0].product_name}}</div>
-            <span class="price"><span class="fa fa-inr"></span>{{productCompareData[0].price}}</span>
+            <div class="prod-name">{{productCompareData[0].name || 'Coming Soon'}}</div>
+            <span class="price"><span class="fa fa-inr"></span>
+                {{(productCompareData[0].price | number)== 0 ? 'Coming Soon' : (productCompareData[0].price | number) || 'Coming Soon'}}</span>
         </th>
         <th scope="col">
-            <div class="prod-name">{{productCompareData[1].product_name}}</div>
-            <span class="price"><span class="fa fa-inr"></span>{{productCompareData[1].price}}</span>
+            <div class="prod-name">{{productCompareData[1].name || 'Coming Soon'}}</div>
+            <span class="price"><span class="fa fa-inr"></span>
+                {{(productCompareData[1].price | number)== 0 ? 'Coming Soon' : (productCompareData[1].price | number) || 'Coming Soon'}}</span>
         </th>
         <th scope="col"  *ngIf="numOfProd === 3">
-            <div class="prod-name">{{productCompareData[2].product_name}}</div>
-            <span class="price"><span class="fa fa-inr"></span>{{productCompareData[2].price}}</span>
+            <div class="prod-name">{{productCompareData[2].name || 'Coming Soon'}}</div>
+            <span class="price"><span class="fa fa-inr"></span>
+                {{(productCompareData[2].price | number)== 0 ? 'Coming Soon' : (productCompareData[2].price | number) || 'Coming Soon'}}</span>
         </th>
     </tr>
     </thead>
     <tbody>
+
     <tr class="filter-info">
         <th scope="row" class="col1">Category</th>
-        <td>Mtb						</td>
-        <td>Roadster</td>
-        <td  *ngIf="numOfProd === 3">
+        <td>{{productCompareData[0].subcategory.category.name || 'Coming Soon'}}</td>
+        <td>{{productCompareData[1].subcategory.category.name || 'Coming Soon'}}</td>
+        <td  *ngIf="numOfProd === 3">{{productCompareData[2].subcategory.category.name || 'Coming Soon'}}
         </td>
     </tr>
     <tr class="filter-info">
-        <th scope="row" class="col1">Categor 2- Usage</th>
-        <td>City</td>
-        <td>City</td>
-        <td *ngIf="numOfProd === 3"></td>
+        <th scope="row" class="col1">Sub Category</th>
+        <td>{{productCompareData[0].subcategory.name || 'Coming Soon'}}</td>
+        <td>{{productCompareData[1].subcategory.name || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].subcategory.name || 'Coming Soon'}}</td>
     </tr>
     <tr class="filter-info">
         <th scope="row" class="col1">Brand</th>
-        <td>Hero</td>
-        <td>Hero</td>
-        <td *ngIf="numOfProd === 3"></td>
+        <td>{{productCompareData[0].brand.name || 'Coming Soon'}}</td>
+        <td>{{productCompareData[1].brand.name || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].brand.name || 'Coming Soon'}}</td>
     </tr>
 
     <tr>
         <th scope="row" class="col1 component">Frame Material</th>
-        <td>{{productCompareData[0].spec_Frame_material}}</td>
-        <td>{{productCompareData[1].spec_Frame_material}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Frame_material}}</td>
+        <td>{{getSpecification(productCompareData[0],'Frame_material').description || 'Coming Soon'}}</td>
+        <td>{{getSpecification(productCompareData[1],'Frame_material').description || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{getSpecification(productCompareData[2],'Frame_material').description || 'Coming Soon'}}</td>
     </tr>
 
     <tr>
         <th scope="row" class="col1 component">Tire Size</th>
-        <td>{{productCompareData[0].spec_Tyre_size}}</td>
-        <td>{{productCompareData[1].spec_Tyre_size}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Tyre_size}}</td>
+        <td>{{getSpecification(productCompareData[0],'Tyre_size').description || 'Coming Soon'}}</td>
+        <td>{{getSpecification(productCompareData[1],'Tyre_size').description || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{getSpecification(productCompareData[2],'Tyre_size').description || 'Coming Soon'}}</td>
     </tr>
 
     <tr>
         <th scope="row" class="col1 component">Riders ht (feet)</th>
-        <td>{{productCompareData[0].spec_Rider_height}}</td>
-        <td>{{productCompareData[1].spec_Rider_height}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Rider_height}}</td>
+        <td>{{getSpecification(productCompareData[0],'Rider_height').description || 'Coming Soon'}}</td>
+        <td>{{getSpecification(productCompareData[1],'Rider_height').description || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{getSpecification(productCompareData[2],'Rider_height').description || 'Coming Soon'}}</td>
     </tr>
 
     <tr>
         <th scope="row" class="col1 component">Gears</th>
-        <td>{{productCompareData[0].spec_Gears}}</td>
-        <td>{{productCompareData[1].spec_Gears}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Gears}}</td>
+        <td>{{getSpecification(productCompareData[0],'Gears').description || 'Coming Soon'}}</td>
+        <td>{{getSpecification(productCompareData[1],'Gears').description || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{getSpecification(productCompareData[2],'Gears').description || 'Coming Soon'}}</td>
     </tr>
 
     <tr>
         <th scope="row" class="col1 component">Total Bike Weight(Kg)</th>
-        <td>{{productCompareData[0].spec_Bike_weight}}</td>
-        <td>{{productCompareData[1].spec_Bike_weight}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Bike_weight}}</td>
+        <td>{{getSpecification(productCompareData[0],'Bike_weight').description || 'Coming Soon'}}</td>
+        <td>{{getSpecification(productCompareData[1],'Bike_weight').description || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{getSpecification(productCompareData[2],'Bike_weight').description || 'Coming Soon'}}</td>
     </tr>
 
     <tr>
         <th scope="row" class="col1 component">Front Suspension</th>
-        <td>{{productCompareData[0].spec_Front_suspension}}</td>
-        <td>{{productCompareData[1].spec_Front_suspension}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Front_suspension}}</td>
+        <td>{{getSpecification(productCompareData[0],'Front_suspension').description || 'Coming Soon'}}</td>
+        <td>{{getSpecification(productCompareData[1],'Front_suspension').description || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].specifications.Front_suspension || 'Coming Soon'}}</td>
     </tr>
 
     <tr>
         <th scope="row" class="col1 component">Rear Suspension</th>
-        <td>{{productCompareData[0].spec_Rear_suspension}}</td>
-        <td>{{productCompareData[1].spec_Rear_suspension}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Rear_suspension}}</td>
+        <td>{{getSpecification(productCompareData[0],'Rear_suspension').description || 'Coming Soon'}}</td>
+        <td>{{getSpecification(productCompareData[1],'Rear_suspension').description || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{getSpecification(productCompareData[2],'Rear_suspension').description || 'Coming Soon'}}</td>
     </tr>
 
     <tr>
         <th scope="row" class="col1 component">Rear Deraileur</th>
-        <td>{{productCompareData[0].spec_Rear_deraileur}}</td>
-        <td>{{productCompareData[1].spec_Rear_deraileur}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Rear_deraileur}}</td>
+        <td>{{getSpecification(productCompareData[0],'Rear_deraileur').description || 'Coming Soon'}}</td>
+        <td>{{getSpecification(productCompareData[1],'Rear_deraileur').description || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{getSpecification(productCompareData[2],'Rear_deraileur').description || 'Coming Soon'}}</td>
     </tr>
 
     <tr>
         <th scope="row" class="col1 component">Front Brake</th>
-        <td>{{productCompareData[0].spec_Front_brake}}</td>
-        <td>{{productCompareData[1].spec_Front_brake}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Front_brake}}</td>
+        <td>{{getSpecification(productCompareData[0],'Front_brake').description || 'Coming Soon'}}</td>
+        <td>{{getSpecification(productCompareData[1],'Front_brake').description || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{getSpecification(productCompareData[2],'Front_brake').description || 'Coming Soon'}}</td>
     </tr>
 
     <tr>
         <th scope="row" class="col1 component">Rear Brake</th>
-        <td>{{productCompareData[0].spec_Rear_brake}}</td>
-        <td>{{productCompareData[1].spec_Rear_brake}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].spec_Rear_brake}}</td>
+        <td>{{getSpecification(productCompareData[0],'Rear_brake').description || 'Coming Soon'}}</td>
+        <td>{{getSpecification(productCompareData[1],'Rear_brake').description || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{productCompareData[2].specifications.Rear_brake || 'Coming Soon'}}</td>
     </tr>
     </tbody>
 </table>

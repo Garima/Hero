@@ -19,8 +19,13 @@ export class PageCarouselComponent implements OnInit {
   ngOnInit() {
       this.IsMobile = (this.matchMediaService.IsPhone());
       this.IsDesktop = (this.matchMediaService.IsDesktop() || this.matchMediaService.IsTablet());
+
       this.getDesktopItems();
   }
+    onResize(e){
+        this.IsMobile = (this.matchMediaService.IsSmall());
+        this.IsDesktop = (this.matchMediaService.IsLarge()|| this.matchMediaService.IsTablet());
+    }
     getDesktopItems(){
         let count = 0;
         let tempArray = [];
@@ -37,13 +42,7 @@ export class PageCarouselComponent implements OnInit {
         }
     }
 
-//TODO:move
     populateData(productData){
-        productData.specifications = [{'name':'Front Brake','description':productData.spec_Front_brake},
-            {'name':'Gears','description':productData.spec_Gears},
-            {'name':'Front Suspension','description':productData.spec_Front_suspension},
-            {'name':'Rear Suspension','description':productData.spec_Rear_suspension},
-            {'name':'Rear Deraileur','description':productData.spec_Rear_deraileur}]
         this.quickViewProductData = productData;
     }
 }

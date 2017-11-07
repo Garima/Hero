@@ -14,7 +14,7 @@ header{
 .body-content{
   margin-top: 7.5rem;
   @media (min-width: $sm-screen-up) {
-    margin-top: 5.5rem;
+    margin-top: 5.1rem;
   }
 }
 .hcLogo{
@@ -26,32 +26,17 @@ header{
   }
 }
 footer{
- /* .social{
-    text-align: center;
-    padding: 2rem;
-    background-color: #f2f2f2;
-    font-family: BebasNeue;
-    font-size:13px;
-    color: $color-black;
-
-    ul{
-      display: inline-block;
-      padding-left: 1rem;
-      li{
-        height: 3.4rem;
-        width:3.4rem;
-        border: 1px solid black;
-        border-radius: 50%;
-        font-size: 2rem;
-        padding-top: .5rem;
-        margin-right: 1rem;
-        a,a:hover{
-          color:$color-black;
-        }
-      }
-
+  .social{
+    @media (min-width: $sm-screen-up) {
+      display: none;
     }
-  }*/
+    li{
+      padding: 10px;
+      .fa{
+        font-size: 2rem;
+      }
+    }
+  }
 }
 .footer-content{
   background-color: $color-blue;
@@ -76,5 +61,10 @@ footer{
     font-size: 1rem;
     padding-top: 2rem;
     margin-top: 2rem;
+  }
+}
+.desktopFooterBar{
+  @media (max-width:$sm-screen-down){
+    display: none;
   }
 }

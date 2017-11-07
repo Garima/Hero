@@ -13,17 +13,22 @@
                 <div class="cmp-prod choose" [ngClass]="{'choose' : !(productCompareList && productCompareList[id])}" *ngFor="let id of [0,1,2]">
                     <ng-container *ngIf="productCompareList && productCompareList[id]; else selectBlock">
                         <span class="fa-close fa right"  (click)="removeFromCompare(productCompareList[id].id)"></span>
-                        <img [src]="productCompareList[id].imgThumbnail" />
+                        <img [src]="productCompareList[id].imgThumbnail || './assets/images/pdp/image_unavailable.jpg'"/>
                     </ng-container>
 
                     <ng-template #selectBlock>
-                        <div class="sel-prod">
+                        <!--<div class="sel-prod">
                             <select (change)="addToCompare($event.target.value)">
                                 <option style="display:none"></option>
                                 <option [value]="product.id" *ngFor="let product of productList">{{product.name}}</option>
                             </select>
-                            <span class="select">Select Product</span>
-                        </div>
+                            <span class="select" >Select Product</span>
+                        </div>-->
+
+                        <ng-select [items]="productList"
+                                   placeholder="Select Product" (selected)="addToCompare($event.id)"></ng-select>
+
+
                     </ng-template>
                    <!-- <span class="fa-close fa right"  (click)="removeFromCompare()"></span><img src="/assets/images/pdp/view-cy.png" />-->
                 </div>

@@ -10,6 +10,7 @@
     width: 7.5rem;
     height:6rem;
     background-repeat: no-repeat;
+    background-size: contain;
     &:first-child{
       padding-right: 2rem;
       border-right: 1px solid $color-border-grey;

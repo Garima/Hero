@@ -7,7 +7,7 @@
 .carousel-indicators{
   position: absolute;
   z-index: 1;
-  bottom: 60px;
+  bottom: 5px;
   right: 47%;
   font-size: 0;
 }
@@ -21,7 +21,7 @@
   svg { position: absolute; top: 0; left: 0; }
 
   svg .stroke { fill: none; stroke-width: 4; stroke-miterlimit: 10; }
-  svg .stroke-color { stroke: #fff; stroke-opacity: .7; }
+  svg .stroke-color { stroke: #fff; stroke-opacity: .5; }
  svg .stroke-color-over { stroke: #fff; }
 }
 .carousel-indicators li.active{
@@ -37,6 +37,7 @@
   background: none;
   opacity: 1;
   text-shadow: none;
+  cursor: pointer;
 }
 .carousel-control .icon-next:before,.carousel-control .icon-prev:before{
   display: inline-block;
@@ -119,6 +120,26 @@
   }
   .carousel-control .icon-next{
     margin-right: 0;
+  }
+}
+.similar-prod,.viewed{
+  .carousel,.carousel-inner,.carousel-item,.item{
+    height:100%
+  }
+}
+.viewed {
+  div.item {
+    display: flex;
+  }
+}
+.top-selling{
+  @media (max-width: $sm-screen-down) {
+    .carousel-control .icon-prev {
+      margin-left: 0;
+    }
+    .carousel-control .icon-next {
+      margin-right: 0;
+    }
   }
 }
 /***Carousel****/

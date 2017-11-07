@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,HostBinding } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Headers, Http, URLSearchParams } from '@angular/http';
+import { Headers, Http, URLSearchParams,QueryEncoder } from '@angular/http';
 import { ActivatedRoute, Params,Router }   from '@angular/router';
 import { Location } from '@angular/common';
+import { fadeInAnimation } from '../../animations';
 
 import { SiteNavigationService } from '../../service/site-navigation.service';
 import 'rxjs/add/operator/switchMap';
@@ -11,15 +12,20 @@ import 'rxjs/add/operator/toPromise';
 @Component({
   selector: 'app-search-main',
   templateUrl: './search-main.component.html',
-  styleUrls: ['./search-main.component.scss']
+  styleUrls: ['./search-main.component.scss'],
+    animations: [fadeInAnimation]
 })
 export class SearchMainComponent implements OnInit {
     private plpURL = environment.apiHost + '/api/web/product/search';
     productList;
     bannerImg=null;
+    defaultBannerImg = "./assets/images/banners/brand/hero.jpg";
     catDesc = null;
     queryParams = null;
-    searchParams: URLSearchParams = new URLSearchParams();
+    searchParams: URLSearchParams = new URLSearchParams('',new GhQueryEncoder());
+@HostBinding('@routeAnimation') routeAnimation = true;
+  @HostBinding('style.display')   display = 'block';
+  @HostBinding('style.position')  position = 'relative';
     isloading=false;
     constructor(private http: Http,
                 private siteNavigationService: SiteNavigationService,
@@ -33,12 +39,19 @@ export class SearchMainComponent implements OnInit {
     getBrandProducts(): void {
         let self = this;
         let menu,selectedBrand;
+        this.isloading = true;
             this.queryParams =
                 this.route.queryParams
                 .subscribe(params => {
-                    let queryString = Object.keys(params)
-                        .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`).join('&');
-                    this.searchParams = new URLSearchParams(queryString);
+                    //let queryString = Object.keys(params)
+                        //.map(k =>
+                        //    `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`)
+                       // .join('&');
+
+                        this.searchParams = new URLSearchParams('',new GhQueryEncoder());
+                        for (let param in params) {
+                            this.searchParams.set(param, params[param].toString());
+                        }
                     this.getProducts(this.searchParams);
                 });
     }
@@ -52,6 +65,8 @@ export class SearchMainComponent implements OnInit {
             .toPromise()
             .then(response => {
                 this.productList = response.json();
+
+                this.bannerImg = this.productList.bannerImgLg;// == '' ? this.defaultBannerImg :this.productList.bannerImgLg;
                 this.isloading = false;
             }
         ).catch(error => console.error('An error occurred', error));
@@ -80,12 +95,23 @@ export class SearchMainComponent implements OnInit {
     }
     clearAll(){
         this.isloading = true;
-        this.searchParams = new URLSearchParams();
+        this.searchParams = new URLSearchParams('',new GhQueryEncoder());
         this.getProducts(this.searchParams);
     }
     removeParam(param){
         this.isloading = true;
-        this.searchParams = new URLSearchParams();
+        this.searchParams = new URLSearchParams('',new GhQueryEncoder());
         this.getProducts(this.searchParams);
+    }
+}
+
+class GhQueryEncoder extends QueryEncoder {
+    encodeKey(k: string): string {
+        k = super.encodeKey(k);
+        return k.replace(/\+/gi, '%2B');
+    }
+    encodeValue(v: string): string {
+        v = super.encodeKey(v);
+        return v.replace(/\+/gi, '%2B');
     }
 }

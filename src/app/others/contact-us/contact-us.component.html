@@ -1,12 +1,13 @@
-<img src="./assets/images/banners/contact-us.png" alt="Contact Us">
+<img src="./assets/images/banners/contact-us.jpg" alt="Contact Us">
 
-<section class="pad-main-text container-fluid">
-    <div class="row row-eq-height">
+<section class="pad-main-text">
+    <div class="container-fluid">
+    <div class="row row-eq-height form">
     <div class="col-sm-6">
         <div *ngIf="submitted; else formBlock" class="successMsg">{{successMsg}}</div>
         <ng-template #formBlock>
             <h3>We would love to hear from you</h3>
-        <form method="post" action="/contactUs" (ngSubmit)="submitForm(contactUs.valid)" #contactUs="ngForm">
+        <form method="post" action="/contactUs" (ngSubmit)="submitForm(contactUs.valid)" #contactUs="ngForm"  enctype="multipart/form-data">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6 field">
@@ -46,19 +47,41 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 field"><input type="text" [(ngModel)]="model.phone" placeholder="Phone" name="phone"></div>
+                    <div class="col-sm-6 field">
+                        <input type="text" pattern="^\+?[\d]+$" [(ngModel)]="model.phone" placeholder="Phone" name="phone"
+                               #phone="ngModel">
+                        <div *ngIf="phone.invalid && (phone.dirty || contactUs.submitted)"
+                             class="error">
+                            <div *ngIf="phone.errors">
+                               Enter Valid number
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 field">
-                        <select name="queryFor" [(ngModel)]="model.queryFor">
-                            <option>Query For</option>
-                            <option>Product/Purchase Query</option>
-                            <option>Corporate Query</option>
+                        <select required="" name="queryFor" [(ngModel)]="model.queryFor" #queryFor="ngModel">
+                            <option value="">Query For*</option>
+                            <option value="Product/Purchase Query">Product/Purchase Query</option>
+                            <option value="Corporate Query">Corporate Query</option>
                         </select>
+                        <div *ngIf="queryFor.invalid && (queryFor.dirty || contactUs.submitted)"
+                             class="error">
+                            <div *ngIf="queryFor.errors">
+                                Please select what your query is for
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="field">
-                    <textarea id="message" name="message" cols="60" rows="8" [(ngModel)]="model.query" class="textarea" placeholder="Query"></textarea>
+                    <textarea required id="message" name="message" cols="60" rows="8" [(ngModel)]="model.query" class="textarea"
+                              #query="ngModel" placeholder="Query*"></textarea>
+                    <div *ngIf="query.invalid && (query.dirty || contactUs.submitted)"
+                         class="error">
+                        <div *ngIf="query.errors">
+                            Please enter query.
+                        </div>
+                    </div>
                 </div>
                 <div class="field">
                     <button class="hc-btn-primary hc-btn" type="submit" name="send">Pedal</button>
@@ -70,7 +93,71 @@
     <div class="col-sm-6 text ">
         <p>For your corporate queries, you can reach our office during work hours on 011-40511700.</p>
         <p>10:00AM to 6:00PM<br/>(IST +5:30 GMT)<br />Monday to Friday</p>
-        <p>You can always drop us an email at customer@herocycles.com and we'll get back to you shortly.</p>
+        <p>You can always drop us an email at customer@herocycles.com and we'll get back to you shortly or write to below Id’s for specific requirements.</p>
+        <ul class="emails">
+            <li><div class="designation">Sales</div><div>Manish Iyer : <a href="mailto:miyer@herocycles.com">miyer@herocycles.com</a></div></li>
+            <li>
+                <div class="designation">Exports (Latin America/Middle East/Africa)</div>
+                <div>Yadavendra Sahai : <a href="mailto:ysahai@herocycles.com">ysahai@herocycles.com</a></div>
+            </li>
+            <li><div class="designation">Exports (Australia/NZ)</div>
+                <div>Ashok Abrol : <a href="mailto:ashokabrol@heromotors.com">ashokabrol@heromotors.com</a></div></li>
+            <li><div class="designation">Rural Marketing</div>
+                <div>Neeraj Chandra : <a href="mailto:nchandra@herocycles.com">nchandra@herocycles.com</a></div></li>
+            <li><div class="designation">Public Bike Sharing</div>
+                <div>Pankaj Agrawal : <a href="mailto:pagrawal@herocycles.com">pagrawal@herocycles.com</a></div></li>
+        </ul>
+        <div class="newsletter">
+            <h3>Newsletter</h3>
+            <form method="post" (ngSubmit)="submitNewsLetter(newsLetter.valid)" #newsLetter="ngForm">
+                <div class="field">
+                    <input required type="text" [(ngModel)]="nsModel.name" placeholder="Name"
+                           name="name" #name="ngModel" />
+                    <div *ngIf="name.invalid && (name.dirty || newsLetter.submitted)"
+                         class="error">
+                        <div *ngIf="emailId.errors">
+                            Please enter your name.
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+            <select name="type">
+                <option value="1">What's the Buzz?</option>
+            </select>
+                </div>
+                <div class="field">
+            <input required type="email" [(ngModel)]="nsModel.emailId" placeholder="Email ID*"
+                   name="emailId" #emailId="ngModel" email pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" >
+            <div *ngIf="emailId.invalid && (emailId.dirty || newsLetter.submitted)"
+                 class="error">
+                <div *ngIf="emailId.errors.required">
+                    Email Id is required.
+                </div>
+                <div *ngIf="emailId.errors.email && newsLetter.submitted && !emailId.errors.required">
+                    Please enter a valid email id.
+                </div>
+            </div>
+        </div>
+                <div class="field">
+            <input required="" checked type="checkbox" name="tnc" id="tnc"  [(ngModel)]="nsModel.tnc" #terms="ngModel" />
+                    <label for="tnc">I agree to the terms and conditions</label>
+                    <div *ngIf="terms.invalid && (terms.dirty || newsLetter.submitted)"
+                         class="error">
+                        <div *ngIf="terms.errors.required">
+                            Please accept Terms and Conditions
+                        </div>
+                    </div>
+                    </div>
+                <div *ngIf="newsLetter.submitted && newsLetter.valid && nsSubmitted">Thank you for subscribing to our newsletter. Click on the link sent to your email to complete the subscription process.</div>
+
+                <div class="field">
+                <button class="hc-btn-primary hc-btn" type="submit" name="send">Pedal</button>
+                    </div>
+
+</form>
+        </div>
     </div>
     </div>
-    </section>
+    </div>
+</section>
+<div class="loading" *ngIf="isLoading"><img src="./assets/images/loading.gif" alt="loading"/> </div>

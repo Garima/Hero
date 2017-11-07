@@ -1,6 +1,13 @@
 <carousel class="no-indicator-carousel full-width prod-carousel">
+    <ng-container *ngIf="matchMediaService.IsDeviceDesktop">
     <slide  *ngFor="let productGrp of prodImages.imgSrcLg">
         <img [src]="productGrp">
     </slide>
+</ng-container>
+    <ng-container *ngIf="matchMediaService.IsDeviceMobile">
+        <slide  *ngFor="let productGrp of prodImages.imgSrcSm">
+            <img [src]="productGrp">
+        </slide>
+    </ng-container>
     <!--./assets/images/pdp/prod-car.png-->
 </carousel>

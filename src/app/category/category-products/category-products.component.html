@@ -1,3 +1,10 @@
+<ng-container *ngIf="productList.length == 0; else catImg">
+    <div class="page-unavailable">
+        <div class="hd">Products Unavailable</div>
+        <div>Coming Soon</div>
+    </div>
+</ng-container>
+<ng-template #catImg>
 <ul class="prod-catalogue clearfix">
     <li class="prod"  *ngFor="let prod of productList">
         <app-category-product [quickViewModal]="quickViewModal" (quickViewShow)="populateData($event)"
@@ -9,3 +16,4 @@
      aria-labelledby="quickView" aria-hidden="true">
     <app-quick-view-modal [quickViewData]="quickViewProductData" [quickViewModal]="quickViewModal"></app-quick-view-modal>
 </div>
+</ng-template>

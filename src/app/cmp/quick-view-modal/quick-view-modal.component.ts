@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GetLocalJsonData } from '../../service/get-local-JSON-data.service';
 
 @Component({
   selector: 'app-quick-view-modal',
@@ -11,14 +10,14 @@ export class QuickViewModalComponent implements OnInit {
     @Input() quickViewModal;
     @Input() quickViewData;
     errorMessage;
-  constructor(private getLocalData: GetLocalJsonData) { }
+    urlBlurb= "";
+  constructor() { }
 
   ngOnInit() {
- /*     this.getLocalData.getFile('quick-view-dummy.json').subscribe((data) => {
-              this.quickViewData = data;
-          }, error => this.errorMessage = <any>error
-      );*/
-      //this.quickViewData = this.productId;
+    //  this.urlBlurb = this.quickViewData.name.replace(/\s/g,'-');
   }
+    getUrlBlurb(){
+        return this.quickViewData.name.replace(/[^a-zA-Z0-9]+/g,'-');
+    }
 
 }

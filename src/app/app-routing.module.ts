@@ -1,4 +1,4 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './homepage/main/main.component';
@@ -17,6 +17,9 @@ import { ContactUsComponent } from './others/contact-us/contact-us.component';
 import { SearchMainComponent } from './search/search-main/search-main.component';
 import { StoreMainComponent } from './store-locator/store-main/store-main.component';
 import { PageNotFoundComponent } from './others/page-not-found/page-not-found.component';
+import { SitemapComponent } from './others/sitemap/sitemap.component';
+import { WarrantyComponent } from './others/warranty/warranty.component';
+import { AccessoriesComponent } from './others/accessories/accessories.component';
 
 
 //let htmlCnf = new HtmlComponentFactory();
@@ -40,13 +43,19 @@ const routes: Routes = [
     },{
         path:'contactUs',component: ContactUsComponent
     },{
+        path:'warranty',component: WarrantyComponent
+    },{
+        path:'accessories',component: AccessoriesComponent
+    },{
+        path:'sitemap',component: SitemapComponent
+    },{
         path: 'search',component: SearchMainComponent
     },{
         path: 'storeLocator',component: StoreMainComponent
     },{
         path: '404',component: PageNotFoundComponent
     },{
-        path: 'product/:id',component: ProductDetMainComponent
+        path: 'product/:id/:blurb',component: ProductDetMainComponent
     },{
         path: ':brand', component: BrandMainComponent
     }, {

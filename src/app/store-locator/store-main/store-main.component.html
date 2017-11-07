@@ -41,7 +41,11 @@
                     <div class="store-det">
                         <strong>{{store.name}}</strong><br>
                         <span>{{store.address}}</span>
-                        <div class="distance" *ngIf="store.distance">{{store.distance}} </div>
+                        <div class="ph-store">Tel:<ul>
+                            <li *ngFor="let tel of store.telephones"><a href="tel:{{tel}}">{{tel}}</a></li>
+                        </ul>
+                        </div>
+                        <div class="distance" *ngIf="store.distance">{{store.distance}}</div>
                     </div>
                 </li>
             </ol>

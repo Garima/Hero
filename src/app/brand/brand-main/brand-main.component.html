@@ -1,6 +1,6 @@
-<div id="main" class="clearfix">
-    <ng-template [ngIf]="menu">
-        <section class="brand-main">
+<div id="main" class="clearfix" (window:resize)="onResize($event)">
+    <ng-container *ngIf="menu; else loading">
+        <section class="brand-main"  [style.min-height]="pillarHeight + 'px'">
             <ng-template [ngIf]="menu && menu.sub_categories">
             <ul class="bm-blocks">
                 <li *ngFor="let brandItem of menu.sub_categories" >
@@ -12,11 +12,17 @@
                 </li>
             </ul>
             </ng-template>
-            <picture>
-                <source [srcset]="menu.bannerImgSm" media="(max-width: 767px)">
-                <source [srcset]="menu.bannerImgLrg" media="(min-width: 768px)">
-                <img class="block-img img-responsive" [src]="menu.bannerImgLrg">
-            </picture>
+
+            <video autoplay="" loop="" preload="auto" [poster]="menu.bannerImgLrg" #bannerVideo>
+                <source [src]="menu.videoLinkWebM" type="video/webm">
+                <source [src]="menu.videoLinkMp4" type="video/mp4">
+                <img [src]="menu.bannerImgLrg">
+            </video>
+            <img class="block-img" [src]="menu.bannerImgSm">
         </section>
+
+        </ng-container>
+    <ng-template #loading>
+        <div class="loading"><img src="./assets/images/loading.gif" alt="loading"/> </div>
     </ng-template>
 </div>

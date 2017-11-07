@@ -54,6 +54,14 @@ export class MapsService {
 
         });
     }
+
+    getLatLngLocation(lat,long){
+        return new google.maps.LatLng(lat, long);
+
+        //geocoder.geocode( { 'latLng': yourLocation }, (results, status) => {
+
+    }
+
     getDistance(stores,origin){
         // calc distance
         //origin = new google.maps.LatLng(lat, lng);

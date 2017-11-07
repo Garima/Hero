@@ -2,22 +2,25 @@
 
 .slide-item {
   width: 49%;
+  //height: 100%;
   float: left;
   position: relative;
-  background-color: $color-background-grey2;
+  background-color: $color-blue2;
   text-align: center;
   &:first-child{
     margin-right: 2%;
   }
   .item-img{
-    height:18rem;
+    background-color: $color-background-grey2;
+    //height:18rem;
     padding: 0 2rem;
     vertical-align: middle;
-    display: table-cell;
+    display: flex;
+    align-items: center;
+   // display: table-cell;
   }
 }
 .item-desc{
-  background-color: $color-blue2;
   font-family: BebasNeue;
   color:  #ffffff;
   padding: 1rem 0;

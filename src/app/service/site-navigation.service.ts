@@ -1,5 +1,6 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
+import { environment } from '../../environments/environment';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -8,7 +9,7 @@ import { NavMenuItem } from '../model/nav-menu-item';
 
 @Injectable()
 export class SiteNavigationService {
-    private naviUrl = 'http://hero.i22.in/api/web/getnavibar';  // URL to web api
+    private naviUrl = environment.apiHost + '/api/web/getnavibar';  // URL to web api
     private navData;
 
     constructor(private http: Http) { }
@@ -26,15 +27,14 @@ export class SiteNavigationService {
     }
     getBrandData(brand: string): Promise<any> {
         return this.getSiteNav()
-            .then(items =>
-                items.find(item => item.link === brand)
+            .then(items => items ? items.find(item => (item.link === brand || item.id == brand)): null
+
         );//change to name link
     }
 
     getCategoryData(brand: string,cat: string): Promise<any> {
         return this.getBrandData(brand)
-            .then(items =>
-                items.sub_categories.find(item => item.link === cat)
+            .then(items => items ? items.sub_categories.find(item => (item.link === cat || item.id === cat)):null
         );//change to name link
     }
     private handleError(error: any): Promise<any> {

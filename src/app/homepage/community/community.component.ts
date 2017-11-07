@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Headers, Http } from '@angular/http';
 
+import { dataFadeInAnimation } from '../../animations';
+
 import 'rxjs/add/operator/toPromise';
 
 @Component({
   selector: 'app-community',
   templateUrl: './community.component.html',
-  styleUrls: ['./community.component.scss']
+  styleUrls: ['./community.component.scss'],
+    animations:[dataFadeInAnimation]
 })
 export class CommunityComponent implements OnInit {
     socialFeeds;

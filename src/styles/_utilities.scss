@@ -45,6 +45,12 @@
     display: block;
   }
 }
+.desktop-hidden{
+  display: block;
+  @media (min-width: $sm-screen-up) {
+    display: none;
+  }
+}
 .pad-main-side{
   padding: 0 1rem;
   @media (min-width: $sm-screen-up) {
@@ -139,4 +145,22 @@ h2 .red{
     top: 50%;
     left: 50%;
   }
+}
+.page-unavailable{width: 100%;
+  //height: 100vw;
+  background-color: $color-black;color: $color-white;
+  font-family: BebasNeue;
+  font-size: 30px;
+  text-align: center;padding-top: 40vw;
+  padding:30vh 3rem ;
+.hd{border-bottom: 1px solid $color-white;padding-bottom: 2rem;margin-bottom: 2rem;}
+}
+.ngx-datepicker-calendar-container{
+  z-index: 10;
+}
+form .ngx-datepicker-container .ngx-datepicker-input{
+  width:100% !important;
+}
+.cmp-prod .ui-select-choices-row.active > a{
+  background-color: $color-red;
 }

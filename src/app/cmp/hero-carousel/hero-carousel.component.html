@@ -1,9 +1,12 @@
-<carousel class="hero-carousel" (activeSlideChange)="animateSlide1($event);" [interval]="10000" >
+<carousel class="hero-carousel" (activeSlideChange)="animateSlide1($event);" [interval]="3000" >
     <slide  *ngFor="let hero of heroData">
         <a [href]="hero.link">
             <img [src]="hero.imgSrc" [alt]="hero.name">
             <div class="carousel-caption" *ngIf="hero.caption">
                 {{hero.caption}}
+            </div>
+            <div class="carousel-caption">
+                <a>Discover</a>
             </div>
         </a>
     </slide>
