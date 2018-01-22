@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CategoryHeaderComponent implements OnInit {
 @Input() catDesc;
 @Input() bannerImg;
+@Input() bannerImgSm;
   constructor() { }
 
   ngOnInit() {

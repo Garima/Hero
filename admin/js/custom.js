@@ -1,5 +1,27 @@
 'use strict';
 
+// Browser with  Detection
+navigator.sayswho= (function(){
+    var N= navigator.appName, ua= navigator.userAgent, tem;
+    var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+    if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+    M= M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
+    return M;
+})();
+
+// Some cleanup for stright forward use of values
+var browser_version_string = String(navigator.sayswho), browser_version_arr = browser_version_string.split(","), browser_name = browser_version_arr[0], browser_version = parseInt(browser_version_arr[1]);
+
+
+// Running a code based on some conditions
+if(browser_name == "Chrome"){
+	if(browser_version > 55){
+  	// console.log("This is google chrome and current version is greater than 55");
+  }else{
+  	// Execute code here like showing notification
+    $('body').pgNotification({message: "This site runs best on latest version of chrome & Firefox"}).show();data-action
+  }
+}
 
 function setUserAuth(id, token, username){
 	localStorage.setItem("userId", id);
@@ -234,6 +256,34 @@ function initDelete(event){
       document.querySelector(".c-modal-container.delete").classList.add("dn");
     }
   }
+}
+
+function deleteBlogPost(){
+	var url = "/api/admin/blog/delete/" + categoryIdToDelete + "?userid=" + getUserAuth().id + "&token_api=" + getUserAuth().token; 
+	  // API request
+  $.ajax({
+    url: url,
+    type: "GET",
+    success: function(result){
+      // Todo : no success or message parameter coming in this API response
+      if(result.success){
+        $('body').pgNotification({message: result.result.message}).show();
+        // console.log(result);
+        document.querySelector(".c-modal-container.delete").classList.add("dn");
+        //window.location.href = "/admin/categories-list.php";
+        location.reload();
+
+      }else{
+        $('body').pgNotification({message: result.result.message}).show();
+        if(result.result.message == "Session has timed out" || result.result.message == "Invalid session data"){
+          window.location.href = "/admin";
+        }
+      }
+    },
+    error: function(xhr,status,error){
+      console.log(xhr, status, error);
+    }
+  });
 }
 
 function deleteRow(){
@@ -585,6 +635,71 @@ function renderEventList(arr){
 
 }
 
+
+// G E T    B L O G S
+
+function getBlogs() {
+	var url = "/api/admin/blog/list?userid=" + getUserAuth().id + "&token_api=" + getUserAuth().token;
+	// API request
+	$.ajax({
+		url: url,
+		type: "GET",
+		success: function(result){
+			console.log("blogs list data --- ", result);
+			if(result.success){
+				// $('body').pgNotification({message: result.result.message}).show();
+				renderBlogList(result.result.blogData);
+			}else{
+				$('body').pgNotification({message: result.result.message}).show();
+				if(result.result.message == "Session has timed out" || result.result.message == "Invalid session data"){
+					window.location.href = "/admin";
+				}
+			}
+		},
+		error: function(xhr,status,error){
+			console.log(xhr, status, error);
+		}
+});
+
+}
+
+function renderBlogList(arr){
+
+	// Clear the productContainer
+	var blogsContainer = document.querySelector(".blogsTable");
+	blogsContainer.innerHTML = "";
+	// Append table header
+	var headerTemplate = document.querySelector("template#tableHeader");
+	var headerClone = document.importNode(headerTemplate.content, true);
+	blogsContainer.appendChild(headerClone);
+
+	// loop throug array
+	for (var i = 0; i < arr.length; i++) {
+	
+		// Get Template tag
+		var template = document.querySelector("template#blog"),
+			pName = template.content.querySelector(".title"),
+			pThumb = template.content.querySelector(".productThumb img"),
+			pYear = template.content.querySelector(".year"),
+			actionBtnGroupButton = template.content.querySelectorAll(".btn-group button"),
+			actionBtnGroupButtonI = template.content.querySelectorAll(".btn-group button i"),
+			actionBtnGroupA = template.content.querySelectorAll(".btn-group a");
+
+		// Set values in template
+			pName.innerText = arr[i].title;
+			pYear.innerText = arr[i].credits;
+			actionBtnGroupA[0].setAttribute("href", "/admin/blog-edit.php?pid=" + arr[i].id);
+			actionBtnGroupButton[1].setAttribute("data-id", + arr[i].id);
+			actionBtnGroupButtonI[1].setAttribute("data-id", + arr[i].id);
+
+		var clone = document.importNode(template.content, true);
+		// Append to DOM
+
+		blogsContainer.appendChild(clone);
+	}
+
+}
+
 // G E T    P R O D U C T S
 
 function getProducts() {
@@ -661,8 +776,10 @@ function renderProductList(arr){
 			if(arr.productDetail[i].brand != null){
 				pBrand.innerText = arr.productDetail[i].brand.name;
 			}
-			pCategory.innerText = arr.productDetail[i].subcategory.category.name;
-			pSubCategory.innerText = arr.productDetail[i].subcategory.name;
+			if(arr.productDetail[i].subcategory != null){
+				pCategory.innerText = arr.productDetail[i].subcategory.category.name;
+				pSubCategory.innerText = arr.productDetail[i].subcategory.name;
+			}
 			pAge.innerText = arr.productDetail[i].age;
 			pGender.innerHTML = arr.productDetail[i].gender;
 			// console.log(Object.values(arr.thumbnailImages[i])[0]);
@@ -741,13 +858,17 @@ function populateProductData(){
 		var se = "[name='" + Object.keys(productData)[i] +"']";
 		var cEl = document.querySelector(se);
 		if(cEl){
+			// console.log(cEl);
 			if(Object.keys(productData)[i] == "brand"){
-				cEl.value = productData.brand.id;
+				if(productData.brand != null){
+					cEl.value = productData.brand.id;
+				}
 			}else{
 				cEl.value = Object.values(productData)[i];
 			}
 		}
 	}
+	$("select").select2();
 }
 
 function renderProductImages(){
@@ -761,12 +882,74 @@ function renderProductImages(){
 	// Carousel Small
 }
 
+// dataRenderer to improve sloppy things
+function dataRenderer(result, forWhatPage){
+	// blog edit
+	if(forWhatPage == "blogEdit"){
+		var arr = result.result.blogData;
+		for(var i = 0; i < Object.keys(arr).length; i++){
+			var selector = "[name='" + Object.keys(arr)[i] +"']";
+			var el = document.querySelector(selector);
+			console.log(el);
+			if(el){
+				el.value = Object.values(arr)[i];
+			}else{
+				if(Object.keys(arr)[i] == "imgSrcLg"){
+					document.querySelector(".bannerLargePreview").setAttribute("src", Object.values(arr)[i]);
+					document.querySelector("#imgSrcLg_cu").innerText = Object.values(arr)[i];
+				}
+				if(Object.keys(arr)[i] == "imgSrcSm"){
+					document.querySelector(".bannerSmallPreview").setAttribute("src", Object.values(arr)[i]);
+					document.querySelector("#imgSrcSm_cu").innerText = Object.values(arr)[i];
+
+				}
+			}
+		}
+		initWysiwyg();
+		initSelect();
+	}
+}
+
+// Get Single Blog Data
+function callApi(endpoint){
+	var url = endpoint + "?userid=" + getUserAuth().id + "&token_api=" + getUserAuth().token;
+	// API request
+	$.ajax({
+		url: url,
+		type: "GET",
+		success: function(result){
+			console.log("blogs single post data --- ", result);
+			if(result.success){
+				// $('body').pgNotification({message: result.result.message}).show();
+				dataRenderer(result, "blogEdit");
+			}else{
+				$('body').pgNotification({message: result.result.message}).show();
+				if(result.result.message == "Session has timed out" || result.result.message == "Invalid session data"){
+					window.location.href = "/admin";
+				}
+			}
+		},
+		error: function(xhr,status,error){
+			console.log(xhr, status, error);
+		}
+});
+}
+
+function initWysiwyg(){
+	// var editor = new MediumEditor('.m-edit');
+	CKEDITOR.replace( 'ckedit' );
+	CKEDITOR.instances.ckedit.on('change', function() { 
+    document.querySelector("#ckedit").value = CKEDITOR.instances.ckedit.getData();
+});
+}
+
+
 window.onload = function(){
 
 	if(!document.body.classList.contains("loginPage")){
 		setUserDisplayName();
 		getBrandsData();
-		getSubCategoryData("category2");
+		getSubCategoryData("subcategory_id");
     getcategoryListData();
 
 
@@ -782,6 +965,13 @@ window.onload = function(){
 				if(eventsTable){
 					setTimeout(function(){
 						getEvents();
+					},1000);
+				}
+	// Call Blogs list
+				var blogsTable = document.querySelector(".blogsTable");
+				if(blogsTable){
+					setTimeout(function(){
+						getBlogs();
 					},1000);
 				}
 	// Call Cateories list
@@ -814,6 +1004,11 @@ window.onload = function(){
   if(window.location.href.includes("admin/brand-add")) {
     getCategoryDataForBrand("Subcategory_id",-1);
   }
+
+
+    if(window.location.href.includes("admin/blog-add")) {
+      initWysiwyg();
+    }
 
 
 	if(window.location.href.includes("pid=")){
@@ -855,7 +1050,9 @@ window.onload = function(){
     if(window.location.href.includes("admin/brand-edit")) {
       getCategoryDataForBrand("Subcategory_id",pid);
     }
-
+    if(window.location.href.includes("admin/blog-edit")) {
+      callApi("/api/admin/blog/view/" + pid);
+    }
 
 	}
 
@@ -1028,9 +1225,9 @@ function getViewData(api,pid,dataKey){//"/api/admin/brand/view/"
 			bSmall.setAttribute("title", "Banner Small");*/
         }
         if(dataKey == "categoryData"){
-
+        	if(result.result.categoryData != null){
         		// Banner Large
-				var bLarge = document.querySelector(".banner-large-image img");
+        		var bLarge = document.querySelector(".banner-large-image img");
 				bLarge.setAttribute("src", result.result.categoryData.bannerImgLrg);
 				bLarge.setAttribute("title", "Banner Large");
 
@@ -1042,16 +1239,24 @@ function getViewData(api,pid,dataKey){//"/api/admin/brand/view/"
 				// Video Buttons
 				if(result.result.categoryData.videoLinkMp4 != ""){
 					var videoMp4 = document.querySelector(".mp4");
+					videoMp4.classList.remove("dn");
 					videoMp4.setAttribute("href", result.result.categoryData.videoLinkMp4);
 					videoMp4.innerHTML = "Download - Mp4";
+				}else{
+					document.querySelector(".mp4").classList.add("dn");
 				}
 
 				// Video Buttons
 				if(result.result.categoryData.videoLinkWebM != ""){
 					var videoWebM = document.querySelector(".webm");
+					videoWebM.classList.remove("dn");
 					videoWebM.setAttribute("href", result.result.categoryData.videoLinkWebM);
 					videoWebM.innerHTML = "Download - WebM";
+				}else{
+					document.querySelector(".webm").classList.add("dn");
 				}
+        	}
+				
         }
         if(dataKey == "subCategoryData"){
         	// Silhouette
@@ -1072,17 +1277,23 @@ function getViewData(api,pid,dataKey){//"/api/admin/brand/view/"
 				// Video Buttons
 				if(result.result.subCategoryData.videoLinkMp4 != ""){
 					var videoMp4 = document.querySelector(".mp4");
+					videoMp4.classList.remove("dn");
 					// var videoMp4 = document.querySelector(".VideoLinks .mp4");
 					videoMp4.setAttribute("href", result.result.subCategoryData.videoLinkMp4);
 					videoMp4.innerHTML = "Download - Mp4";
+				}else{
+					document.querySelector(".mp4").classList.add("dn");
 				}
 
 				// Video Buttons
 				if(result.result.subCategoryData.videoLinkWebM != ""){
 					var videoWebM = document.querySelector(".webm");
+					videoWebM.classList.remove("dn");
 					// var videoWebM = document.querySelector(".VideoLinks .webm");
 					videoWebM.setAttribute("href", result.result.subCategoryData.videoLinkWebM);
 					videoWebM.innerHTML = "Download - WebM";
+				}else{
+					document.querySelector(".webm").classList.add("dn");
 				}
         }
       }else{
@@ -1098,22 +1309,32 @@ function getViewData(api,pid,dataKey){//"/api/admin/brand/view/"
   });
 }
 function populateViewData(arr){
-  for (var i = 0; i < Object.keys(arr).length; i++) {
-    var se = "[name='" + Object.keys(arr)[i] +"']";
-    var cEl = document.querySelector(se);
-    if(cEl){
-      if(Object.keys(arr)[i] == "imgSrcSm" || Object.keys(arr)[i] == "imgSrcLg" || cEl.type == "file"){
-        var existingFile = document.getElementById(Object.keys(arr)[i]+"_cu");
-        if(existingFile){
-          existingFile.innerHTML= Object.values(arr)[i];
-        }
-      }else{
-        cEl.value = Object.values(arr)[i];
-        console.log(cEl, Object.values(arr)[i]);
-      }
-    }
-  }
-initSelect();
+	if(arr != null){
+		// SET BANNER IMAGES PREVIEW - Brand Edit Page
+		var bannerSmallPreview = document.querySelector(".bannerSmallPreview"),
+		    bannerLargePreview = document.querySelector(".bannerLargePreview");
+		      	if(bannerSmallPreview && bannerLargePreview){
+		      		bannerSmallPreview.setAttribute("src", arr.imgSrcSm);
+		      		bannerLargePreview.setAttribute("src", arr.imgSrcLg);
+		      	}
+
+		  for (var i = 0; i < Object.keys(arr).length; i++) {
+		    var se = "[name='" + Object.keys(arr)[i] +"']";
+		    var cEl = document.querySelector(se);
+		    if(cEl){
+		      if(Object.keys(arr)[i] == "imgSrcSm" || Object.keys(arr)[i] == "imgSrcLg" || cEl.type == "file"){
+		        var existingFile = document.getElementById(Object.keys(arr)[i]+"_cu");
+		        if(existingFile){
+		          existingFile.innerHTML= Object.values(arr)[i];
+		        }
+		      }else{
+		        cEl.value = Object.values(arr)[i];
+		        // console.log(cEl, Object.values(arr)[i]);
+		      }
+		    }
+		  }
+		initSelect();
+	}
 }
 
 // G E T    List Page
@@ -1278,6 +1499,8 @@ function cUpload(event){
 	bannerType = el.getAttribute("data-bannerType");
 	console.log("cUpload", el.value);
 	el.parentElement.children[0].classList.remove("fadeOut");
+	el.parentElement.querySelector(".progress").classList.remove("dn");
+
 
 	var formData = new FormData();
 	formData.append("userid", getUserAuth().id);
@@ -1297,6 +1520,8 @@ function cUpload(event){
 	      console.log(data.result[bannerType]);
 	      el.parentElement.children[0].setAttribute("src", data.result[bannerType]);
 	      el.parentElement.children[0].classList.add("fadeOut");
+
+				el.parentElement.querySelector(".progress").classList.add("dn");
 	    }
 	  }
 

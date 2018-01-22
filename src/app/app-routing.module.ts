@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+//import { IsSecureGuard } from './service/ssl-redirect.service';
+
 import { MainComponent } from './homepage/main/main.component';
 import { CatLevel1MainComponent } from './cat-level1/cat-level1-main/cat-level1-main.component';
 import { BrandMainComponent } from './brand/brand-main/brand-main.component';
@@ -20,6 +22,9 @@ import { PageNotFoundComponent } from './others/page-not-found/page-not-found.co
 import { SitemapComponent } from './others/sitemap/sitemap.component';
 import { WarrantyComponent } from './others/warranty/warranty.component';
 import { AccessoriesComponent } from './others/accessories/accessories.component';
+import { BlogComponent } from './others/blog/blog.component';
+import { BlogsComponent } from './others/blogs/blogs.component';
+
 
 
 //let htmlCnf = new HtmlComponentFactory();
@@ -48,7 +53,11 @@ const routes: Routes = [
         path:'accessories',component: AccessoriesComponent
     },{
         path:'sitemap',component: SitemapComponent
+    },/*{
+        path:'blogs',component: BlogsComponent
     },{
+        path:'blog/:id/:title',component: BlogComponent
+    },*/{
         path: 'search',component: SearchMainComponent
     },{
         path: 'storeLocator',component: StoreMainComponent
@@ -62,7 +71,7 @@ const routes: Routes = [
         path: ':brand/:category',component: CatLevel1MainComponent
     },{
         path: ':brand/:category/:subCategory',component: CategoryMainComponent
-        //Note:this is slightly different from what we have at backend
+        //Note:naming is slightly different from what we have at backend
     },{
         path: '',component: MainComponent
     },{
@@ -97,4 +106,7 @@ const routes: Routes = [
     exports: [ RouterModule ]
 })
 
-export class AppRoutingModule {}
+export class AppRoutingModule {
+    //private IsSecureGuard: IsSecureGuard - PUT below
+    constructor(){}
+}

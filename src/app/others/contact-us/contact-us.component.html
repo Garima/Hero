@@ -4,8 +4,9 @@
     <div class="container-fluid">
     <div class="row row-eq-height form">
     <div class="col-sm-6">
-        <div *ngIf="submitted; else formBlock" class="successMsg">{{successMsg}}</div>
+        <div *ngIf="submitted && !submitEr; else formBlock" class="successMsg">{{successMsg}}</div>
         <ng-template #formBlock>
+            <div *ngIf="submitted && submitEr" class="error">{{successMsg}}</div>
             <h3>We would love to hear from you</h3>
         <form method="post" action="/contactUs" (ngSubmit)="submitForm(contactUs.valid)" #contactUs="ngForm"  enctype="multipart/form-data">
             <div class="container-fluid">
@@ -91,16 +92,17 @@
             </ng-template>
     </div>
     <div class="col-sm-6 text ">
-        <p>For your corporate queries, you can reach our office during work hours on 011-40511700.</p>
+        <p>For your corporate queries, you can reach our office during work hours on 0124-3956700.</p>
+        <p>Address:<br/>
+            Hero Cycles Ltd.<br />
+            2A-1001, 10th Floor, Two Horizon Centre,<br />
+            Sec 43, DLF Phase –V, Gurugram (HR) - 122002<br />
+        </p>
         <p>10:00AM to 6:00PM<br/>(IST +5:30 GMT)<br />Monday to Friday</p>
         <p>You can always drop us an email at customer@herocycles.com and we'll get back to you shortly or write to below Id’s for specific requirements.</p>
         <ul class="emails">
-            <li><div class="designation">Sales</div><div>Manish Iyer : <a href="mailto:miyer@herocycles.com">miyer@herocycles.com</a></div></li>
-            <li>
-                <div class="designation">Exports (Latin America/Middle East/Africa)</div>
-                <div>Yadavendra Sahai : <a href="mailto:ysahai@herocycles.com">ysahai@herocycles.com</a></div>
-            </li>
-            <li><div class="designation">Exports (Australia/NZ)</div>
+            <li><div class="designation">Sales</div><div>Customer Care : <a href="mailto:customer@herocycles.com">customer@herocycles.com</a></div></li>
+            <li><div class="designation">Exports</div>
                 <div>Ashok Abrol : <a href="mailto:ashokabrol@heromotors.com">ashokabrol@heromotors.com</a></div></li>
             <li><div class="designation">Rural Marketing</div>
                 <div>Neeraj Chandra : <a href="mailto:nchandra@herocycles.com">nchandra@herocycles.com</a></div></li>
@@ -122,12 +124,12 @@
                 </div>
                 <div class="field">
             <select name="type">
-                <option value="1">What's the Buzz?</option>
+                <option value="What's the Buzz?">What's the Buzz?</option>
             </select>
                 </div>
                 <div class="field">
-            <input required type="email" [(ngModel)]="nsModel.emailId" placeholder="Email ID*"
-                   name="emailId" #emailId="ngModel" email pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" >
+            <input required type="email" [(ngModel)]="nsModel.email" placeholder="Email ID*"
+                   name="email" #emailId="ngModel" email pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" >
             <div *ngIf="emailId.invalid && (emailId.dirty || newsLetter.submitted)"
                  class="error">
                 <div *ngIf="emailId.errors.required">
@@ -148,7 +150,10 @@
                         </div>
                     </div>
                     </div>
-                <div *ngIf="newsLetter.submitted && newsLetter.valid && nsSubmitted">Thank you for subscribing to our newsletter. Click on the link sent to your email to complete the subscription process.</div>
+                <div *ngIf="newsLetter.submitted && nsSubmitEr" class="error">{{successMsg}}</div>
+                <div *ngIf="newsLetter.submitted && newsLetter.valid && nsSubmitted && !nsSubmitEr">
+                 <!--   Thank you for subscribing to our newsletter. Click on the link sent to your email to complete the subscription process.
+          -->   {{successMsg}}   </div>
 
                 <div class="field">
                 <button class="hc-btn-primary hc-btn" type="submit" name="send">Pedal</button>

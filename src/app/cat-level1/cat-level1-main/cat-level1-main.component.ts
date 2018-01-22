@@ -73,7 +73,8 @@ export class CatLevel1MainComponent implements OnInit {
             }
         );
         this.loaderSubs = this.route.params.subscribe(()=>
-            this.isLoading=true);
+            this.isLoading=true
+        );
     }
 
     ngOnDestroy() {

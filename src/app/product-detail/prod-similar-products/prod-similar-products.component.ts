@@ -11,9 +11,19 @@ export class ProdSimilarProductsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-      for(let prod of this.similarProds){
-          prod.urlBlurb = prod.name.replace(/[^a-zA-Z0-9]+/g,'-');
-      }
+      this.Init();
   }
+    Init(){
+        for(let prod of this.similarProds){
+            prod.urlBlurb = prod.name.replace(/[^a-zA-Z0-9]+/g,'-');
+        }
+    }
+    ngOnChanges(changes) {
+        for (let propName in changes) {
+            if(propName = "viewedProds"){
+                this.Init();
+            }
+        }
+    }
 
 }

@@ -46,9 +46,9 @@ export class CommunityComponent implements OnInit {
           .toPromise()
           .then(response => {
               let responseData = response.json();
-              this.instagramData = responseData.items.filter(item =>
+              this.instagramData = responseData.data;/*.filter(item =>
                 item.type === "image"
-              );
+              );*/
           }
       ).catch(error => console.error('An error occurred', error));
   }

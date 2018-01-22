@@ -1,6 +1,6 @@
-<div class="filter-tog"  (window:resize)="onResize($event)" *ngIf="IsMobile" (click)="toggleFilter()" [class.filter-shown]="filterOpen">Filters</div>
+<div class="filter-tog"   *ngIf="IsMobile" (click)="toggleFilter()" [class.filter-shown]="filterOpen">Filters</div>
 
-<div class="filter-container" [class.visible]="filterOpen">
+<div class="filter-container" [class.visible]="filterOpen" (window:resize)="onResize($event)">
     <ul class="filters">
         <ng-container  *ngFor="let filter of filters"><!---->
         <li *ngIf="filter.name!='subcategory'" (click)="showFilter(filter.name)" [ngClass]="{'filter-open': filter.name == filterSelected}">
@@ -27,15 +27,23 @@
     <div class="sel-options clr-all" *ngIf="filtersSelected && filtersSelected.length > 0">
         <ul>
             <ng-container *ngFor="let filter of filtersSelected">
-            <li class="sel-option" *ngIf="filter.texts">
+                <ng-container  *ngIf="filter.texts" >
+            <li class="sel-option" *ngFor="let criterion of filter.texts">
                 <span class="selFilter">{{filter.filterName=="subcategory"?'Category':filter.filterName.replace('_', ' ')}} - </span>
 
-          <span *ngFor="let criterion of filter.texts" (click)="toggleCriterion(filter.filterName,criterion.id)" class="selFilterOption">{{criterion.text}}
+          <span (click)="toggleCriterion(filter.filterName,criterion.id)" class="selFilterOption">{{criterion.text}}
           <span class='fa fa-close'></span>
           </span>
             </li>
+                    </ng-container>
             </ng-container>
             <li class="selected filter-btn" (click)="clearAllCriterion()">Clear All<span class="fa fa-close"></span></li>
         </ul>
     </div>
+</div>
+<div class="clearfix">
+    <select class="filter-input right" (change)="sortBy('price',$event.target.value);" [(ngModel)]="sortOrder">
+    <option value="asc">Price: Low to High</option>
+    <option value="desc">Price: High to Low</option>
+</select>
 </div>

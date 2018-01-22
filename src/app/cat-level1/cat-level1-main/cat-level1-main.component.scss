@@ -29,7 +29,7 @@
     transition: all .3s ease;
   }
   ul.blocks li .links-box a.block-link {
-    font-family: BebasNeueBold;
+    font-family: BebasNeueBold,Arial Narrow,Arial,Helvetica,sans-serif;
     font-size: 2.8rem;
     width: 100%;
   }
@@ -115,7 +115,7 @@
        }
      ul.blocks li { border-bottom: 1px solid  $color-white;display: block; text-align: center;width:100% !important;}
      ul.blocks li:first-child { border-top: 1px solid white;}
-     .links-box a { font-family: BebasNeueBold;color:$color-white; font-size: 3rem;}
+     .links-box a { font-family: BebasNeueBold,Arial Narrow,Arial,Helvetica,sans-serif;color:$color-white; font-size: 3rem;}
      .links-box a.block-link {
        opacity: .8;
        height: 8rem;

@@ -1,5 +1,6 @@
 
-    <div class="prd-hd" *ngIf="productData">
+
+<div class="prd-hd" *ngIf="productData">
         <div class="hc-breadcrumb">
             <ul>
             <li *ngFor="let item of breadcrumb"><a [href]="item.url">{{item.label}}</a></li>
@@ -11,15 +12,27 @@
             <span class="prod-price"><span class="fa fa-inr"></span>
                 {{(productData.price | number)== 0 ? 'Coming Soon' : (productData.price | number)}}/-
             </span>
+            <span class="social">
+                <div class="sc-hd">Share</div>
+                <!--<a target="_blank" class="fa fa-facebook" href="https://www.facebook.com/dialog/share?app_id=128420777768531&display=popup&href={{currentURL}}&redirect_uri={{currentURL}}"></a>
+               -->
+                <a target="_blank" class="fa fa-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{currentURL}}"></a>
+                <a href="https://twitter.com/intent/tweet?url={{currentURL}}&text=Like!!" target="_blank" class="fa fa-twitter"></a>
+            <a href="https://api.whatsapp.com/send?text={{currentURL}}" class="fa fa-whatsapp"></a>
+            </span>
         </div>
         <div class="action-btn" *ngIf="productData.imgThumbnail_large">
             <a class="hc-btn hc-btn-primary" href="/storeLocator">Find a dealer</a>
             <a class="hc-btn" (click)="openForm()">Buy Online</a>
             <a class="hc-btn"  [href]="productData.warranty">Warranty</a>
+            <!--<a href="http://api.html2pdfrocket.com/pdf?value=herocycles.com/product/238/Milano&apikey=edb0c941-ad82-41fd-91b5-10ea113316bb">Download Current Page as PDF</a>-->
+
             <!--<a class="hc-btn"  (click)="openForm()">Add To Compare</a>-->
+            <!--<a class="hc-btn" (click)="saveAsPDF()">Download specs</a>-->
 
         </div>
-        <app-compare-product-selector   [productId]="productData.id"></app-compare-product-selector>
+
+        <app-compare-product-selector [productId]="productData.id"></app-compare-product-selector>
         <app-salient-features *ngIf="productData.imgThumbnail_large" [salientFeatures]="productData.salientFeatures" [productName]="productData.name"></app-salient-features>
         <div class="prd-img-bg">
             <img class="block-img img-responsive" src="./assets/images/pdp/pdp_bg_{{bgImgNum}}.jpg">
@@ -43,3 +56,8 @@
             </div>
         </div>
     </div>
+<div  style="display: none;">
+ <div #prdData>
+<app-prod-pdf  [specifications]="specifications" [productData]="productData"></app-prod-pdf>
+ </div>
+</div>

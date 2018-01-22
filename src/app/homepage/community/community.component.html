@@ -6,7 +6,7 @@
             <div class="post transition {{i}}"  [@visibilityChanged]="i > pagesToDisplay*2 -1" *ngFor="let feedDet of twitterData;let i = index" [ngClass]="{'hidden': i > pagesToDisplay*2 -1}">
                 <div class="ctnr-tag">
                     <a href="{{feedDet.entities.media[0].expanded_url}}" target="_blank" *ngIf="feedDet.entities.media && feedDet.entities.media[0].media_url" class="post-img">
-                        <img src="{{feedDet.entities.media[0].media_url}}" class="post-img" />
+                        <img src="{{feedDet.entities.media[0].media_url_https}}" class="post-img" />
                     </a>
                     <div class="tag up">
                         <div class="tag-icon"><i class="fa fa-twitter"></i></div>
@@ -14,7 +14,7 @@
                 </div>
                 <div class="author">
                     <a href="https://twitter.com/{{feedDet.user.screen_name}}" class="user-logo" target="_blank">
-                        <img src="{{feedDet.user.profile_image_url}}"></a>
+                        <img src="{{feedDet.user.profile_image_url_https}}"></a>
                     <div class="user-det">
                         <p class="user-name"><a href="https://twitter.com/{{feedDet.user.screen_name}}" target="_blank">
                             <strong>{{feedDet.user.name}}</strong>

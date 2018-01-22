@@ -1,5 +1,5 @@
 <ng-container *ngIf="productData; else loading">
-<app-prod-header [productData]="productData" [breadcrumb] = "breadcrumb"></app-prod-header>
+<app-prod-header [specifications]="productData.specifications" [productData]="productData" [breadcrumb] = "breadcrumb" [currentURL]="currentURL"></app-prod-header>
 <app-prod-specification [specifications]="productData.specifications"></app-prod-specification>
 <app-prod-carousel [prodImages]="productData.productImages"></app-prod-carousel>
 <section class="mar-b-main pad-main-side">

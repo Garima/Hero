@@ -1,142 +1,67 @@
 <h2>Cycle of My <span class="red">Choice</span></h2>
-    <div class="choice-filters container-fluid" (window:resize)="onResize($event)" >
-        <div class="row row-eq-height" *ngIf="pageShown == 1" [@visibilityChanged]="pageShown != 1">
-
-            <div class=" col-sm-5 choice-filter">
-                <div class="gender">
-                    <input type="radio" name="gender" id="male" value="Male"
-                           (change)="onSelectionChange('Male','gender')"/>
-                    <label for="male" class="male with-img filter-label">Male</label>
-                </div>
-                <div class="gender">
-                    <input type="radio" name="gender" id="female" [value]="Female"
-                           (change)="onSelectionChange('Female','gender')"/>
-                    <label for="female" class="female with-img filter-label">Female</label>
-                </div>
-                <div class="gender">
-                    <input type="radio" name="gender" id="unisex" value="Unisex"
-                           (change)="onSelectionChange('Unisex','gender')" />
-                    <label for="unisex" class="unisex with-img filter-label">Unisex</label>
-                </div>
-                <p class="error text-error">&nbsp;
-                    <span *ngIf="errorFilter == 'gender'">Please select any one the option</span>
-                </p>
+<div class="choice-filters container-fluid" (window:resize)="onResize($event)" >
+    <div class="row row-eq-height">
+        <div class="col-sm-3 choice-filter">
+            <div class="type">
+                <input type="radio" id="leisure" name="category" [value]="1"
+                       (change)="onTypeChange(1,'category')"/>
+                <label for="leisure" class="leisure with-img filter-label">Leisure</label></div>
+            <div class="type">
+                <input type="radio" id="performance" name="category" [value]="2"
+                       (change)="onTypeChange(2,'category')"/>
+                <label for="performance" class="performance with-img filter-label">Performance</label>
             </div>
-
-            <div class=" col-sm-3 choice-filter age" *ngIf="ageFilter">
-                <select class="filter-input" (change)="criterion.age = $event.target.value">
-                    <option value="-1">Select</option>
-                    <option *ngFor="let option of ageFilter" [value]="option.display">{{option.display}}</option>
-                </select>
-                <div class="filter-label">Age</div>
-                <p class="error text-error" >&nbsp;
-                    <span *ngIf="errorFilter == 'age'">Please select any one the option</span>
-                </p>
-            </div>
-
-            <div class="col-sm-4 choice-filter no-border-sm">
-                <div class="type">
-                    <input type="radio" id="leisure" name="category_id" [value]="1"
-                           (change)="onTypeChange(1,'category_id')"/>
-                    <label for="leisure" class="leisure with-img filter-label">Leisure</label></div>
-                <div class="type">
-                    <input type="radio" id="performance" name="category_id" [value]="2"
-                           (change)="onTypeChange(2,'category_id')"/>
-                    <label for="performance" class="performance with-img filter-label">Performance</label>
-                </div>
-                <p class="error text-error">&nbsp;
-                    <span *ngIf="errorFilter == 'type'">Please select any one the option</span>
-                </p>
-            </div>
-
+            <p class="error text-error">&nbsp;
+                <span *ngIf="errorFilter == 'category'">Please select any one the option</span>
+            </p>
         </div>
 
-        <div class="row"  *ngIf="pageShown == 1" [@visibilityChanged]="pageShown != 1">
-            <div class="action-btn col-sm-12">
-                <a class="hc-btn hc-btn-primary" (click)="showNext(['gender','age','category_id'])">Next</a>
-            </div>
-        </div>
-
-        <div class="row row-eq-height" *ngIf="pageShown == 2" [@visibilityChanged]="pageShown != 2">
-            <div class="col-sm-6 choice-filter container">
-                <ng-container *ngIf='cycleFilter && cycleFilter.length'>
-                    <ng-container *ngFor='let filter of cycleFilter; let i = index' >
-                        <div class="row category" *ngIf='i % 3 == 0'>
-                            <div class="col-sm-4" *ngFor='let n of [i,i+1,i+2]'>
-                                    <input type="radio" name="subcategory" [id]="cycleFilter[n].link" [value]="cycleFilter[n].id"
-                                           (change)="onSelectionChange(cycleFilter[n].id,'subcategory')"/>
-                                    <label [for]="cycleFilter[n].link" class="with-img filter-label"
-                                           [style.background-image]="'url(' + cycleFilter[n].img + ')'">{{cycleFilter[n].name}}</label>
-
-                            </div>
-                        </div>
-                    </ng-container>
-                </ng-container>
-                <p class="error text-error">&nbsp;
-                    <span *ngIf="errorFilter == 'subcategory'">Please select any one the option</span>
-                </p>
-            </div>
-
-            <div class="col-sm-2 choice-filter price-filter" [ngClass]="{'pad-top':givePad}" *ngIf="IsDesktop">
-                <select class="filter-input" (change)="setPrice($event.target.value)">
-                    <option value="-1">Select</option>
-                    <option *ngFor="let option of priceFilter" [attr.data-maxPrice]="option.price_max" [attr.data-minPrice]="option.price_min" [value]="option.id">{{option.displayText}}</option>
-                </select>
-                <div class="filter-label">Price</div>
-                <p class="error text-error" *ngIf="errorFilter == 'price'">Please select any one the option</p>
-            </div>
-
-            <div class="col-sm-4 choice-filter no-border-sm gear-filter"[ngClass]="{'pad-top':givePad}" *ngIf="IsDesktop">
-                <div>
-                    <input type="radio" id="gear" name="gears" [value]="gearValue"
-                           (change)="onSelectionChange($event.target.value,'gears')"/>
-                    <label for="gear" class="gear with-img filter-label">Gear</label>
-                </div>
-                <div>
-                    <input type="radio" id="nongear" name="gears" value="single speed"
-                           (change)="onSelectionChange('single speed','gears')"/>
-                    <label for="nongear" class="non-gear with-img filter-label">Non Geared</label>
-                    </div>
-            </div>
-
-            <div class="col-sm-12 action-btn" *ngIf="IsMobile">
-                <a class="hc-btn hc-btn-primary" (click)="showNext([])">Next</a>
-            </div>
-        </div>
-
-        <div class="row"  *ngIf="pageShown == 2" [@visibilityChanged]="pageShown != 2">
-            <div class="col-sm-12 action-btn" *ngIf="IsDesktop">
-                <a class="hc-btn hc-btn-primary" (click)="searchProduct(['subcategory','minPrice','maxPrice','gear'])">Pedal</a>
-            </div>
-        </div>
-
-        <div class="row" data-page="3" *ngIf="IsMobile && pageShown == 3" [@visibilityChanged]="pageShown != 3">
-
-        <div class="col-sm-1 choice-filter price-filter">
-            <select class="filter-input" (change)="criterion.price = $event.target.value">
+        <div class=" col-sm-3 choice-filter age" >
+            <ng-container *ngIf="ageFilter">
+            <select class="filter-input" (change)="onSelectionChange($event.target.value,'age');">
                 <option value="-1">Select</option>
-                <option *ngFor="let option of priceFilter" [value]="option.value">{{option.displayText}}</option>
+                <option *ngFor="let option of ageFilter" [value]="option.display">{{option.display}}</option>
+            </select>
+            <div class="filter-label">Age</div>
+            <p class="error text-error" >&nbsp;
+                <span *ngIf="errorFilter == 'age'">Please select any one the option</span>
+            </p>
+            </ng-container>
+        </div>
+
+        <div class="col-sm-3 choice-filter  gear-filter">
+            <div>
+                <input type="radio" id="gear" name="gears" [value]="gearValue"
+                       (change)="onSelectionChange($event.target.value,'gears')"/>
+                <label for="gear" class="gear with-img filter-label">Gear</label>
+            </div>
+            <div>
+                <input type="radio" id="nongear" name="gears" value="single speed"
+                       (change)="onSelectionChange('single speed','gears')"/>
+                <label for="nongear" class="non-gear with-img filter-label">Non Geared</label>
+            </div>
+            <p class="error text-error">&nbsp;
+                <span *ngIf="errorFilter == 'gears'">Please select any one the option</span>
+            </p>
+        </div>
+
+        <div class="col-sm-3 choice-filter price-filter no-border-sm" >
+            <select class="filter-input" (change)="setPrice($event.target.value)">
+                <option value="-1">Select</option>
+                <option *ngFor="let option of priceFilter" [attr.data-maxPrice]="option.price_max" [attr.data-minPrice]="option.price_min" [value]="option.id">{{option.displayText}}</option>
             </select>
             <div class="filter-label">Price</div>
             <p class="error text-error" *ngIf="errorFilter == 'price'">Please select any one the option</p>
-
         </div>
-        <!--<div class="clearfix visible-xs"></div>-->
-            <div class="col-sm-4 choice-filter no-border-sm gear-filter">
-                <div>
-                    <input type="radio" id="gear" name="gears" [value]="gearValue"
-                           (change)="onSelectionChange($event.target.value,'gears')"/>
-                    <label for="gear" class="gear with-img filter-label">Gear</label>
-                </div>
-                <div>
-                    <input type="radio" id="nongear" name="gears" value="single speed"
-                           (change)="onSelectionChange('single speed','gears')"/>
-                    <label for="nongear" class="non-gear with-img filter-label">Non Geared</label>
-                </div>
-            </div>
 
-            <div class="col-sm-2 action-btn">
-                <a class="hc-btn hc-btn-primary" (click)="searchProduct(['minPrice','maxPrice','gear'])">Pedal</a>
-            </div>
+
+
     </div>
+
+    <div class="row"  *ngIf="pageShown == 1" [@visibilityChanged]="pageShown != 1">
+        <div class="action-btn col-sm-12">
+            <a class="hc-btn hc-btn-primary" (click)="searchProduct(['category','age','gears'])">Pedal</a>
+        </div>
+    </div>
+
 </div>

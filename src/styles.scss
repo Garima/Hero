@@ -51,7 +51,7 @@ img{width:100%;}
   .filter-input,.filter-input:focus{
     border-radius:1.6rem;
     padding:7px 10px;
-    font-family: BebasNeue;
+    font-family: BebasNeue,Arial Narrow,Arial,Helvetica,sans-serif;
     color:  $color-text-input;
     font-size: 2.6rem;
     border: 3px solid $color-blue;
@@ -61,7 +61,7 @@ img{width:100%;}
   /*TODO - Move to quick-view component*/
 .quick-view {
   .name {
-    font-family: BebasNeueBold;
+    font-family: BebasNeueBold,Arial Narrow,Arial,Helvetica,sans-serif;
     color: #000000;
     font-size: 6rem;
     line-height: 1em;
@@ -70,7 +70,7 @@ img{width:100%;}
   }
   }
   .price {
-    font-family: BebasNeueBold;
+    font-family: BebasNeueBold,Arial Narrow,Arial,Helvetica,sans-serif;
     color: #000000;
     font-size: 4.1rem;
     line-height: 1em;
@@ -123,6 +123,7 @@ img{width:100%;}
 }
 .modal-open{
   padding-right: 0 !important;
+  position: fixed;
 }
 
 .compare-sel li[role='menuitem']{
@@ -133,9 +134,9 @@ img{width:100%;}
   background-color: transparent;
   box-shadow: none;
 }
-#livechat-eye-catcher{
+
+.blogs .desc *:not(:first-child) {
   display: none;
 }
-
 
 

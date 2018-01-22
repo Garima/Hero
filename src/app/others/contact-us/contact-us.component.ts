@@ -22,8 +22,8 @@ export class NewsLetter {
 
     constructor(
         public name: string = '',
-        public emailId: string = '',
-        public type='',
+        public email: string = '',
+        public type="What's the Buzz?",
         public tnc:boolean = true
     ) {  }
 
@@ -40,6 +40,8 @@ export class ContactUsComponent implements OnInit {
     nsSubmitted = false;
     model;
     nsModel;
+    submitEr:boolean = false;
+    nsSubmitEr:boolean = false;
     successMsg;
     isLoading=false;
       @HostBinding('@routeAnimation') routeAnimation = true;
@@ -59,9 +61,10 @@ export class ContactUsComponent implements OnInit {
                     this.isLoading = false;
                     this.submitted = true;
                     let data = response.json();
-                    if(data.result){
+                    this.submitEr = !data.result;
+                   // if(data.result){
                         this.successMsg = data.message;
-                    }
+                    //}
                 });
         }
     }
@@ -74,10 +77,12 @@ export class ContactUsComponent implements OnInit {
                     this.nsSubmitted = true;
                     this.isLoading = false;
                     let data = response.json();
-                    if(data.result){
+                    this.nsSubmitEr = !data.result;
+                    //if(data.result){
                         this.successMsg = data.message;
-                    }
-                    this.nsModel = new NewsLetter();
+                    //}
+
+                    //this.nsModel = new NewsLetter();
                 });
         }
     }

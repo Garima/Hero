@@ -5,9 +5,7 @@ import { HttpModule  } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 
-import {Ng2PageScrollModule} from 'ng2-page-scroll';
-import { NgDatepickerModule } from 'ng2-datepicker';
-import { SelectModule } from 'ng2-select';
+//import { IsSecureGuard } from './service/ssl-redirect.service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule }     from './app-routing.module';
@@ -20,8 +18,12 @@ import { GetLocalTextData } from './service/get-local-text-data.service';
 import { GetLocalJsonData } from './service/get-local-JSON-data.service';
 import { SessionIdService } from './service/session-id.service';
 
+
 import { CarouselModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
+import { NgDatepickerModule } from 'ng2-datepicker';
+import { SelectModule } from 'ng2-select';
 
 import { CycleOfChoiceComponent } from './homepage/cycle-of-choice/cycle-of-choice.component';
 import { HeroCarouselComponent } from './cmp/hero-carousel/hero-carousel.component';
@@ -66,6 +68,11 @@ import { SitemapComponent } from './others/sitemap/sitemap.component';
 import { WarrantyComponent } from './others/warranty/warranty.component';
 import { AccessoriesComponent } from './others/accessories/accessories.component';
 import { BuyOnlineComponent } from './product-detail/buy-online/buy-online.component';
+import { BlogComponent } from './others/blog/blog.component';
+import { BlogsComponent } from './others/blogs/blogs.component';
+import { NewsletterComponent } from './others/newsletter/newsletter.component';
+import { ProdPdfComponent } from './product-detail/prod-pdf/prod-pdf.component';
+import { FitTextDirective } from './directives/fit-text.directive';
 
 
 @NgModule({
@@ -113,7 +120,12 @@ import { BuyOnlineComponent } from './product-detail/buy-online/buy-online.compo
     SitemapComponent,
     WarrantyComponent,
     AccessoriesComponent,
-    BuyOnlineComponent
+    BuyOnlineComponent,
+    BlogComponent,
+    BlogsComponent,
+    NewsletterComponent,
+    ProdPdfComponent,
+    FitTextDirective
   ],
   imports: [
     BrowserModule,
@@ -137,7 +149,9 @@ import { BuyOnlineComponent } from './product-detail/buy-online/buy-online.compo
                 MatchMediaService,
                 GetLocalTextData,
                 GetLocalJsonData,
-      SessionIdService],
+      SessionIdService
+      //IsSecureGuard
+  ],
   bootstrap: [AppComponent]
 })
 

@@ -1,3 +1,8 @@
-<img [src]="bannerImg" alt="hero brand" *ngIf="bannerImg">
+<!--<picture>
+    <source [srcset]="bannerImgSm" media="(max-width: 767px)">
+    <source [srcset]="bannerImg"  media="(min-width: 768px)">
+    <img [src]="bannerImg" alt="Hero" class="img-responsive">
+</picture>-->
+<img [src]="bannerImg" alt="Hero" class="img-responsive">
 <p class="pad-main-side cat-desc">{{catDesc}}
 </p>

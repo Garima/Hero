@@ -9,7 +9,7 @@
   border: 2px solid transparent;
   .name{
     color: $color-black;
-    font-family: BebasNeueBold;
+    font-family: BebasNeueBold,Arial Narrow,Arial,Helvetica,sans-serif;
     font-size: 2.5rem;
     margin-bottom: .5rem;
     @media (min-width: $sm-screen-up) {

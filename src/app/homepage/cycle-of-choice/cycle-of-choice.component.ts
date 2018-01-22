@@ -68,9 +68,11 @@ export class CycleOfChoiceComponent implements OnInit {
         }
     }
     searchProduct(filtersToValidate){
-        this.validateFilter(filtersToValidate);
-        //Object.keys(this.criterion).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(this.criterion[k])}`).join('&');
-        this.router.navigate(['/search'], { queryParams: this.criterion });
+        if(this.validateFilter(filtersToValidate)){
+            //Object.keys(this.criterion).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(this.criterion[k])}`).join('&');
+            this.router.navigate(['/search'], { queryParams: this.criterion });
+        }
+
 
     }
     onSelectionChange(entry,type) {
@@ -83,7 +85,7 @@ export class CycleOfChoiceComponent implements OnInit {
         //get subnav fo it
         //and
         this.criterion[type] = entry;
-        this.getCycleFilter(entry);
+      //  this.getCycleFilter(entry);
         if(this.errorFilter === type){
             this.errorFilter = '';
         }
@@ -168,9 +170,33 @@ export class CycleOfChoiceComponent implements OnInit {
         );
         if(gearsFilter){
             let gears = gearsFilter.values;
+            gears.sort((a, b) => {
+                //parseInt("11+".match(/^[0-9]+/)[0])
+                let numberA,numberB;
+                let digitA = a.display.match(/^[0-9]+.?[0-9]*/);
+                if(digitA && digitA.length > 0){
+                    numberA = parseFloat(digitA[0])
+                }
+                let digitB = b.display.match(/^[0-9]+.?[0-9]*/);
+                if(digitB && digitB.length > 0){
+                    numberB = parseFloat(digitB[0])
+                }
+                if(digitA == null){
+                    return -1;
+                }
+                if ( numberA < numberB)
+                    return -1;
+                if ( numberA > numberB )
+                    return 1;
+                return 0;
+            });
             for(let gear of gears){
-                if(gear.display.toLowerCase() != "single speed") {
-                    this.gearValue = this.gearValue + ',' + gear.id;
+                if(gear.display.toLowerCase() != "single speed" && gear.display != '') {
+                    if(this.gearValue !== ''){
+                        this.gearValue = this.gearValue + ',' + gear.id;
+                    }else{
+                        this.gearValue = gear.id;
+                    }
                 }
             }
         }

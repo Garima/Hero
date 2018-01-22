@@ -21,6 +21,7 @@ export class ProductDetMainComponent implements OnInit {
     productId;
     errorMessage;
     breadcrumb;
+    currentURL=null;
 @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display')   display = 'block';
     private addCompareUrl = environment.apiHost + '/api/web/product/compare/add';
@@ -47,6 +48,7 @@ export class ProductDetMainComponent implements OnInit {
                 this.productData = response.json();
                 this.getBreadcrumbs();
                 this.breadcrumb = this.breadcrumbService.getBreadcrumbs();
+                this.currentURL = encodeURIComponent(window.location.href);
                 window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
             }
         ).catch(error => console.error('An error occurred', error));

@@ -14,8 +14,8 @@ import { Observable } from 'rxjs/Observable';
 
 export class CategoryFilterComponent implements OnInit {
     filterURL = environment.apiHost + '/api/web/getfilters';
-    IsMobile: Boolean = false;
-    IsDesktop: Boolean = true;
+    IsMobile: boolean = false;
+    IsDesktop: boolean = true;
     filters;
     showFilterOptions:boolean = false;
     filterOpen:boolean = false;
@@ -24,22 +24,24 @@ export class CategoryFilterComponent implements OnInit {
     isDataChanging = false;
     @Input() filtersSelected;
     @Input() defaultFilterOpen:boolean = false;
+    @Input() sortOrder="asc";
     @Output() criterionChanged: EventEmitter<any> = new EventEmitter<any>();
+    @Output() sortChanged: EventEmitter<any> = new EventEmitter<any>();
     @Output() clearAll: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private matchMediaService: MatchMediaService,
               private http: Http) { }
 
-  ngOnInit() {
+      ngOnInit(){
 
-      this.IsMobile = (this.matchMediaService.IsSmall());
-      this.IsDesktop = (this.matchMediaService.IsLarge());
-      if(this.IsDesktop){
-          this.filterOpen = true;
+          this.IsMobile = (this.matchMediaService.IsSmall());
+          this.IsDesktop = (this.matchMediaService.IsLarge());
+          if(this.IsDesktop){
+              this.filterOpen = true;
+          }
+
+          this.getFilter();
       }
-
-      this.getFilter();
-  }
     ngOnChanges(changes) {
         for (let propName in changes) {
             if(propName = "filtersSelected" && this.filters){
@@ -48,60 +50,66 @@ export class CategoryFilterComponent implements OnInit {
             }
         }
     }
+
     onResize(e){
-        this.IsMobile = (this.matchMediaService.IsSmall());
-        this.IsDesktop = (this.matchMediaService.IsLarge());
-        if(this.IsDesktop){
-            this.filterOpen = true;
-        }
+        this.IsMobile = this.matchMediaService.IsSmall();
+        this.IsDesktop = this.matchMediaService.IsLarge();
+        this.filterOpen = this.IsDesktop;
+
     }
-getFilter(){
-    this.http.get(this.filterURL)
-        .toPromise()
-        .then(response => {
-            this.filters = response.json();
-            let digitA,digitB,numberA,numberB;
-            for(let filter of this.filters){
-                if(filter.name == "age" || filter.name == "gears" || filter.name == "size" ){
-                    filter.values.sort((a, b) => {
-                        //parseInt("11+".match(/^[0-9]+/)[0])
-                        digitA = a.display.match(/^[0-9]+.?[0-9]*/);
-                        if(digitA && digitA.length > 0){
-                            numberA = parseFloat(digitA[0])
-                        }
-                        digitB = b.display.match(/^[0-9]+.?[0-9]*/);
-                        if(digitB && digitB.length > 0){
-                            numberB = parseFloat(digitB[0])
-                        }
-                        if(digitA == null){
-                            return -1;
-                        }
-                        if ( numberA < numberB)
-                            return -1;
-                        if ( numberA > numberB )
-                            return 1;
-                        return 0;
-                    });
-                }else{
-                    filter.values.sort((a, b) => {
-                        if ( a.display < b.display)
-                            return -1;
-                        if ( a.display > b.display )
-                            return 1;
-                        return 0;
-                    });
+
+    sortBy(filter,dir) {
+        let criterion = {filter:filter,direction:dir};
+        this.sortChanged.emit(criterion);
+    }
+
+    getFilter(){
+        this.http.get(this.filterURL)
+            .toPromise()
+            .then(response => {
+                this.filters = response.json();
+                let digitA,digitB,numberA,numberB;
+                for(let filter of this.filters){
+                    if(filter.name == "age" || filter.name == "gears" || filter.name == "size" ){
+                        filter.values.sort((a, b) => {
+                            //parseInt("11+".match(/^[0-9]+/)[0])
+                            digitA = a.display.match(/^[0-9]+.?[0-9]*/);
+                            if(digitA && digitA.length > 0){
+                                numberA = parseFloat(digitA[0])
+                            }
+                            digitB = b.display.match(/^[0-9]+.?[0-9]*/);
+                            if(digitB && digitB.length > 0){
+                                numberB = parseFloat(digitB[0])
+                            }
+                            if(digitA == null){
+                                return -1;
+                            }
+                            if ( numberA < numberB)
+                                return -1;
+                            if ( numberA > numberB )
+                                return 1;
+                            return 0;
+                        });
+                    }else{
+                        filter.values.sort((a, b) => {
+                            if ( a.display < b.display)
+                                return -1;
+                            if ( a.display > b.display )
+                                return 1;
+                            return 0;
+                        });
+
+                    }
 
                 }
-
+                if(this.defaultFilterOpen && this.filtersSelected) {
+                  //  this.showFilter(this.filtersSelected[0].filterName);
+                }
+                this.fillFilterOptions();
+                this.setSelected();
             }
-            if(this.defaultFilterOpen && this.filtersSelected) {
-                this.showFilter(this.filtersSelected[0].filterName);
-            }
-            this.fillFilterOptions();
-            this.setSelected();
-        }
-    ).catch(error => console.error('An error occurred', error));
-}
+        ).catch(error => console.error('An error occurred', error));
+    }
 
     showFilter(filterId){
         this.isDataChanging = true;
@@ -118,13 +126,12 @@ getFilter(){
         }
         this.isDataChanging= false;
     }
+
     toggleCriterion(filter,optionValue){
-       // var selectedFilterName = this.filters.find((filter) => {
-        //    return filter.id === this.filterSelected
-       // });
-        let criterion = {filter:filter,option:optionValue}
+        let criterion = {filter:filter,option:optionValue};
         this.criterionChanged.emit(criterion);
     }
+
     toggleFilter(){
         this.filterOpen = !this.filterOpen;
     }
@@ -133,7 +140,7 @@ getFilter(){
         this.clearAll.emit();
     }
 
-setSelected(){
+    setSelected(){
     var self = this;
         for (let filter of this.filters) {
         if(this.filtersSelected && this.filtersSelected.length > 0) {
@@ -169,6 +176,7 @@ setSelected(){
         }
     }
 }
+
     fillFilterOptions(){
         let criterValue;
         if(this.filtersSelected && this.filtersSelected.length > 0) {
@@ -189,7 +197,8 @@ setSelected(){
             }
         }
     }
-getCriterionName(filterName,id){
+
+    getCriterionName(filterName,id){
     let criterion=null;
     let isFilterSelected = this.filters.find((filter) => {
         return filter.name.toLowerCase() == filterName.toLowerCase();

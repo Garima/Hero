@@ -108,7 +108,7 @@
         <th scope="row" class="col1 component">Front Suspension</th>
         <td>{{getSpecification(productCompareData[0],'Front_suspension').description || 'Coming Soon'}}</td>
         <td>{{getSpecification(productCompareData[1],'Front_suspension').description || 'Coming Soon'}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].specifications.Front_suspension || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{getSpecification(productCompareData[2],'Front_suspension').description || 'Coming Soon'}}</td>
     </tr>
 
     <tr>
@@ -136,7 +136,7 @@
         <th scope="row" class="col1 component">Rear Brake</th>
         <td>{{getSpecification(productCompareData[0],'Rear_brake').description || 'Coming Soon'}}</td>
         <td>{{getSpecification(productCompareData[1],'Rear_brake').description || 'Coming Soon'}}</td>
-        <td *ngIf="numOfProd === 3">{{productCompareData[2].specifications.Rear_brake || 'Coming Soon'}}</td>
+        <td *ngIf="numOfProd === 3">{{getSpecification(productCompareData[2],'Rear_brake').description || 'Coming Soon'}}</td>
     </tr>
     </tbody>
 </table>

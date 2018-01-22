@@ -8,7 +8,8 @@
     <div class="menu-flyout transition" [class.visible]="subNavVisible">
     <ul class="subNavContainer">
         <li *ngFor="let subNav of menu.sub_categories" [style.width.%]="cycleWidth">
-            <a  [ngStyle]="{ 'background-image': 'url(' + subNav.img + ')'}"class="menu-lvl2 transition" [routerLink]="['/', menu.link,subNav.link]"  (click)= 'closeNav()' >
+            <a  [ngStyle]="{ 'background-image': 'url(' + subNav.img + ')'}" class="menu-lvl2 transition"
+                [href]="['/'+ menu.link+ '/' + subNav.link]"  (click)= 'closeNav()' >
                 {{subNav.name}}
             </a>
         </li>

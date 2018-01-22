@@ -21,7 +21,7 @@
     min-height: 70vw;
   }
   .hc-btn{
-    border: 1px solid $color-white;
+    border: 2px solid $color-white;
     color:$color-white;
     display: block;
     padding-right: 3rem;
@@ -31,6 +31,9 @@
       padding-left: 5rem;
     }
     margin-bottom: 2rem;
+    &:hover{
+      opacity: .8;
+    }
   }
   .hc-btn-primary{
     border: 1px solid $color-red;
@@ -59,11 +62,11 @@
     padding: 0 5px;
   }
   li:last-child{
-    font-family: BebasNeueBold;
+    font-family: BebasNeueBold,Arial Narrow,Arial,Helvetica,sans-serif;
   }
 }
 .prod-name{
-  font-family: BebasNeueBold;
+  font-family: BebasNeueBold,Arial Narrow,Arial,Helvetica,sans-serif;
   font-size: 6.4rem;
   display: inline-block;
   @media (max-width: $sm-screen-down) {
@@ -105,12 +108,35 @@
 
 .prd-img{
   position: absolute;
-  top: 0;
-  left: 0;
   z-index:-1;
   -webkit-transform: translateY(-50%) translateX(-50%);
   -ms-transform: translateY(-50%) translateX(-50%);
   transform: translateY(-50%) translateX(-50%);
   top: 50%;
   left: 50%;
+  @media (max-width:$xs-screen-down) {
+    width: 80%;
+  }
+}
+.social {
+  border: 2px solid white;
+  border-radius: 2.5rem;
+  display: inline-block;
+  float: right;
+  margin-right: 2rem;
+  @media (max-width:$sm-screen-down){margin-top: 2rem;}
+  .sc-hd{
+    font-family: BebasNeue;
+    text-align: center;
+    padding: 10px;
+  }
+  a{
+    font-size: 20px;
+    color: white;
+    padding: 1rem 2rem;
+    border-right: 1px solid rgba(256,256,256,.5);
+  }
+  a:last-child{
+    border-right: none;
+  }
 }

@@ -6,7 +6,7 @@
     </div>
     <app-nav-menu [forceCloseNav]="forceCloseNav"></app-nav-menu>
 </header>
-<div class="body-content" (window:resize)="onResize($event)" >
+<div class="body-content">
 <router-outlet (deactivate)="onDeactivate()" (activate)="onActivate()"></router-outlet>
 </div>
 <app-bottom-bar class="desktopFooterBar"></app-bottom-bar>
